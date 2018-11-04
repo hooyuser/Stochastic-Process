@@ -1,0 +1,60 @@
+\documentclass{article}
+% Comment the following line to NOT allow the usage of umlauts
+\usepackage[utf8]{inputenc}
+% Uncomment the following line to allow the usage of graphics (.png, .jpg)
+%\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,ntheorem}
+\theorembodyfont{\upshape}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{proof}{Proof}[section]
+% Start the document
+\begin{document}
+
+% Create a new 1st level heading
+\section{Basic notation}
+\begin{definition}[Independent increments]
+  A stochastic process$(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increment $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent;
+\end{definition}
+
+
+
+\section{Poisson process}
+\begin{definition}[Poisson process (I)]
+	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
+	\begin{enumerate}
+		\item $N_0=0$;
+		\item $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
+		\item for any $0\le s \le t$, $N_t-N_s\sim \mathrm{Pois}(\lambda(t-s))$, that is 
+		\[
+		\mathrm{P}(N_t-N_s=k)=\mathrm{e}^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
+		\]
+	\end{enumerate}	
+\end{definition}
+
+\begin{definition}[Counting process]
+	A \emph{counting process} is a stochastic process $(N_t)_{t\ge 0}$ with values that are non-negative, integer, and non-decreasing:
+	\begin{enumerate}
+		\item $N_0\ge0$;
+		\item $N_t$ is an integer;
+		\item If $0\le s\le t$, then $N_s \le N_t$.
+	\end{enumerate}	
+		
+\end{definition}
+For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of events that occurred on $(s,t]$.  
+
+
+\begin{definition}[Poisson process (II)]
+	A counting process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
+	\begin{enumerate}
+		\item $N_0=0$;
+		\item $(N_t)_{t\ge0}$ has stationary and independent increments;
+		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t=1)=\lambda h+o(h)$ when $h\to0$;
+		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t\ge2)=o(h)$ when $h\to0$;
+	\end{enumerate}	
+\end{definition}
+
+
+
+\end{document}
