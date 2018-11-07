@@ -2,40 +2,66 @@
 % Comment the following line to NOT allow the usage of umlauts
 \usepackage[utf8]{inputenc}
 % Uncomment the following line to allow the usage of graphics (.png, .jpg)
-%\usepackage{graphicx}
-\usepackage{amsmath,amsfonts,ntheorem}
+\usepackage{geometry}
+\geometry{left=4cm,right=4cm,top=3cm,bottom=3cm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{array,makecell}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{amsmath,amsfonts}
+\usepackage[thmmarks,amsmath]{ntheorem}
 \theorembodyfont{\upshape}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
-\newtheorem{proof}{Proof}[section]
+\theoremstyle{nonumberplain}
+\theoremheaderfont{\itshape}
+\theorembodyfont{\normalfont}
+\theoremsymbol{\\ \rightline{$\square$}}
+\newtheorem{Proof}{Proof.}
+
 % Start the document
 \begin{document}
 
 % Create a new 1st level heading
 \section{Basic notation}
-\begin{definition}[Independent increments]
-  A stochastic process$(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increment $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent;
+\begin{definition}[independent increments]
+  A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increment $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
 \end{definition}
+
+
+\begin{definition}[strictly stationary process]
+	Let $(X_t)_{t\in T}$ be a stochastic process and let  $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
+	\[
+	F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})=F_{{X}}(x_{{t_{1}}},\ldots ,x_{{t_{k}}}).
+	\]
+\end{definition}
+
+
+
 
 
 
 \section{Poisson process}
 \begin{definition}[Poisson process (I)]
 	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item $N_0=0$;
 		\item $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
-		\item for any $0\le s \le t$, $N_t-N_s\sim \mathrm{Pois}(\lambda(t-s))$, that is 
+		\item for any $0\le s \le t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
 		\[
-		\mathrm{P}(N_t-N_s=k)=\mathrm{e}^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
+		\mathrm{P}(N_t-N_s=k)=e^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
 		\]
 	\end{enumerate}	
 \end{definition}
 
-\begin{definition}[Counting process]
+\begin{definition}[counting process]
 	A \emph{counting process} is a stochastic process $(N_t)_{t\ge 0}$ with values that are non-negative, integer, and non-decreasing:
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item $N_0\ge0$;
 		\item $N_t$ is an integer;
 		\item If $0\le s\le t$, then $N_s \le N_t$.
@@ -47,14 +73,149 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 
 \begin{definition}[Poisson process (II)]
 	A counting process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item $N_0=0$;
-		\item $(N_t)_{t\ge0}$ has stationary and independent increments;
+		\item $(N_t)_{t\ge0}$ has independent increments;
 		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t=1)=\lambda h+o(h)$ when $h\to0$;
 		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t\ge2)=o(h)$ when $h\to0$;
 	\end{enumerate}	
 \end{definition}
 
+\begin{definition}[Poisson process (III)]
+	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
+	\[
+	N_t=\sum_{n=0}^{\infty}nI_{[T_n,T_{n+1})}(t),
+	\]
+	where $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$.
+\end{definition}
+
+\begin{proposition}
+	Definition 2.1 2.3 2.4 are equivalent definitions of Poisson process.
+\end{proposition}
+\begin{Proof}
+	\underline{Definition 2.1 $\implies$ Definition 2.3} 
+	
+	Here we are only to show the implication of Definition 2.3(iii) and Definition 2.3(iv). Since $N_{t+h}-N_t\sim Pois(\lambda h)$, when $h\to0$ we have 
+	\begin{align*}
+		\mathrm{P}(N_{t+h}-N_t=1)&=e^{-\lambda h}\lambda h=(1-\lambda h+o(h))\lambda h=\lambda h+o(h),\\
+		\mathrm{P}(N_{t+h}-N_t\ge2)&=1-\mathrm{P}(N_{t+h}-N_t=0)-\mathrm{P}(N_{t+h}-N_t=1)\\
+		&=1-e^{-\lambda h}-e^{-\lambda h}\lambda h\\
+		&=1-(1-\lambda h+o(h))-(\lambda h+o(h))\\
+		&=o(h).
+	\end{align*}
+	\underline{Definition 2.3 $\implies$ Definition 2.1} 
+	
+	Only Definition 2.1(iii) needs to be derived. Given the Laplace transform of the nonnegative random variables $N_t$ and $N_{t+h}$
+	\[
+	L_{N_t}(u)=\mathrm{E}[e^{-uN_t}],\quad
+	L_{N_{t+h}}(u)=\mathrm{E}[e^{-uN_{t+h}}],\quad u\ge0,
+	\]
+	according to Definition 2.3(ii) we can obtain
+	\begin{align*}
+	L_{N_{t+h}}(u)&=\mathrm{E}[e^{-uN_{t+h}}]\\
+	&=\mathrm{E}[e^{-uN_{t}}e^{-u(N_{t+h}-N_t)}]\\
+	&=\mathrm{E}[e^{-uN_{t}}]\mathrm{E}[e^{-u(N_{t+h}-N_t)}]\\
+	&=L_{N_t}(u)\mathrm{E}[e^{-u(N_{t+h}-N_t)}].
+	\end{align*}
+	Note that 
+	\begin{align*}
+	&\mathrm{E}[e^{-u(N_{t+h}-N_t)}]\\
+	=\ &e^{0}\mathrm{P}(N_{t+h}-N_t=0)+e^{-u}\mathrm{P}(N_{t+h}-N_t=1)+\sum_{j=2}^{\infty}e^{-un}\mathrm{P}(N_{t+h}-N_t=j)\\
+	=\ &1-\lambda h+o(h)+e^{-u}(\lambda h+o(h))+o(h)\\
+	=\ &1-\lambda h+e^{-u}\lambda h+o(h)\quad(h\to 0).
+	\end{align*}
+	Denote $g(t+h)=L_{N_{t+h}}(u)$ and $g(t)=L_{N_{t}}(u)$ for some fixed $u$ and then we get 
+	\[
+	\frac{g(t+h)-g(t)}{h}=\frac{g(t)(1-\lambda h+e^{-u}\lambda h+o(h))-g(t)}{h}=g(t)\lambda (e^{-u}-1)+\frac{o(h)}{h}.
+	\]
+	Letting $h\to 0$ yields the differential equation
+	\[
+	g'(t)=g(t)\lambda (e^{-u}-1).
+	\]
+	The initial condition $g(0)=\mathrm{E}[e^{-uN_{0}}]=1$ determines a special solution of the equation $g(t)=L_{N_{t}}(u)=e^{\lambda t (e^{-u}-1)}$, which coincides with the Laplace transform of Poisson distribution $Pois(\lambda t)$. Since Laplace transform uniquely determines the distribution, we can thus conclude $N_{t}\sim Pois(\lambda t)$. Given any $r\ge 0$, define a stochastic process $N'_t=N_{r+t}-N_r$ and we can check that $(N'_t)_{t\ge 0}$ is also a counting process satisfying all the contitions in Definition 2.4. Hence we can also show that $N'_{t}\sim Pois(\lambda t)$, which is equivalent to Definition 2.1(iii).
+	
+	\noindent\underline{Definition 2.4 $\implies$ Definition 2.1}
+	
+	
+\end{Proof}
+
+\begin{proposition}
+	Let $(N_t)_{t\ge0}$ be a Poisson process.
+	\begin{enumerate}
+		\item $N_t\sim Pois(\lambda t)$, $\mathrm{E}[N_t]=\mathrm{Var}(N_t)=\lambda t$.
+	\end{enumerate}
+\end{proposition}
+
+\section*{Appendix}
+
+\makegapedcells
+\setcellgapes{3pt}
+\newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}} 
+%\newsavebox{\mybox}
+%\newcolumntype{X}[1]{>{\begin{lrbox}{\mybox}}c<{\end{lrbox}\makecell[#1]{\fbox{\usebox\mybox}}}}
+%\renewcommand\arraystretch{1.5}
+\begin{table}[H]
+	\centering
+		\begin{tabular}{|l|l|l|l|l|}
+			\hline
+			\rowcolor[HTML]{C0C0C0} 
+			\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Distribution}& \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}pmf $\mathrm{P}(X=k)$}& \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Support}   & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Mean} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Variance} \\ \hline
+			Bernoulli $B(1,p)$&$p^{k}(1-p)^{1-k}$&$\{0,1\}$&$p$&$p(1-p)$\\  \hline			
+			Binomial $B(n,p)$ &${n \choose k}\,p^{k}(1-p)^{n-k}$&$\{0,\cdots, n\}$&$np$&$np(1-p)$ \\   \hline
+			Negative Binomial $NB(r,p)$&${k+r-1 \choose k} (1-p)^{r}p^{k}$&$\mathbb{N}$&${\dfrac{pr}{1-p}}$&${\dfrac {pr}{(1-p)^{2}}}$\\ \hline
+			Poisson $Pois(\lambda )$ &$\dfrac{\lambda ^{k}e^{-\lambda}}{k!}$
+			&$\mathbb{N}$&$\lambda$&$\lambda$\\ \hline
+			Geometric $Geo(p)$&$(1-p)^{k-1}p$&$\mathbb{N}_+$&$\dfrac{1}{p}$&$\dfrac{1-p}{p^2}$\\  \hline
+			Hypergeometric $H(N,K,n)$&$\dfrac{{K \choose k}{{N-K}\choose {n-k}}}{{N \choose n}}$&$\{0,\cdots
+			,\min{(n,K)}\}$&$n\dfrac{K}{N}$&$n\dfrac{K}{N}\dfrac{N-K}{N}\dfrac{N-n}{N-1}$\\ \hline
+			Uniform (discrete) $DU(a,b)$&$\dfrac{1}{n}$&$\{a,a+1,\dots,b\}$&$\dfrac{a+b}{2}$&$\dfrac{(b-a+1)^{2}-1}{12}$\\ \hline
+		\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\rowcolor[HTML]{C0C0C0} 
+		\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Distribution}& \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}pdf}  & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Mean} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Variance} \\ \hline
+		Degenerate $\delta_a$&$I_{\{a\}}(x)$&$a$&0 \\ \hline
+		Uniform (continuous) $U(a,b)$&$\dfrac{1}{b-a}I_{[a,b]}(x)$&$\dfrac{a+b}{2}$&$\dfrac{(b-a)^{2}}{12}$\\ \hline
+		Exponential $Exp(\lambda)=\Gamma(1,\lambda )$&$\lambda e^{-\lambda x}I_{[0,+\infty)}(x)$&$\lambda^{-1}$ &$\lambda^{-2}$\\ \hline
+		Normal $N(\mu ,\sigma ^{2})$&${\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\frac {(x-\mu )^{2}}{2\sigma ^{2}}}}$&$\mu$&$\sigma^2$\\ \hline
+		Gamma $\Gamma (\alpha,\beta )$&$\dfrac{\beta ^{\alpha }}{\Gamma (\alpha )}x^{\alpha -1}e^{-\beta x}I_{(0,+\infty)}(x)$&$\dfrac{\alpha}{\beta}$&$\dfrac{\alpha}{\beta^2}$ \\ \hline
+		Chi-squared $\chi^{2}_k=\Gamma (\frac{k}{2},\frac{1}{2})$ &$\dfrac{1}{2^{k/2}\Gamma (k/2)}\;x^{k/2-1}e^{-x/2}I_{(0,+\infty)}(x)$&$k$&$2k$ \\ \hline
+		Student's $t_{\nu}$&$\dfrac { \Gamma \left( \frac { \nu + 1 } { 2 } \right) } { \sqrt { \nu \pi } \Gamma \left( \frac { \nu } { 2 } \right) } \left( 1 + \dfrac { x ^ { 2 } } { \nu } \right) ^ { - \frac { \nu + 1 } { 2 } }$&0&$\dfrac { \nu } { \nu - 2 }$ for $\nu > 2$
+		\\ \hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\rowcolor[HTML]{C0C0C0} 
+		\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Distribution} &  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Moment-generating function } & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Characteristic function} \\ \hline
+		Degenerate $\delta_a$ &${ e ^ { t a } }$ &$ e ^ { i t a }$  \\ \hline
+		Bernoulli $B(1,p)$  &${ 1 - p + p e ^ { t } }$ & ${ 1 - p + p e ^ { i t } }$ \\  \hline
+		\multirow{2}{*}[-3pt]{Geometric $Geo(p)$} &${ \dfrac { p e ^ { t } } { 1 - ( 1 - p ) e ^ { t } } },$& \multirow{2}{*}[-3pt]{$ ( 1 - p + p e ^ { i t } ) ^ { n } $} \\ 
+		 &$ t < - \operatorname { l n } ( 1 - p )$& \\  \hline
+		Binomial $B(n,p)$ &${ ( 1 - p + p e ^ { t } ) ^ { n } }$ & $ ( 1 - p + p e ^ { i t } ) ^ { n } $ \\   \hline
+		Negative Binomial $NB(r,p)$  &$ \dfrac { ( 1 - p ) ^ { r } } { ( 1 - p e ^ { t } ) ^ { r } } $ & $ \dfrac { ( 1 - p ) ^ { r } } { ( 1 - p e ^ { i t } ) ^ { r } } $\\ \hline
+		Poisson $Pois(\lambda )$ &$ e ^ { \lambda \left( e ^ { t } - 1 \right) } $ & $ e ^ { \lambda \left( e ^ { i t } - 1 \right) } $ \\ \hline
+		Uniform (continuous) $U(a,b)$&$\begin{cases}{\dfrac{\mathrm {e} ^{tb}-\mathrm{e}^{ta}}{t(b-a)}}&{\text{for }}t\neq 0\\1&{\text{for }}t=0\end{cases}$ & $\begin{cases}{\dfrac{\mathrm {e} ^{itb}-\mathrm{e}^{ita}}{it(b-a)}}&{\text{for }}t\neq 0\\1&{\text{for }}t=0\end{cases}$\\ \hline
+		Uniform (discrete) $DU(a,b)$&$ \dfrac { e ^ { a t } - e ^ { ( b + 1 ) t } } { ( b - a + 1 ) \left( 1 - e ^ { t } \right) } $ & $ \dfrac { e ^ { i t \mu } } { ( b - a + 1 ) \left( 1 - e ^ { i t } \right) } $\\ \hline
+		Laplace $L(\mu ,b)$ &$\dfrac { e ^ { t \mu } } { 1 - b ^ { 2 } t ^ { 2 } } ,\ | t | < 1 / b $ & $ \dfrac { e ^ { i t \mu } } { 1 + b ^ { 2 } t ^ { 2 } } $ \\ \hline
+		Normal $N(\mu ,\sigma ^{2})$&$ e ^ { t \mu + \frac { 1 } { 2 } \sigma ^ { 2 } t ^ { 2 } } $ & $ e ^ { i t \mu - \frac { 1 } { 2 } \sigma ^ { 2 } t ^ { 2 } } $\\ \hline
+		Chi-squared $\chi^{2}_k$&$( 1 - 2 t ) ^ { - \frac { k } { 2 } } $&$ ( 1 - 2 i t ) ^ { - \frac { k } { 2 } } $ \\ \hline
+		Noncentral chi-squared $\chi^{2}_k(\lambda)$&$e^{\lambda t/( 1 - 2 t ) }( 1 - 2 t )^{- \frac{ k } { 2 } } $ & $ e ^ { i \lambda t / ( 1 - 2 i t ) } ( 1 - 2 i t ) ^{ - \frac { k } { 2 } } $ \\ \hline
+		Gamma $\Gamma (\alpha,\beta )$&$\left(1-{\dfrac{t}{\beta }}\right)^{-\alpha },\ t<\beta $ & $\left(1-{\dfrac{it}{\beta }}\right)^{-\alpha }$\\ \hline
+		Exponential $Exp(\lambda )$&$\dfrac{\lambda}{\lambda-t}, t < \lambda$ & $\dfrac{\lambda}{\lambda-it}$\\ \hline
+		Multivariate normal $N(\bm{\mu } ,\mathbf{\Sigma })$&$e ^ { \mathbf{t} ^ { T } \left( \bm{\mu} + \frac { 1 } { 2 } \mathbf{\Sigma } \mathbf{t} \right) }$&$e ^ { \mathbf{t} ^ { T } \left( i\bm{\mu} -\frac { 1 } { 2 } \mathbf{\Sigma } \mathbf{t} \right) }$ \\ \hline
+		Cauchy $Cauchy(\mu ,\theta )$&Does not exist&$e ^ { i t \mu - \theta | t | }$\\ \hline
+		Multivariate Cauchy &\multirow{2}{*}[-1.5pt]{Does not exist} &\multirow{2}{*}[-1.5pt]{$e ^ { i \mathbf { t } ^ { \mathrm { T } } \boldsymbol { \mu } - \sqrt { \mathbf { t } ^ { \mathrm { T } } \boldsymbol { \Sigma } \mathbf { t } } }$}\\
+		$MultiCauchy(\bm{\mu } ,\mathbf{\Sigma })$&&\\ \hline
+	\end{tabular}
+\end{table}
 
 
 \end{document}
