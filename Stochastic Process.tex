@@ -84,16 +84,18 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 \begin{definition}[Poisson process (III)]
 	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
 	\[
-	N_t=\sum_{n=0}^{\infty}nI_{[T_n,T_{n+1})}(t),
+	N_t=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t),
 	\]
-	where $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$.
+	where $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$, $X_i>0$.
 \end{definition}
 
 \begin{proposition}
-	Definition 2.1 2.3 2.4 are equivalent definitions of Poisson process.
+	Definition 2.1, 2.3, 2.4 are equivalent definitions of Poisson process.
 \end{proposition}
-\begin{Proof}
-	\underline{Definition 2.1 $\implies$ Definition 2.3} 
+\begin{Proof}~\\
+	\vspace{-1em}
+	\begin{itemize}
+	\item \underline{Definition 2.1 $\implies$ Definition 2.3} 
 	
 	Here we are only to show the implication of Definition 2.3(iii) and Definition 2.3(iv). Since $N_{t+h}-N_t\sim Pois(\lambda h)$, when $h\to0$ we have 
 	\begin{align*}
@@ -103,7 +105,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		&=1-(1-\lambda h+o(h))-(\lambda h+o(h))\\
 		&=o(h).
 	\end{align*}
-	\underline{Definition 2.3 $\implies$ Definition 2.1} 
+	\item\underline{Definition 2.3 $\implies$ Definition 2.1} 
 	
 	Only Definition 2.1(iii) needs to be derived. Given the Laplace transform of the nonnegative random variables $N_t$ and $N_{t+h}$
 	\[
@@ -133,10 +135,34 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	g'(t)=g(t)\lambda (e^{-u}-1).
 	\]
 	The initial condition $g(0)=\mathrm{E}[e^{-uN_{0}}]=1$ determines a special solution of the equation $g(t)=L_{N_{t}}(u)=e^{\lambda t (e^{-u}-1)}$, which coincides with the Laplace transform of Poisson distribution $Pois(\lambda t)$. Since Laplace transform uniquely determines the distribution, we can thus conclude $N_{t}\sim Pois(\lambda t)$. Given any $r\ge 0$, define a stochastic process $N'_t=N_{r+t}-N_r$ and we can check that $(N'_t)_{t\ge 0}$ is also a counting process satisfying all the contitions in Definition 2.4. Hence we can also show that $N'_{t}\sim Pois(\lambda t)$, which is equivalent to Definition 2.1(iii).
+
+	\item\noindent\underline{Definition 2.1 $\implies$ Definition 2.4}\\
+	Let $T_n=\inf\{t\ge0:N_t= n\}$ for $n\in\mathbb{N}_+$. Note that given any $t\ge0$, $N_t=n$ if and only if $T_n\le t<T_{n+1}$. Thus we have
+	\[
+	N_t=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t).
+	\]
+	Let $X_1=T_1,X_{n}=T_{n}-T_{n-1}(n\ge2)$. Since $\mathrm{P}(X_1>t)=\mathrm{P}(N_t=0)=e^{-\lambda t}$, we see $X_1\sim Exp(\lambda)$. When $n\ge2$, since
+	\begin{align*}
+	&\mathrm{P}(X_n>t|X_{n-1}=t_{n-1},\cdots,X_1=t_1)\\
+	=\;&\mathrm{P}(T_{n}-T_{n-1}>t|T_{n-1}-T_{n-2}=t_{n-1},\cdots,T_1=t_1)\qquad(\text{let }s_n=t_{n}+\cdots +t_1)\\
+	=\;&\mathrm{P}(T_{n}>s_{n-1}+t|T_{n-1}=s_{n-1},\cdots,T_1=s_1)\\
+	=\;&\mathrm{P}(N_{s_{n-1}+t}=n-1|N_{s_{n-1}}=n-1)\qquad(\text{memoryless property of }(N_t))\\
+	=\;&\mathrm{P}(N_{s_{n-1}+t}-N_{s_{n-1}}=0|N_s=n-1)\\
+	=\;&\mathrm{P}(N_{s_{n-1}+t}-N_{s_{n-1}}=0)\\
+	=\;&e^{-\lambda t},
+	\end{align*}
+	it is plain to show that $\{X_i\}$ is sequence of independent random variable. Furthermore, we have $$\mathrm{P}(X_n>t)=\mathrm{E}[\mathrm{P}(X_n>t|X_{n-1},\cdots,X_1)]=e^{-\lambda t},$$
+	which implies $X_i\text{ i.i.d }\sim Exp(\lambda)$,
+	\item\noindent\underline{Definition 2.4 $\implies$ Definition 2.1}
 	
-	\noindent\underline{Definition 2.4 $\implies$ Definition 2.1}
-	
-	
+	\noindent$T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$ implies $T_n\sim\Gamma(n,\lambda)$.
+	\[
+	N_t-N_s
+	\]
+	\[
+	\mathrm{P}(N_t-N_s=k)=\mathrm{P}\left(\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t)-\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(s)=k\right)=P(0<T_1,T_k\le t< T_{k+1} )
+	\]
+\end{itemize}
 \end{Proof}
 
 \begin{proposition}
@@ -145,6 +171,8 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		\item $N_t\sim Pois(\lambda t)$, $\mathrm{E}[N_t]=\mathrm{Var}(N_t)=\lambda t$.
 	\end{enumerate}
 \end{proposition}
+
+\newpage
 
 \section*{Appendix}
 
@@ -197,7 +225,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}Distribution} &  \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Moment-generating function } & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Characteristic function} \\ \hline
 		Degenerate $\delta_a$ &${ e ^ { t a } }$ &$ e ^ { i t a }$  \\ \hline
 		Bernoulli $B(1,p)$  &${ 1 - p + p e ^ { t } }$ & ${ 1 - p + p e ^ { i t } }$ \\  \hline
-		\multirow{2}{*}[-3pt]{Geometric $Geo(p)$} &${ \dfrac { p e ^ { t } } { 1 - ( 1 - p ) e ^ { t } } },$& \multirow{2}{*}[-3pt]{$ ( 1 - p + p e ^ { i t } ) ^ { n } $} \\ 
+		\multirow{2}{*}[-3pt]{Geometric $Geo(p)$} &${ \dfrac { p e ^ { t } } { 1 - ( 1 - p ) e ^ { t } } },$& \multirow{2}{*}[-3pt]{$\dfrac{ pe^{it} }{1 - ( 1 - p ) e^ { it } } $} \\ 
 		 &$ t < - \operatorname { l n } ( 1 - p )$& \\  \hline
 		Binomial $B(n,p)$ &${ ( 1 - p + p e ^ { t } ) ^ { n } }$ & $ ( 1 - p + p e ^ { i t } ) ^ { n } $ \\   \hline
 		Negative Binomial $NB(r,p)$  &$ \dfrac { ( 1 - p ) ^ { r } } { ( 1 - p e ^ { t } ) ^ { r } } $ & $ \dfrac { ( 1 - p ) ^ { r } } { ( 1 - p e ^ { i t } ) ^ { r } } $\\ \hline
