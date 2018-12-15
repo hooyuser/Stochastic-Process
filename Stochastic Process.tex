@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 % Uncomment the following line to allow the usage of graphics (.png, .jpg)
 \usepackage{geometry}
-\geometry{left=4cm,right=4cm,top=3cm,bottom=3cm}
+\geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
 \usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{multirow}
@@ -52,7 +52,7 @@
 	\begin{enumerate}[(i)]
 		\item $N_0=0$;
 		\item $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
-		\item for any $0\le s \le t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
+		\item for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
 		\[
 		\mathrm{P}(N_t-N_s=k)=e^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
 		\]
@@ -62,7 +62,7 @@
 \begin{definition}[counting process]
 	A \emph{counting process} is a stochastic process $(N_t)_{t\ge 0}$ with values that are non-negative, integer, and non-decreasing:
 	\begin{enumerate}[(i)]
-		\item $N_0\ge0$;
+		\item $N_t\ge0$;
 		\item $N_t$ is an integer;
 		\item If $0\le s\le t$, then $N_s \le N_t$.
 	\end{enumerate}	
@@ -86,7 +86,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	\[
 	N_t=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t),
 	\]
-	where $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$, $X_i>0$.
+	where $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$ (Here the pdf of $Exp(\lambda)$ is taken as $\lambda e^{-\lambda x}I_{(0,+\infty)}(x)$).
 \end{definition}
 
 \begin{proposition}
@@ -134,14 +134,21 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	\[
 	g'(t)=g(t)\lambda (e^{-u}-1).
 	\]
-	The initial condition $g(0)=\mathrm{E}[e^{-uN_{0}}]=1$ determines a special solution of the equation $g(t)=L_{N_{t}}(u)=e^{\lambda t (e^{-u}-1)}$, which coincides with the Laplace transform of Poisson distribution $Pois(\lambda t)$. Since Laplace transform uniquely determines the distribution, we can thus conclude $N_{t}\sim Pois(\lambda t)$. Given any $r\ge 0$, define a stochastic process $N'_t=N_{r+t}-N_r$ and we can check that $(N'_t)_{t\ge 0}$ is also a counting process satisfying all the contitions in Definition 2.4. Hence we can also show that $N'_{t}\sim Pois(\lambda t)$, which is equivalent to Definition 2.1(iii).
+	The initial condition $g(0)=\mathrm{E}[e^{-uN_{0}}]=1$ determines a special solution of the equation 
+	$$g(t)=L_{N_{t}}(u)=e^{\lambda t (e^{-u}-1)},$$
+	which coincides with the Laplace transform of Poisson distribution $Pois(\lambda t)$. Since Laplace transform uniquely determines the distribution, we can thus conclude $N_{t}\sim Pois(\lambda t)$. Given any $r\ge 0$, define a stochastic process $N'_t=N_{r+t}-N_r$ and we can check that $(N'_t)_{t\ge 0}$ is also a counting process satisfying all the contitions in Definition 2.3. Hence by repeating the proof above we can show $N'_{t}\sim Pois(\lambda t)$, which is equivalent to Definition 2.1(iii).
 
 	\item\noindent\underline{Definition 2.1 $\implies$ Definition 2.4}\\
-	Let $T_n=\inf\{t\ge0:N_t= n\}$ for $n\in\mathbb{N}_+$. Note that given any $t\ge0$, $N_t=n$ if and only if $T_n\le t<T_{n+1}$. Thus we have
+	Let $T_n=\inf\{t\ge0:N_t= n\}$ for $n\in\mathbb{N}_+$. Note that given any $t\ge0$, $\{N_t=n\}=\{T_n\le t<T_{n+1}\}$. Thus we have
 	\[
-	N_t=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t).
+	N_t=\sum_{n=1}^{\infty}nI_{N_t=n}=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t).
 	\]
-	Let $X_1=T_1,X_{n}=T_{n}-T_{n-1}(n\ge2)$. Since $\mathrm{P}(X_1>t)=\mathrm{P}(N_t=0)=e^{-\lambda t}$, we see $X_1\sim Exp(\lambda)$. When $n\ge2$, since
+	Let $X_1=T_1,X_{n}=T_{n}-T_{n-1}(n\ge2)$. Since $\mathrm{P}(X_1>t)=\mathrm{P}(N_t=0)=e^{-\lambda t}$, we see $X_1\sim Exp(\lambda)$. 
+	Since
+	\[
+	\mathrm{P}(X_2>t|X_1=t_1)=\mathrm{P}(X_2>t|X_1=t_1)
+	\]
+	When $n\ge2$, since
 	\begin{align*}
 	&\mathrm{P}(X_n>t|X_{n-1}=t_{n-1},\cdots,X_1=t_1)\\
 	=\;&\mathrm{P}(T_{n}-T_{n-1}>t|T_{n-1}-T_{n-2}=t_{n-1},\cdots,T_1=t_1)\qquad(\text{let }s_n=t_{n}+\cdots +t_1)\\
@@ -155,13 +162,34 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	which implies $X_i\text{ i.i.d }\sim Exp(\lambda)$,
 	\item\noindent\underline{Definition 2.4 $\implies$ Definition 2.1}
 	
-	\noindent$T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$ implies $T_n\sim\Gamma(n,\lambda)$.
+	\noindent Clearly $N_0=0$ holds. Since $T_n=X_1+X_2+\cdots+X_n$ and $X_i\text{ i.i.d }\sim Exp(\lambda)$, we can deduce the jointly probability density function of $(T_1,T_2,\cdots,T_m)$ 
+	\begin{align*}
+	f_S(y_1,y_2,\cdots,y_m)&=f_X(y_1,y_2-y_1,\cdots,y_m-y_{m-1})\left|\frac{\partial(x_1,\cdots,x_m)}{\partial(y_1,\cdots,y_m)}\right|\\
+	&=\lambda^m e^{-\lambda y_m}I_{\{0\le y_1<\cdots<y_m\}}.
+	\end{align*}
+	Thus for any $1\le j_1<j_2<\cdots<j_n$, the jointly probability density function of $(T_{j_1},T_{j_2},\cdots,T_{j_n})$ is
 	\[
-	N_t-N_s
+	\frac{y_1^{j_1-1}}{(j_1-1)!}\frac{(y_2-y_1)^{j_2-j_1-1}}{(j_2-j_1-1)!}\cdots\frac{(y_n-y_{n-1})^{j_n-j_{n-1}-1}}{(j_n-j_{n-1}-1)!}\lambda^{j_n}e^{-\lambda y_n}I_{\{0\le y_1<\cdots<y_n\}}
 	\]
-	\[
-	\mathrm{P}(N_t-N_s=k)=\mathrm{P}\left(\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t)-\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(s)=k\right)=P(0<T_1,T_k\le t< T_{k+1} )
-	\]
+	Note $$N_t=\sum_{n=1}^{\infty}nI_{[T_n,T_{n+1})}(t)$$ implies $\{N_t=n\}=\{T_n\le t<T_{n+1}\}$. For any $n\in \mathbb{N}_+$ and any $0\le t_1<t_2<\cdots<t_n$, we have
+	\begin{align*}
+	&\ \mathrm{P}(N_{t_1}=j_1,N_{t_1}-N_{t_2}=j_2,\cdots,N_{t_{n}}-N_{t_{n-1}}=j_n)\\
+	=&\ 
+	\mathrm{P}(N_{t_1}=j_1,N_{t_1}=j_1+j_2,\cdots,N_{t_{n}}=j_1+\cdots+j_n)\quad(\text{let }k_n=j_1+\cdots j_n)\\
+	=&\ \mathrm{P}(T_{k_1}\le t_1,T_{k_1+1}>t_1,T_{k_2}\le t_2,T_{k_2+1}>t_2,\cdots,T_{k_n}\le t_n,T_{k_n+1}>t_n)\\
+	=&\ \int_{y_{k_1}\le t_1<y_{k_1+1}<\cdots<y_{k_n}\le t_n<y_{k_n+1}} \frac{y_{k_1}^{k_1-1}}{(k_1-1)!}\cdots\frac{(y_{k_n}-y_{k_{n-1}+1})^{k_n-k_{n-1}-2}}{(k_n-k_{n-1}-2)!}\lambda^{k_n+1}e^{-\lambda y_{k_n+1}}dy_1\cdots dy_{k_n+1}\\
+	=&\ \int_{y_{k_1}\le t_1<y_{k_1+1}<\cdots<y_{k_n}\le t_n} \frac{y_{k_1}^{k_1-1}}{(k_1-1)!}\cdots\frac{(y_{k_n}-y_{k_{n-1}+1})^{k_n-k_{n-1}-2}}{(k_n-k_{n-1}-2)!}\lambda^{k_n}dy_{k_1}\cdots dy_{k_n}\int_{t_n}^{\infty}-de^{-\lambda y_{k_n+1}}\\
+	=&\ \int_{y_{k_1}\le t_1<y_{k_1+1}<\cdots<t_{n-1}<y_{k_{n-1}+1}< t_n}\\
+	&\frac{y_{k_1}^{k_1-1}}{(k_1-1)!}\cdots\frac{(y_{k_{n-1}}-y_{k_{n-2}+1})^{k_{n-1}-k_{n-2}-2}}{(k_n-k_{n-1}-2)!}\lambda^{k_n}e^{-\lambda t_n}dy_1\cdots dy_{k_{n-1}+1}\int_{y_{k_{n-1}+1}}^{t_n}d\frac{(y_{k_n}-y_{k_{n-1}+1})^{k_n-k_{n-1}-1}}{(k_n-k_{n-1}-1)!}\\
+	=&\ \int_{y_{k_1}\le t_1<y_{k_1+1}<\cdots<t_{n-1}<y_{k_{n-1}+1}<t_n}\\
+	&\frac{y_{k_1}^{k_1-1}}{(k_1-1)!}\cdots\frac{(y_{k_{n-1}}-y_{k_{n-2}+1})^{k_{n-1}-k_{n-2}-2}}{(k_n-k_{n-1}-2)!}\lambda^{k_n}e^{-\lambda t_n}dy_1\cdots dy_{k_{n-1}}\int_{t_{n-1}}^{t_n}-d\frac{(t_{n}-y_{k_{n-1}})^{k_n-k_{n-1}}}{(k_n-k_{n-1})!}\\
+	=&\ \int_{y_{k_1}\le t_1<y_{k_1+1}<\cdots<t_{n-1}<y_{k_{n-1}+1}<t_n}\\
+	&\frac{y_{k_1}^{k_1-1}}{(k_1-1)!}\cdots\frac{(y_{k_{n-1}}-y_{k_{n-2}+1})^{k_{n-1}-k_{n-2}-2}}{(k_n-k_{n-1}-2)!}\lambda^{k_n}e^{-\lambda t_n}dy_1\cdots dy_{k_{n-1}}\frac{(t_{n}-t_{n-1})^{k_n-k_{n-1}}}{(k_n-k_{n-1})!}\\
+	=&\cdots\\
+	=&\lambda^{k_n}e^{-\lambda t_n}\frac{t_{1}^{k_1}}{k_1!}\frac{(t_{2}-t_{1})^{k_2-k_{1}}}{(k_2-k_{1})!}\cdots\frac{(t_{n}-t_{n-1})^{k_n-k_{n-1}}}{(k_n-k_{n-1})!}\\
+	=&e^{-\lambda t_1}\frac{(\lambda t_1)^{j_1}}{j_1}e^{-\lambda(t_2- t_1)}\frac{(\lambda (t_2-t_1))^{j_2}}{j_2}\cdots e^{-\lambda(t_n-t_{n-1}) }\frac{(\lambda(t_{n}-t_{n-1}))^{j_n}}{j_n!}
+\end{align*}
+	Therefore, we conclude $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent and for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$.
 \end{itemize}
 \end{Proof}
 
