@@ -1,9 +1,14 @@
-\contentsline {definition}{{Definition}{1.{1}}{independent increments}}{1}
-\contentsline {definition}{{Definition}{1.{2}}{strictly stationary process}}{1}
-\contentsline {definition}{{Definition}{2.{1}}{Poisson process (I)}}{1}
-\contentsline {definition}{{Definition}{2.{2}}{counting process}}{1}
-\contentsline {definition}{{Definition}{2.{3}}{Poisson process (II)}}{1}
-\contentsline {definition}{{Definition}{2.{4}}{Poisson process (III)}}{1}
-\contentsline {proposition}{{Proposition}{2.{1}}{}}{2}
-\contentsline {Proof}{{Proof.}{1}{}}{2}
-\contentsline {proposition}{{Proposition}{2.{2}}{}}{4}
+\contentsline {definition}{{Definition}{1.{1}}{independent increments}}{1}{definition.1.1}
+\contentsline {definition}{{Definition}{1.{2}}{strictly stationary process}}{1}{definition.1.2}
+\contentsline {definition}{{Definition}{2.{1}}{Poisson process (I)}}{1}{definition.2.1}
+\contentsline {definition}{{Definition}{2.{2}}{counting process}}{1}{definition.2.2}
+\contentsline {definition}{{Definition}{2.{3}}{Poisson process (II)}}{1}{definition.2.3}
+\contentsline {definition}{{Definition}{2.{4}}{Poisson process (III)}}{2}{definition.2.4}
+\contentsline {proposition}{{Proposition}{2.{1}}{}}{2}{proposition.2.1}
+\contentsline {Proof}{{Proof.}{1}{}}{2}{Proof.1}
+\contentsline {proposition}{{Proposition}{2.{2}}{}}{4}{proposition.2.2}
+\contentsline {Proof}{{Proof.}{2}{}}{4}{Proof.2}
+\contentsline {definition}{{Definition}{3.{1}}{compound Poisson distribution}}{5}{definition.3.1}
+\contentsline {definition}{{Definition}{3.{2}}{compound Poisson process}}{5}{definition.3.2}
+\contentsline {proposition}{{Proposition}{3.{1}}{}}{5}{proposition.3.1}
+\contentsline {Proof}{{Proof.}{3}{}}{5}{Proof.3}

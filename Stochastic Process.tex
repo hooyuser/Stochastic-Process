@@ -4,6 +4,9 @@
 % Uncomment the following line to allow the usage of graphics (.png, .jpg)
 \usepackage{geometry}
 \geometry{left=3cm,right=3cm,top=3cm,bottom=3cm}
+
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[colorlinks,linkcolor=NavyBlue,anchorcolor=red,citecolor=green]{hyperref}
 \usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{multirow}
@@ -26,9 +29,13 @@
 
 % Start the document
 \begin{document}
+	\begin{center}
+	\textsc{\Huge Stochastic Process}	
+\end{center}
+\vspace{1em} 
 
 % Create a new 1st level heading
-\section{Basic notation}
+\section{Preliminaries}
 \begin{definition}[independent increments]
   A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increment $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
 \end{definition}
@@ -46,12 +53,12 @@
 
 
 
-\section{Poisson process}
+\section{Poisson Process}
 \begin{definition}[Poisson process (I)]
 	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
 	\begin{enumerate}[(i)]
 		\item $N_0=0$;
-		\item $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
+		\item \hypertarget{Definition 2.1(ii)}{} $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
 		\item for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
 		\[
 		\mathrm{P}(N_t-N_s=k)=e^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
@@ -76,8 +83,8 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	\begin{enumerate}[(i)]
 		\item $N_0=0$;
 		\item $(N_t)_{t\ge0}$ has independent increments;
-		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t=1)=\lambda h+o(h)$ when $h\to0$;
-		\item For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t\ge2)=o(h)$ when $h\to0$;
+		\item \hypertarget{Definition 2.3(iii)}{}For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t=1)=\lambda h+o(h)$ when $h\to0$;
+		\item \hypertarget{Definition 2.3(iv)}{}For all $t\ge0$, $\mathrm{P}(N_{t+h}-N_t\ge2)=o(h)$ when $h\to0$;
 	\end{enumerate}	
 \end{definition}
 
@@ -97,7 +104,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	\begin{itemize}
 	\item \underline{Definition 2.1 $\implies$ Definition 2.3} 
 	
-	Here we are only to show the implication of Definition 2.3(iii) and Definition 2.3(iv). Since $N_{t+h}-N_t\sim Pois(\lambda h)$, when $h\to0$ we have 
+	Here we are only to show the implication of \hyperlink{Definition 2.3(iii)}{Definition 2.3(iii)} and \hyperlink{Definition 2.3(iv)}{Definition 2.3(iv)}. Since $N_{t+h}-N_t\sim Pois(\lambda h)$, when $h\to0$ we have 
 	\begin{align*}
 		\mathrm{P}(N_{t+h}-N_t=1)&=e^{-\lambda h}\lambda h=(1-\lambda h+o(h))\lambda h=\lambda h+o(h),\\
 		\mathrm{P}(N_{t+h}-N_t\ge2)&=1-\mathrm{P}(N_{t+h}-N_t=0)-\mathrm{P}(N_{t+h}-N_t=1)\\
@@ -197,8 +204,71 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	Let $(N_t)_{t\ge0}$ be a Poisson process.
 	\begin{enumerate}
 		\item $N_t\sim Pois(\lambda t)$, $\mathrm{E}[N_t]=\mathrm{Var}(N_t)=\lambda t$.
+		\item For $0\le s\le t$, $\mathrm{E}[N_tN_s]=\lambda^2ts+\lambda s$, $\mathrm{Cov}(E_t,E_s)=\lambda s$.
+		\item For $0\le s\le t$, $\mathrm{E}[N_t|N_s]=N_s+\lambda(t-s)$. So Poisson process is a submartingale.
+		\item $\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1},\cdots,N_{t_1}=k_1)=\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1})=\mathrm{P}(N_{t_n}-N_{t_{n-1}}=k_n-k_{n-1})$. So Poisson process is a Markov process.
 	\end{enumerate}
 \end{proposition}
+\begin{Proof}
+	Apply \hyperlink{Definition 2.1(ii)}{Definition 2.1(ii)} and it is straightforward to show the properties.
+\end{Proof}
+
+\section{Compound Poisson Process}
+\begin{definition}[compound Poisson distribution]
+	Suppose that
+	$N\sim Pois(\lambda )$ and that $Z_{1},Z_{2},Z_{3},\cdots $ are i.i.d. random variables independent of $N$ with a probability measure $v(dy)$ on $\mathbb{R}$. Then the probability distribution of the sum of $N$ i.i.d. random variables
+	\[
+	Y=\sum _{n=1}^{N}Z_{n}
+	\]
+	is a \emph{compound Poisson distribution}.
+\end{definition}
+
+
+\begin{definition}[compound Poisson process]
+	\emph{A compound Poisson process}, parameterised by a rate $\lambda >0$ and jump size distribution $v(dy)$, is a process $(Y_t)_{t\ge 0}$ given by
+	\[
+	Y_t=\sum _{n=1}^{N_t}Z_{n},
+	\]
+	where $(N_t)_{t\ge 0}$ is a Poisson process with rate $\lambda$, and $(Z_n)_{n\in \mathbb{N}_+}$ are independent and identically distributed random variables with distribution $v(dy)$, which are also independent of $(N_t)_{t\ge 0}$.
+\end{definition}
+
+\begin{proposition}
+	Let $(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and jump $(Z_n)_{n\in \mathbb{N}_+}$. For convenience, assume $Z_n\overset{d}{=}Z$ and $\mathrm{E}[Z^2]<+\infty$.
+	\begin{enumerate}
+		\item $\mathrm{E}[Y_t]=\lambda tE[Z]$.
+		\item $\mathrm{Var}(Y_t)=\lambda tE[Z^2]$.
+		\item The moment generating function $M_{Y_t}(a)=\mathrm{E}[e^{aY_t}]=e^{\lambda t(\mathrm{E}[e^{aZ}]-1)}=e^{\lambda t(M_Z(a)-1)}$
+	\end{enumerate}
+\end{proposition}
+\begin{Proof}\hspace*{1em}	
+\begin{enumerate}
+	\item Since $Z_n$ is independent of $N_t$, we have $$\mathrm{E}[Y_t]=\mathrm{E}[\mathrm{E}[Y_t|N_t]]=\mathrm{E}\left[\mathrm{E}\left[\left.\sum _{n=1}^{N_t}Z_{n}\right|N_t\right]\right]=\mathrm{E}\left[\sum _{n=1}^{N_t}\mathrm{E}\left[\left.Z_{n}\right|N_t\right]\right]=\mathrm{E}[N_tZ]=\mathrm{E}[N_t]\mathrm{E}[Z]=\lambda tE[Z].$$
+	\item Since $Z_n$ is independent of $N_t$, by the law of total variance $\mathrm{Var}(Y_t)$ can be calculated as
+	\begin{align*}
+		\mathrm{Var}(Y_t)&=\mathrm{E}[\mathrm{Var}(Y_t|N_t)]+\mathrm{Var}(\mathrm{E}[Y_t|N_t])\\
+		&=\mathrm{E}[N_t\mathrm{Var}(Z)]+\mathrm{Var}(N_t\mathrm{E}[Z])\\
+		&=\mathrm{Var}(Z)\mathrm{E}[N_t]+\mathrm{E}[Z]^2\mathrm{Var}(N_t)\\
+		&=\lambda t\mathrm{Var}(Z)+\lambda t\mathrm{E}[Z]^2\\
+		&=\lambda t \mathrm{E}[Z^2].
+	\end{align*}
+	\item Make similar use of the dependence of $(Z_n)_{n\in\mathbb{N_+}}$ and $N_t$ to get
+	\begin{align*}
+	\mathrm{E}\left[e^{aY_t}\right]&=\mathrm{E}\left[e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right]\\
+	&=\mathrm{E}\left[\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right|N_t\right]\right]\\
+	&=\sum_{n=0}^{\infty}\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right|N_t=n\right]\mathrm{P}\left(N_t=n\right)\\
+	&=\sum_{n=0}^{\infty}\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{n}\right)}\right|N_t=n\right]e^{-\lambda t}\frac{\left(\lambda t\right)^n}{n!}\\
+	&=\sum_{n=0}^{\infty}\mathrm{E}\left[e^{aZ}\right]^ne^{-\lambda/' t}\frac{\left(\lambda t\right)^n}{n!}\\
+	&=e^{-\lambda t}\sum_{n=0}^{\infty}\frac{\left(\lambda t\mathrm{E}\left[e^{aZ}\right]\right)^n}{n!}\\
+	&=e^{\lambda t\left(\mathrm{E}\left[e^{aZ}\right]-1\right)}.
+	\end{align*}
+\end{enumerate}
+
+\end{Proof}
+\section{Markov Chain}
+
+\section{Martingale}
+
+\section{Brown Motion}
 
 \newpage
 
@@ -240,7 +310,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		Normal $N(\mu ,\sigma ^{2})$&${\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\frac {(x-\mu )^{2}}{2\sigma ^{2}}}}$&$\mu$&$\sigma^2$\\ \hline
 		Gamma $\Gamma (\alpha,\beta )$&$\dfrac{\beta ^{\alpha }}{\Gamma (\alpha )}x^{\alpha -1}e^{-\beta x}I_{(0,+\infty)}(x)$&$\dfrac{\alpha}{\beta}$&$\dfrac{\alpha}{\beta^2}$ \\ \hline
 		Chi-squared $\chi^{2}_k=\Gamma (\frac{k}{2},\frac{1}{2})$ &$\dfrac{1}{2^{k/2}\Gamma (k/2)}\;x^{k/2-1}e^{-x/2}I_{(0,+\infty)}(x)$&$k$&$2k$ \\ \hline
-		Student's $t_{\nu}$&$\dfrac { \Gamma \left( \frac { \nu + 1 } { 2 } \right) } { \sqrt { \nu \pi } \Gamma \left( \frac { \nu } { 2 } \right) } \left( 1 + \dfrac { x ^ { 2 } } { \nu } \right) ^ { - \frac { \nu + 1 } { 2 } }$&0&$\dfrac { \nu } { \nu - 2 }$ for $\nu > 2$
+		Student's t $t_{\nu}$&$\dfrac { \Gamma \left( \frac { \nu + 1 } { 2 } \right) } { \sqrt { \nu \pi } \Gamma \left( \frac { \nu } { 2 } \right) } \left( 1 + \dfrac { x ^ { 2 } } { \nu } \right) ^ { - \frac { \nu + 1 } { 2 } }$&0&$\dfrac { \nu } { \nu - 2 }$ for $\nu > 2$
 		\\ \hline
 	\end{tabular}
 \end{table}
