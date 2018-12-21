@@ -18,6 +18,7 @@
 \usepackage[thmmarks,amsmath]{ntheorem}
 \theorembodyfont{\upshape}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
@@ -36,13 +37,26 @@
 
 % Create a new 1st level heading
 \section{Preliminaries}
+\begin{definition}[stochastic process]
+For a given probability space $(\Omega ,{\mathcal{F}},P)$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},P)$ indexed by some set $T$, which can be written as $X=\{X(t):t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
+\end{definition}
+
+\noindent For convenience, we always assume $T$ is a totally ordered set and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
+\[
+\mathcal{I}_T=\{\{t_1,t_2,\cdots,t_n\}:t_1,\cdots,t_n\in T,\;n\ge 1\}.
+\]
+
 \begin{definition}[independent increments]
-  A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increment $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
+	A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increments $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
+\end{definition}
+
+\begin{definition}[independent increments]
+  A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increments $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
 \end{definition}
 
 
 \begin{definition}[strictly stationary process]
-	Let $(X_t)_{t\in T}$ be a stochastic process and let  $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
+	Let $(X_t)_{t\in T}$ be a stochastic process and let \newline $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
 	\[
 	F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})=F_{{X}}(x_{{t_{1}}},\ldots ,x_{{t_{k}}}).
 	\]
@@ -59,7 +73,7 @@
 	\begin{enumerate}[(i)]
 		\item $N_0=0$;
 		\item \hypertarget{Definition 2.1(ii)}{} $(N_t)_{t\ge0}$ has independent increments: for any $n\in \mathbb{N}_+$ and any $0\le t_1\le t_2 \le\cdots\le t_n$, the increment $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent;
-		\item for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
+		\item \hypertarget{Definition 2.1(iii)}{}for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$, that is 
 		\[
 		\mathrm{P}(N_t-N_s=k)=e^{-\lambda(t-s)}\dfrac{\lambda(t-s)^k}{k!}\quad(k=0,1,2,\cdots).
 		\]
@@ -114,7 +128,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	\end{align*}
 	\item\underline{Definition 2.3 $\implies$ Definition 2.1} 
 	
-	Only Definition 2.1(iii) needs to be derived. Given the Laplace transform of the nonnegative random variables $N_t$ and $N_{t+h}$
+	Only \hyperlink{Definition 2.1(iii)}{Definition 2.1(iii)} needs to be derived. Given the Laplace transform of the nonnegative random variables $N_t$ and $N_{t+h}$
 	\[
 	L_{N_t}(u)=\mathrm{E}[e^{-uN_t}],\quad
 	L_{N_{t+h}}(u)=\mathrm{E}[e^{-uN_{t+h}}],\quad u\ge0,
@@ -206,7 +220,12 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		\item $N_t\sim Pois(\lambda t)$, $\mathrm{E}[N_t]=\mathrm{Var}(N_t)=\lambda t$.
 		\item For $0\le s\le t$, $\mathrm{E}[N_tN_s]=\lambda^2ts+\lambda s$, $\mathrm{Cov}(E_t,E_s)=\lambda s$.
 		\item For $0\le s\le t$, $\mathrm{E}[N_t|N_s]=N_s+\lambda(t-s)$. So Poisson process is a submartingale.
-		\item $\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1},\cdots,N_{t_1}=k_1)=\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1})=\mathrm{P}(N_{t_n}-N_{t_{n-1}}=k_n-k_{n-1})$. So Poisson process is a Markov process.
+		\item Poisson process is a Markov process. For $0\le t_1< t_2<\cdots<t_n$ and $0\le k_1\le k_2\le\cdots\le k_n$,
+		\begin{align*} &\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1},\cdots,N_{t_1}=k_1)\\
+		=\ &\mathrm{P}(N_{t_n}=k_n|N_{t_{n-1}}=k_{n-1})\\
+		=\ &\mathrm{P}(N_{t_n}-N_{t_{n-1}}=k_n-k_{n-1})\\
+		=\ &e^{-\lambda(t_n-t_{n-1}) }\frac{(\lambda(t_{n}-t_{n-1}))^{k_n-k_{n-1}}}{(k_n-k_{n-1})!}. 
+		\end{align*}
 	\end{enumerate}
 \end{proposition}
 \begin{Proof}
@@ -252,24 +271,93 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		&=\lambda t \mathrm{E}[Z^2].
 	\end{align*}
 	\item Make similar use of the dependence of $(Z_n)_{n\in\mathbb{N_+}}$ and $N_t$ to get
-	\begin{align*}
+	\[
+	\begin{aligned}
 	\mathrm{E}\left[e^{aY_t}\right]&=\mathrm{E}\left[e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right]\\
 	&=\mathrm{E}\left[\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right|N_t\right]\right]\\
 	&=\sum_{n=0}^{\infty}\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{N_t}\right)}\right|N_t=n\right]\mathrm{P}\left(N_t=n\right)\\
 	&=\sum_{n=0}^{\infty}\mathrm{E}\left[\left.e^{a\left(Z_1+Z_2+\cdots+Z_{n}\right)}\right|N_t=n\right]e^{-\lambda t}\frac{\left(\lambda t\right)^n}{n!}\\
-	&=\sum_{n=0}^{\infty}\mathrm{E}\left[e^{aZ}\right]^ne^{-\lambda/' t}\frac{\left(\lambda t\right)^n}{n!}\\
+	&=\sum_{n=0}^{\infty}\mathrm{E}\left[e^{aZ_1}e^{aZ_2}\cdots e^{aZ_{n}}\right]e^{-\lambda t}\frac{\left(\lambda t\right)^n}{n!}\\
+	&=\sum_{n=0}^{\infty}\mathrm{E}\left[e^{aZ}\right]^ne^{-\lambda t}\frac{\left(\lambda t\right)^n}{n!}\\
 	&=e^{-\lambda t}\sum_{n=0}^{\infty}\frac{\left(\lambda t\mathrm{E}\left[e^{aZ}\right]\right)^n}{n!}\\
 	&=e^{\lambda t\left(\mathrm{E}\left[e^{aZ}\right]-1\right)}.
-	\end{align*}
+ 	\end{aligned}
+ 	\]
 \end{enumerate}
-
 \end{Proof}
+Let $Y=(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and jump $(Z_n)_{n\in \mathbb{N}_+}$. Let $T_n=\inf\{t\ge0:N_t= n\}$ be the time when the $n$th event happens. Then the Itô integral of a stochastic process $K$ with respect to $Y$ is
+\[
+\int_{0}^{t}KdY=\sum_{n=0}^{N_t}K_{T_n}(Y_{T_n}-Y_{T_n-})=\sum_{n=0}^{N_t}K_{T_n}Z_n.
+\]
+
+
 \section{Markov Chain}
+\subsection{Discrete-time Markov Chain}
+\begin{definition}[discrete-time Markov chain]
+	A \emph{discrete-time Markov chain} on a countable state space $S$ is a sequence of random variables $X_1, X_2, X_3,\cdots$ with the Markov property, namely that $\forall n\ge1,\ \forall j,i_1,\cdots,i_n\in S$,	
+	\[
+	\mathrm{P}(X_{n+1}=j\mid X_{1}=i_{1},X_{2}=i_{2},\cdots,X_{n}=i_{n})=\mathrm{P}(X_{n+1}=j\mid X_{n}=i_{n}), 
+	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{1}=i_{1},\cdots ,X_{n}=i_{n})>0$.
+\end{definition}	
+Markov property may be interpreted as stating that the probability of moving to the next state depends only on the present state and not on the previous states. 
+
+\noindent A discrete-time Markov chain $(X_n)_{n\ge1}$ is \emph{time-homogeneous} if
+\[
+\mathrm{P}(X_{n+2}=j\mid X_{n+1}=i)=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
+\]
+for all $n\ge1$ and all $i,j\in S$. We only focus on a discrete-time time-homogeneous Markov chain on a countable space if nothing is specified. 
+
+\noindent One can consider the \emph{transition matrix}	$P=(p_{ij})_{i,j\in S}$, where
+\[
+p_{ij}=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
+\]
+is called \emph{one-step transition probability}. By the law of total probability it is clear to see 
+\[
+\sum_{j\in S}p_{ij}=1,\quad\forall i\in S.
+\]
+Similarly we can define \emph{$n$-step transition matrix} $P^{(n)}=\left(p^{(n)}_{ij}\right)_{i,j\in S}$, where \emph{$n$-step transition probabilities} $p^{(n)}_{ij}$ is the probability that a process in state $i$ will be in state $j$ after $n$ additional transitions. That is,
+\[
+p^{(n)}_{ij}=\mathrm{P}(X_{k+n}=j\mid X_{k}=i).
+\]
+\begin{proposition}[Chapman–Kolmogorov equation]
+Let $(X_n)_{n\ge1}$ be a discrete-time Markov chain on a countable state space $S$. The \emph{Chapman–Kolmogorov equation} states that
+\[
+p^{(n+m)}_{ij}=\sum_{k\in S}p^{(n)}_{ik}p^{(m)}_{kj},\quad\forall i,j\in S,
+\]
+or alternatively
+\[
+P^{(n+m)}=P^{(n)}P^{(m)}.
+\]
+\end{proposition}
+Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$.
+
+\subsection{Continuous-time Markov Chain}
+
+\begin{definition}[continuous-time Markov chain]
+	A \emph{continuous-time Markov chain} on a countable state space $S$ is a stochastic $(X_t)_{t\ge 0}$ with the Markov property: for all $ n\ge0$, all $0\le t_0\le t_1\le \cdots\le t_n$, and all	$j,i_0,\cdots,i_n\in S$,
+	\[
+	\mathrm{P}(X_{t_{n+1}}=j\mid X_{t_0}=i_{1},X_{t_1}=i_{2},\cdots,X_{t_n}=i_{n})=\mathrm{P}(X_{t_{n+1}}=j\mid X_{t_n}=i_{n}), 
+	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{1}=i_{1},\cdots ,X_{n}=i_{n})>0$.
+\end{definition}
+
+\noindent A continuous-time Markov chain $(X_t)_{t\ge0}$ is \emph{time-homogeneous} if
+\[
+\mathrm{P}(X_{s+t}=j\mid X_{s}=i)=\mathrm{P}(X_{t}=j\mid X_{0}=i)=p_{ij}(t)
+\]
+for all $s,t\ge0$ and all $i,j\in S$. We only focus on a continuous-time time-homogeneous Markov chain on a countable space if nothing is specified.
 
 \section{Martingale}
 
-\section{Brown Motion}
-
+\section{Brownian Motion}
+\begin{definition}
+	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
+	\begin{enumerate}
+		\item $B_0=0$.
+		\item $(B_t)_{t\ge0}$ has continuous path, that is $t\mapsto B_t$ is almost surely continuous.
+		\item $(B_t)_{t\ge0}$ has independent and stationary increments.
+		\item For $t>0$, $B_t\sim N(0,t)$.
+	\end{enumerate}
+\end{definition}
 \newpage
 
 \section*{Appendix}

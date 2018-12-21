@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  16 DEC 2018 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  22 DEC 2018 02:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -703,36 +703,39 @@ Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
 \c@currdefinitionctr=\count119
 \c@enddefinitionctr=\count120
 \c@definition=\count121
-\c@currpropositionctr=\count122
-\c@endpropositionctr=\count123
-\c@proposition=\count124
-\c@currtheoremctr=\count125
-\c@endtheoremctr=\count126
-\c@theorem=\count127
-\c@currlemmactr=\count128
-\c@endlemmactr=\count129
-\c@lemma=\count130
-\c@currProofctr=\count131
-\c@endProofctr=\count132
-\c@Proof=\count133
+\c@currexamplectr=\count122
+\c@endexamplectr=\count123
+\c@example=\count124
+\c@currpropositionctr=\count125
+\c@endpropositionctr=\count126
+\c@proposition=\count127
+\c@currtheoremctr=\count128
+\c@endtheoremctr=\count129
+\c@theorem=\count130
+\c@currlemmactr=\count131
+\c@endlemmactr=\count132
+\c@lemma=\count133
+\c@currProofctr=\count134
+\c@endProofctr=\count135
+\c@Proof=\count136
 
 (./Stochastic Process.aux)
 \openout1 = `"Stochastic Process.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -770,16 +773,16 @@ LaTeX Font Info:    ... okay on input line 31.
 
 (c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count134
+\scratchcounter=\count137
 \scratchdimen=\dimen136
 \scratchbox=\box30
-\nofMPsegments=\count135
-\nofMParguments=\count136
+\nofMPsegments=\count138
+\nofMParguments=\count139
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count137
+\MPscratchCnt=\count140
 \MPscratchDim=\dimen137
-\MPnumerator=\count138
-\makeMPintoPDFobject=\count139
+\MPnumerator=\count141
+\makeMPintoPDFobject=\count142
 \everyMPtoPDFconversion=\toks48
 ) (c:/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -799,7 +802,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box31
-Package hyperref Info: Link coloring ON on input line 31.
+Package hyperref Info: Link coloring ON on input line 32.
 
 (c:/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -807,79 +810,76 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (c:/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count140
+\c@section@level=\count143
 )
-LaTeX Info: Redefining \ref on input line 31.
-LaTeX Info: Redefining \pageref on input line 31.
-LaTeX Info: Redefining \nameref on input line 31.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (./Stochastic Process.out) (./Stochastic Process.out)
 \@outlinefile=\write3
 \openout3 = `"Stochastic Process.out"'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 39.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
 
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 39.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 39.
-
-Overfull \hbox (49.11687pt too wide) in paragraph at lines 45--46
-[]\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )[]$ be a stochas-t
-ic pro-cess and let $\OML/cmm/m/it/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[];
- [] ; x[]\OT1/cmr/m/n/10 )$
- []
-
-[1
+nput line 40.
+ [1
 
 {c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 100.
+input line 114.
 Package hyperref Info: bookmark level for unknown Proof defaults to 0 on input 
-line 102.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 105.
+line 116.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 119.
 
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
 
 
-Package xcolor Warning: Incompatible color definition on input line 107.
+Package xcolor Warning: Incompatible color definition on input line 121.
 
 
-Package xcolor Warning: Incompatible color definition on input line 107.
+Package xcolor Warning: Incompatible color definition on input line 121.
 
-[2]
-Overfull \hbox (18.93056pt too wide) in paragraph at lines 198--198
+
+Package xcolor Warning: Incompatible color definition on input line 131.
+
+[2] [3]
+Overfull \hbox (18.93056pt too wide) in paragraph at lines 212--212
 [] 
  []
 
-[3]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 198--200
+
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 212--214
 [][] 
  []
 
+[4]
 
-Package xcolor Warning: Incompatible color definition on input line 213.
+Package xcolor Warning: Incompatible color definition on input line 232.
 
 
-Overfull \hbox (16.37303pt too wide) in paragraph at lines 218--220
+Overfull \hbox (16.37303pt too wide) in paragraph at lines 237--239
 []\OT1/cmr/m/n/10 Suppose that $\OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^X \OML/cm
 m/m/it/10 Pois\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ and that 
 $\OML/cmm/m/it/10 Z[]; Z[]; Z[]; [] $
  []
 
-[4]
-Overfull \hbox (7.45563pt too wide) detected at line 245
+
+Overfull \hbox (7.45563pt too wide) detected at line 264
 \OT1/cmr/m/n/10 E[\OML/cmm/m/it/10 Y[]\OT1/cmr/m/n/10 ] = E[E[\OML/cmm/m/it/10 
 Y[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]] = E [] = E [] = E[\
 OML/cmm/m/it/10 N[]Z\OT1/cmr/m/n/10 ] = E[\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]
@@ -888,36 +888,42 @@ E[\OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ] = \OML/cmm/m/it/10 ^^UtE\OT1/cmr/m/n/10 [
  []
 
 [5] [6]
+Overfull \hbox (5.75291pt too wide) in paragraph at lines 323--324
+[]\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )[]$ be a discrete-
+time Markov chain
+ []
+
+[7] [8]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 290.
+(amsmath)                 on input line 378.
 
 
-Overfull \hbox (9.47357pt too wide) in paragraph at lines 285--299
+Overfull \hbox (9.47357pt too wide) in paragraph at lines 373--387
  [][] 
  []
 
-[7]
+[9]
 \tf@thm=\write4
 \openout4 = `"Stochastic Process.thm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 347.
- [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 347.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 435.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 435.
  (./Stochastic Process.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 347.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 347.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 435.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 435.
 Package rerunfilecheck Info: File `"Stochastic Process".out' has not changed.
-(rerunfilecheck)             Checksum: 459C8FD2EC32033582EDFE7364E1235C;296.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 347.
+(rerunfilecheck)             Checksum: 8D5B670C42BE284B17334FB7A12A4902;451.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 435.
  ) 
 Here is how much of TeX's memory you used:
- 8090 strings out of 493013
- 113224 string characters out of 6136993
- 239781 words of memory out of 5000000
- 11459 multiletter control sequences out of 15000+600000
- 9649 words of font info for 36 fonts, out of 8000000 for 9000
+ 8151 strings out of 493013
+ 114060 string characters out of 6136993
+ 240249 words of memory out of 5000000
+ 11505 multiletter control sequences out of 15000+600000
+ 10254 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,21n,35p,531b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
@@ -938,10 +944,10 @@ cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on "Stochastic Process.pdf" (8 pages, 232609 bytes).
+Output written on "Stochastic Process.pdf" (10 pages, 247273 bytes).
 PDF statistics:
- 201 PDF objects out of 1000 (max. 8388607)
- 169 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 232 PDF objects out of 1000 (max. 8388607)
+ 198 compressed objects within 2 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
