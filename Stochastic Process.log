@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  22 DEC 2018 02:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  23 DEC 2018 03:39
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -715,9 +715,9 @@ Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
 \c@currlemmactr=\count131
 \c@endlemmactr=\count132
 \c@lemma=\count133
-\c@currProofctr=\count134
-\c@endProofctr=\count135
-\c@Proof=\count136
+\c@currproofctr=\count134
+\c@endproofctr=\count135
+\c@proof=\count136
 
 (./Stochastic Process.aux)
 \openout1 = `"Stochastic Process.aux"'.
@@ -837,7 +837,7 @@ nput line 40.
 {c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
 input line 114.
-Package hyperref Info: bookmark level for unknown Proof defaults to 0 on input 
+Package hyperref Info: bookmark level for unknown proof defaults to 0 on input 
 line 116.
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 119.
 
@@ -888,44 +888,67 @@ E[\OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ] = \OML/cmm/m/it/10 ^^UtE\OT1/cmr/m/n/10 [
  []
 
 [5] [6]
-Overfull \hbox (5.75291pt too wide) in paragraph at lines 323--324
+Overfull \hbox (5.75291pt too wide) in paragraph at lines 324--325
 []\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )[]$ be a discrete-
 time Markov chain
  []
 
-[7] [8]
+[7]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
+t line 362.
+
+
+Package xcolor Warning: Incompatible color definition on input line 387.
+
+
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 387--388
+[][] 
+ []
+
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
+line 402.
+[8]
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
+t line 457.
+ [9]
+Overfull \hbox (3.544pt too wide) in paragraph at lines 531--532
+[]\OT1/cmr/m/n/10 A discrete-time sub-martin-gale is a stochas-tic pro-cess $\O
+ML/cmm/m/it/10 M \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$
+ []
+
+[10] [11]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 378.
+(amsmath)                 on input line 571.
 
 
-Overfull \hbox (9.47357pt too wide) in paragraph at lines 373--387
+Overfull \hbox (9.47357pt too wide) in paragraph at lines 566--580
  [][] 
  []
 
-[9]
+[12]
 \tf@thm=\write4
 \openout4 = `"Stochastic Process.thm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 435.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 435.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 628.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 628.
  (./Stochastic Process.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 435.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 435.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 628.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 628.
 Package rerunfilecheck Info: File `"Stochastic Process".out' has not changed.
 (rerunfilecheck)             Checksum: 8D5B670C42BE284B17334FB7A12A4902;451.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 435.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 628.
  ) 
 Here is how much of TeX's memory you used:
- 8151 strings out of 493013
- 114060 string characters out of 6136993
- 240249 words of memory out of 5000000
- 11505 multiletter control sequences out of 15000+600000
+ 8212 strings out of 493013
+ 114844 string characters out of 6136993
+ 240269 words of memory out of 5000000
+ 11536 multiletter control sequences out of 15000+600000
  10254 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,35p,531b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,21n,35p,584b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/tex
 live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2016
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2016/texmf-dis
@@ -944,10 +967,10 @@ cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on "Stochastic Process.pdf" (10 pages, 247273 bytes).
+Output written on "Stochastic Process.pdf" (13 pages, 262350 bytes).
 PDF statistics:
- 232 PDF objects out of 1000 (max. 8388607)
- 198 compressed objects within 2 object streams
- 68 named destinations out of 1000 (max. 500000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 242 compressed objects within 3 object streams
+ 98 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

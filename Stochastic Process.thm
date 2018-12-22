@@ -7,14 +7,31 @@
 \contentsline {definition}{{Definition}{2.{3}}{Poisson process (II)}}{2}{definition.2.3}
 \contentsline {definition}{{Definition}{2.{4}}{Poisson process (III)}}{2}{definition.2.4}
 \contentsline {proposition}{{Proposition}{2.{1}}{}}{2}{proposition.2.1}
-\contentsline {Proof}{{Proof.}{1}{}}{2}{Proof.1}
+\contentsline {proof}{{Proof.}{1}{}}{2}{proof.1}
 \contentsline {proposition}{{Proposition}{2.{2}}{}}{5}{proposition.2.2}
-\contentsline {Proof}{{Proof.}{2}{}}{5}{Proof.2}
+\contentsline {proof}{{Proof.}{2}{}}{5}{proof.2}
 \contentsline {definition}{{Definition}{3.{1}}{compound Poisson distribution}}{5}{definition.3.1}
 \contentsline {definition}{{Definition}{3.{2}}{compound Poisson process}}{5}{definition.3.2}
 \contentsline {proposition}{{Proposition}{3.{1}}{}}{5}{proposition.3.1}
-\contentsline {Proof}{{Proof.}{3}{}}{5}{Proof.3}
+\contentsline {proof}{{Proof.}{3}{}}{5}{proof.3}
 \contentsline {definition}{{Definition}{4.{1}}{discrete-time Markov chain}}{6}{definition.4.1}
 \contentsline {proposition}{{Proposition}{4.{1}}{Chapman–Kolmogorov equation}}{7}{proposition.4.1}
+\contentsline {proof}{{Proof.}{4}{}}{7}{proof.4}
 \contentsline {definition}{{Definition}{4.{2}}{continuous-time Markov chain}}{7}{definition.4.2}
-\contentsline {definition}{{Definition}{6.{1}}{}}{8}{definition.6.1}
+\contentsline {example}{{Example}{4.{1}}{}}{8}{example.4.1}
+\contentsline {proposition}{{Proposition}{4.{2}}{}}{8}{proposition.4.2}
+\contentsline {proof}{{Proof.}{5}{}}{8}{proof.5}
+\contentsline {definition}{{Definition}{4.{3}}{}}{8}{definition.4.3}
+\contentsline {lemma}{{Lemma}{4.{1}}{}}{8}{lemma.4.1}
+\contentsline {proof}{{Proof.}{6}{}}{8}{proof.6}
+\contentsline {theorem}{{Theorem}{4.{1}}{}}{9}{theorem.4.1}
+\contentsline {definition}{{Definition}{5.{1}}{conditional expectation}}{10}{definition.5.1}
+\contentsline {proposition}{{Proposition}{5.{1}}{}}{10}{proposition.5.1}
+\contentsline {definition}{{Definition}{5.{2}}{filtration}}{10}{definition.5.2}
+\contentsline {example}{{Example}{5.{1}}{}}{10}{example.5.1}
+\contentsline {definition}{{Definition}{5.{3}}{stopping time}}{10}{definition.5.3}
+\contentsline {definition}{{Definition}{5.{4}}{stopping time in discrete-time case}}{10}{definition.5.4}
+\contentsline {definition}{{Definition}{5.{5}}{martingale}}{10}{definition.5.5}
+\contentsline {definition}{{Definition}{5.{6}}{submartingale}}{10}{definition.5.6}
+\contentsline {definition}{{Definition}{5.{7}}{supermartingale}}{10}{definition.5.7}
+\contentsline {definition}{{Definition}{6.{1}}{}}{11}{definition.6.1}

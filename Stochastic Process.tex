@@ -26,7 +26,7 @@
 \theoremheaderfont{\itshape}
 \theorembodyfont{\normalfont}
 \theoremsymbol{\\ \rightline{$\square$}}
-\newtheorem{Proof}{Proof.}
+\newtheorem{proof}{Proof.}
 
 % Start the document
 \begin{document}
@@ -113,7 +113,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 \begin{proposition}
 	Definition 2.1, 2.3, 2.4 are equivalent definitions of Poisson process.
 \end{proposition}
-\begin{Proof}~\\
+\begin{proof}~\\
 	\vspace{-1em}
 	\begin{itemize}
 	\item \underline{Definition 2.1 $\implies$ Definition 2.3} 
@@ -212,7 +212,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 \end{align*}
 	Therefore, we conclude $N_{t_2}-N_{t_1},N_{t_3}-N_{t_2},\cdots,N_{t_n}-N_{t_{n-1}}$ are independent and for any $0\le s < t$, $N_t-N_s\sim Pois(\lambda(t-s))$.
 \end{itemize}
-\end{Proof}
+\end{proof}
 
 \begin{proposition}
 	Let $(N_t)_{t\ge0}$ be a Poisson process.
@@ -228,9 +228,9 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		\end{align*}
 	\end{enumerate}
 \end{proposition}
-\begin{Proof}
+\begin{proof}
 	Apply \hyperlink{Definition 2.1(ii)}{Definition 2.1(ii)} and it is straightforward to show the properties.
-\end{Proof}
+\end{proof}
 
 \section{Compound Poisson Process}
 \begin{definition}[compound Poisson distribution]
@@ -259,7 +259,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 		\item The moment generating function $M_{Y_t}(a)=\mathrm{E}[e^{aY_t}]=e^{\lambda t(\mathrm{E}[e^{aZ}]-1)}=e^{\lambda t(M_Z(a)-1)}$
 	\end{enumerate}
 \end{proposition}
-\begin{Proof}\hspace*{1em}	
+\begin{proof}\hspace*{1em}	
 \begin{enumerate}
 	\item Since $Z_n$ is independent of $N_t$, we have $$\mathrm{E}[Y_t]=\mathrm{E}[\mathrm{E}[Y_t|N_t]]=\mathrm{E}\left[\mathrm{E}\left[\left.\sum _{n=1}^{N_t}Z_{n}\right|N_t\right]\right]=\mathrm{E}\left[\sum _{n=1}^{N_t}\mathrm{E}\left[\left.Z_{n}\right|N_t\right]\right]=\mathrm{E}[N_tZ]=\mathrm{E}[N_t]\mathrm{E}[Z]=\lambda tE[Z].$$
 	\item Since $Z_n$ is independent of $N_t$, by the law of total variance $\mathrm{Var}(Y_t)$ can be calculated as
@@ -284,7 +284,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
  	\end{aligned}
  	\]
 \end{enumerate}
-\end{Proof}
+\end{proof}
 Let $Y=(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and jump $(Z_n)_{n\in \mathbb{N}_+}$. Let $T_n=\inf\{t\ge0:N_t= n\}$ be the time when the $n$th event happens. Then the Itô integral of a stochastic process $K$ with respect to $Y$ is
 \[
 \int_{0}^{t}KdY=\sum_{n=0}^{N_t}K_{T_n}(Y_{T_n}-Y_{T_n-})=\sum_{n=0}^{N_t}K_{T_n}Z_n.
@@ -294,20 +294,20 @@ Let $Y=(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and j
 \section{Markov Chain}
 \subsection{Discrete-time Markov Chain}
 \begin{definition}[discrete-time Markov chain]
-	A \emph{discrete-time Markov chain} on a countable state space $S$ is a sequence of random variables $X_1, X_2, X_3,\cdots$ with the Markov property, namely that $\forall n\ge1,\ \forall j,i_1,\cdots,i_n\in S$,	
+	A \emph{discrete-time Markov chain} on a countable state space $S$ is a sequence of random variables $X_0, X_1, X_2,\cdots$ with the Markov property, namely that $\forall n\ge0,\ \forall j,i_0,i_1,\cdots,i_n\in S$,	
 	\[
-	\mathrm{P}(X_{n+1}=j\mid X_{1}=i_{1},X_{2}=i_{2},\cdots,X_{n}=i_{n})=\mathrm{P}(X_{n+1}=j\mid X_{n}=i_{n}), 
-	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{1}=i_{1},\cdots ,X_{n}=i_{n})>0$.
+	\mathrm{P}(X_{n+1}=j\mid X_{0}=i_{0},X_{1}=i_{1},\cdots,X_{n}=i_{n})=\mathrm{P}(X_{n+1}=j\mid X_{n}=i_{n}), 
+	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{0}=i_{0},\cdots ,X_{n}=i_{n})>0$.
 \end{definition}	
 Markov property may be interpreted as stating that the probability of moving to the next state depends only on the present state and not on the previous states. 
 
-\noindent A discrete-time Markov chain $(X_n)_{n\ge1}$ is \emph{time-homogeneous} if
+\noindent A discrete-time Markov chain $(X_n)_{n\ge0}$ is \emph{time-homogeneous} if
 \[
 \mathrm{P}(X_{n+2}=j\mid X_{n+1}=i)=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
 \]
-for all $n\ge1$ and all $i,j\in S$. We only focus on a discrete-time time-homogeneous Markov chain on a countable space if nothing is specified. 
+for all $n\ge0$ and all $i,j\in S$. We only focus on the discrete-time time-homogeneous Markov chain on a countable space if nothing is specified. 
 
-\noindent One can consider the \emph{transition matrix}	$P=(p_{ij})_{i,j\in S}$, where
+\noindent One can consider the (possibly infinite-dimensional) \emph{transition matrix}	$P=(p_{ij})_{i,j\in S}$, where
 \[
 p_{ij}=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
 \]
@@ -319,17 +319,30 @@ Similarly we can define \emph{$n$-step transition matrix} $P^{(n)}=\left(p^{(n)}
 \[
 p^{(n)}_{ij}=\mathrm{P}(X_{k+n}=j\mid X_{k}=i).
 \]
-\begin{proposition}[Chapman–Kolmogorov equation]
-Let $(X_n)_{n\ge1}$ be a discrete-time Markov chain on a countable state space $S$. The \emph{Chapman–Kolmogorov equation} states that
+As is shown below, the Chapman–Kolmogorov equation enables us to calculate $n$-step transition matrix readily.
+\begin{proposition}[Chapman–Kolmogorov equation]\hypertarget{Proposition 4.1}{}
+Let $(X_n)_{n\ge0}$ be a discrete-time Markov chain on a countable state space $S$. The \emph{Chapman–Kolmogorov equation} states that
 \[
 p^{(n+m)}_{ij}=\sum_{k\in S}p^{(n)}_{ik}p^{(m)}_{kj},\quad\forall i,j\in S,
 \]
-or alternatively
+or alternatively in matrix form
 \[
 P^{(n+m)}=P^{(n)}P^{(m)}.
 \]
 \end{proposition}
-Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$.
+\begin{proof}
+	\[
+	\begin{aligned}
+		p^{(n+m)}_{ij}&=\mathrm{P}(X_{n+m}=j\mid X_{0}=i)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n+m}=j,X_{n}=k\mid X_{0}=i)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n}=k\mid X_{0}=i)\mathrm{P}(X_{n+m}=j\mid X_{0}=i,X_{n}=k)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n}=k\mid X_{0}=i)\mathrm{P}(X_{n+m}=j\mid X_{n}=k)\\
+		&=\sum_{k\in S}p^{(n)}_{ik}p^{(m)}_{kj}
+	\end{aligned}
+	\]
+\end{proof}
+
+\noindent Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$.
 
 \subsection{Continuous-time Markov Chain}
 
@@ -344,9 +357,189 @@ Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$.
 \[
 \mathrm{P}(X_{s+t}=j\mid X_{s}=i)=\mathrm{P}(X_{t}=j\mid X_{0}=i)=p_{ij}(t)
 \]
-for all $s,t\ge0$ and all $i,j\in S$. We only focus on a continuous-time time-homogeneous Markov chain on a countable space if nothing is specified.
+for all $s,t\ge0$ and all $i,j\in S$. 
+\begin{example}
+	Poisson progress $(N_t)_{t\ge0}$ is continuous-time time-homogeneous Markov chain.
+\end{example}
+We only focus on the continuous-time time-homogeneous Markov chain on a countable space if nothing is specified.
+In this case, transition probability $p_{ij}(t)$ depends on the interarrival $t$ from state $i$ to state $j$.
+\noindent One can define the \emph{transition matrix}	$P(t)=(p_{ij}(t))_{i,j\in S}$ and we have the similar properties of $p_{ij}(t)$ like the concrete-time case.
+\begin{proposition}
+	Let $(X_t)_{t\ge0}$ be a continuous-time Markov chain on a countable state space $S$. 
+	\begin{enumerate}
+		\item For all $t\ge 0$ and all $j\in S$,
+		\[
+		\sum_{j\in S}p_{ij}(t)=1.
+		\]
+		\item The \emph{Chapman–Kolmogorov equation} states that
+		\[
+		p_{ij}(t+s)=\sum_{k\in S}p_{ik}(t)p_{kj}(s),\quad\forall i,j\in S,
+		\]
+		or alternatively in matrix form
+		\[
+		P(t+s)=P(t)P(s).
+		\]
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\hspace{1em}
+	\begin{enumerate}
+	\item It follows by the law of total probability.
+	\item Imitate the proof in \hyperlink{Proposition 4.1}{Proposition 4.1} and the result is straightforward.
+	\end{enumerate} 
+\end{proof}
+\begin{definition}
+A continuous-time Markov chain is \emph{regular} if it satisfy the following condition
+\[
+\lim_{t\to0}\;p_{ij}(t)=\delta_{ij}=
+\begin{cases}
+1,&i=j,\\
+0,&i\ne j.
+\end{cases}
+\]
+\end{definition}
+Since $p_{ij}(0)=\mathrm{P}(X_{t}=j\mid X_{0}=i)=\delta_{ij}$, regularity implies $p_{ij}(t)$ is continuous at $t=0$. Furthermore, we have the following stronger results. We always assume continuous-time Markov chain is regular afterwards.
+\begin{lemma}
+	If a continuous-time Markov chain is regular, for any fixed $i,j\in S$, $p_{ij}(t)$ is uniformly continuous with respect to $t$. 
+\end{lemma}
+\begin{proof}
+	Since when $h>0$
+	\[
+	\begin{aligned}
+		p_{ij}(t+h)-p_{ij}(t)&=\sum_{k\in S}p_{ik}(h)p_{kj}(t)-p_{ij}(t)\\
+		&= p_{ii}(h)p_{ij}(t)-p_{ij}(t)+\sum_{k\in S\setminus\{i\}}p_{ik}(h)p_{kj}(t)\\
+		&= -(1-p_{ii}(h))p_{ij}(t)+\sum_{k\in S\setminus\{i\}}p_{ik}(h)p_{kj}(t),
+	\end{aligned}
+	\]
+	we have
+	\[
+	\begin{aligned}
+	&p_{ij}(t+h)-p_{ij}(t)\ge -(1-p_{ii}(h))p_{ij}(t)\ge-(1-p_{ii}(h)),\\
+	&p_{ij}(t+h)-p_{ij}(t)\le\sum_{k\in S\setminus\{i\}} p_{ik}(h)p_{kj}(t)\le \sum_{k\in S\setminus\{i\}}p_{ik}(h)=1-p_{ii}(h),	
+	\end{aligned}
+	\]
+	which implies
+	\[
+	|p_{ij}(t+h)-p_{ij}(t)|\le 1-p_{ii}(h).
+	\]
+	When $h<0$ in a similar way we can get
+	\[
+	|p_{ij}(t)-p_{ij}(t+h)|\le 1-p_{ii}(-h).
+	\]
+	In general
+	\[
+	|p_{ij}(t+h)-p_{ij}(t)|\le 1-p_{ii}(|h|).
+	\]
+	According to regular condition we conclude for any $t\ge0$,
+	\[
+	\lim_{h\to0}|p_{ij}(t+h)-p_{ij}(t)|=0,
+	\]
+	that is, $p_{ij}(t)$ is uniformly continuous with respect to $t$ on $[0,\infty)$.
+\end{proof}
+If $p_{ij}(t)$ is differentiable, define the \emph{transition rate} 
+\[
+q_{ij}=\left.\frac{dp_{ij}(t)}{dt}\right|_{t=0}=\lim\limits_{h\to 0}\frac{p_{ij}(h)-p_{ij}(0)}{h}.
+\]
+The $q_{ij}$ can be seen as measuring how quickly the transition from $i$ to $j$ happens. Then define the \emph{transition rate matrix} $Q=(q_{ij})_{i,j\in S}$ with dimensions equal to that of the state space. 
 
+\noindent Since $P(0)=I$, it can be shown that
+\[
+\mathrm{P}(X_{t+h}=j\mid X_t=i)=p_{ij}(h)=\delta _{ij}+q_{ij}h+o(h). 
+\]
+As an intermediate consequence, if the state space $S$ is finite, we have   
+\[
+\sum_{j\in S}q_{ij}=0,
+\]
+which follows by
+\[
+1=\sum_{j\in S}p_{ij}(h)=\sum_{j\in S}[\delta _{ij}+q_{ij}h+o(h)]=1+\sum_{j\in S}q_{ij}h+o(h).
+\]
+\begin{theorem}
+	Let $(X_t)_{t\ge0}$ be a continuous-time Markov chain on a countable state space $S$.
+	\begin{enumerate}
+		\item Kolmogorov forward equation:
+		\[
+		p_{ij}'(t)=\sum_{k\in S}p_{ik}(t)q_{kj}
+		\]
+		or alternatively
+		\[
+		P'(t)=P(t)Q(t).
+		\]
+		\item Kolmogorov backward equation:
+		\[
+		p_{ij}'(t)=\sum_{k\in S}q_{ik}p_{kj}(t)
+		\]
+		or alternatively
+		\[
+		P'(t)=Q(t)P(t).
+		\]
+	\end{enumerate}
+\end{theorem}
 \section{Martingale}
+\begin{definition}[conditional expectation]
+	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}|X| < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
+	\[
+	\mathrm{E}(X I_A) = \mathrm{E}(ZI_A) \quad\text{ for all }A \in \mathcal{G}
+	\] 
+	is called the \emph{conditional expectation} of $Y$ given $\mathcal{G}$ and is written as $\mathrm{E}(X\mid\mathcal{G})$.
+\end{definition}
+
+\begin{proposition}
+	Let $X$ and $Y$ be integrable $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ and  $\mathcal{G}\subset\mathcal{F}$ be a $\sigma$-algebra.
+	\begin{enumerate}  
+		\item  Suppose $X\geq0$, Prove that $E(X\mid\mathcal{G})\geq0$
+	\end{enumerate}
+\end{proposition}
+\begin{definition}[filtration]
+Let $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $I$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $i\in I$ let $\mathcal{F}_{i}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
+\[
+\mathbb{F} =(\mathcal{F}_{i})_{i\in I}
+\]
+is called a \emph{filtration} if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
+\end{definition}
+If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}. A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
+
+\begin{example}
+	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on the probability space $(\Omega,\mathcal{F},\mathrm{P})$. Then 
+	\[
+	{\mathcal {F}}_{t}^X=\sigma (\{X_{s}:0\le s\le t\})
+	\]
+	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. And $(\mathcal {F}_{t}^X)_{t\ge0} $ is called the filtration induced by the stochastic process $X$.
+\end{example}
+
+\begin{definition}[stopping time]
+Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ with values in $T$. Then $\tau$  is called a stopping time (with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$), if the following condition holds:
+\[
+\forall t\in T,\ \{\tau \leq t\}\in {\mathcal {F}}_{t}.
+\]
+\end{definition}
+
+\begin{definition}[stopping time in discrete-time case]
+	Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ with values in $\mathbb{N}\cup\{+\infty\}$. Then $\tau$  is called a stopping time (with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$), if the following condition holds:
+	\[
+	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
+	\]
+\end{definition}
+
+\begin{definition}[martingale]
+	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
+	\begin{enumerate}
+		\item For $n\ge0$, $\mathrm{E}[|M_n|]<+\infty$;
+		\item For $n\ge0$, $\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]=M_n$.
+	\end{enumerate}
+\end{definition}
+\begin{definition}[submartingale]
+A discrete-time submartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
+\[
+\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\ge M_n.
+\]
+\end{definition}
+\begin{definition}[supermartingale]
+	A discrete-time supermartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
+	\[
+	\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\le M_n.
+	\]
+\end{definition}
+
 
 \section{Brownian Motion}
 \begin{definition}
