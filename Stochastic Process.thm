@@ -30,8 +30,14 @@
 \contentsline {definition}{{Definition}{5.{2}}{filtration}}{10}{definition.5.2}
 \contentsline {example}{{Example}{5.{1}}{}}{10}{example.5.1}
 \contentsline {definition}{{Definition}{5.{3}}{stopping time}}{10}{definition.5.3}
-\contentsline {definition}{{Definition}{5.{4}}{stopping time in discrete-time case}}{10}{definition.5.4}
-\contentsline {definition}{{Definition}{5.{5}}{martingale}}{10}{definition.5.5}
-\contentsline {definition}{{Definition}{5.{6}}{submartingale}}{10}{definition.5.6}
-\contentsline {definition}{{Definition}{5.{7}}{supermartingale}}{10}{definition.5.7}
-\contentsline {definition}{{Definition}{6.{1}}{}}{11}{definition.6.1}
+\contentsline {definition}{{Definition}{5.{4}}{stopping time in discrete-time case}}{11}{definition.5.4}
+\contentsline {definition}{{Definition}{5.{5}}{martingale}}{11}{definition.5.5}
+\contentsline {definition}{{Definition}{5.{6}}{submartingale}}{11}{definition.5.6}
+\contentsline {definition}{{Definition}{5.{7}}{supermartingale}}{11}{definition.5.7}
+\contentsline {definition}{{Definition}{6.{1}}{Brownian motion}}{11}{definition.6.1}
+\contentsline {definition}{{Definition}{6.{2}}{Gaussian process}}{11}{definition.6.2}
+\contentsline {theorem}{{Theorem}{6.{1}}{}}{11}{theorem.6.1}
+\contentsline {proposition}{{Proposition}{6.{1}}{}}{11}{proposition.6.1}
+\contentsline {definition}{{Definition}{6.{3}}{quadratic variation}}{12}{definition.6.3}
+\contentsline {theorem}{{Theorem}{6.{2}}{}}{12}{theorem.6.2}
+\contentsline {proof}{{Proof.}{7}{}}{12}{proof.7}

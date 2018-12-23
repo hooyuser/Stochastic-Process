@@ -476,17 +476,26 @@ which follows by
 \end{theorem}
 \section{Martingale}
 \begin{definition}[conditional expectation]
-	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}|X| < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
+	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}[|X|] < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
 	\[
-	\mathrm{E}(X I_A) = \mathrm{E}(ZI_A) \quad\text{ for all }A \in \mathcal{G}
+	\mathrm{E}[X I_A] = \mathrm{E}[ZI_A] \quad\text{ for all }A \in \mathcal{G}
 	\] 
 	is called the \emph{conditional expectation} of $Y$ given $\mathcal{G}$ and is written as $\mathrm{E}(X\mid\mathcal{G})$.
 \end{definition}
-
+In probability theory, we show that conditional expectation exists and is unique up to absolutely surely equality. If not pointed out explicitly, all equalities and inequalities involving conditional expectation are considered to hold absolutely surely. 
 \begin{proposition}
-	Let $X$ and $Y$ be integrable $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ and  $\mathcal{G}\subset\mathcal{F}$ be a $\sigma$-algebra.
+	Let $X$, $Y$, $X_n$ be integrable $\mathcal{F}$-measurable random variables on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ and  $\mathcal{G}\subset\mathcal{F}$ be a $\sigma$-algebra.
 	\begin{enumerate}  
-		\item  Suppose $X\geq0$, Prove that $E(X\mid\mathcal{G})\geq0$
+		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY\mid\mathcal{F}]=a\mathrm{E}[X\mid\mathcal{F}]+b\mathrm{E}[Y\mid\mathcal{F}]$.
+		\item If $X$ equals a constant $a$, then $\mathrm{E}[X\mid\mathcal{F}]=a$.
+		\item If $X\ge Y$,  then $\mathrm{E}[X\mid\mathcal{F}]\ge\mathrm{E}[Y\mid\mathcal{F}]$.
+		\item $|\mathrm{E}[X\mid\mathcal{F}]|\le\mathrm{E}[|X|\mid\mathcal{F}]$.
+		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X\mid\mathcal{F}])\le\mathrm{E}[\phi(X)\mid\mathcal{F}]$.
+		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n\mid\mathcal{F}]=\mathrm{E}[X\mid\mathcal{F}]$.
+		\item $\mathrm{E}[\mathrm{E}[X\mid\mathcal{F}]]=\mathrm{E}[X]$.
+		\item $\mathrm{E}[\mathrm{E}[X\mid\mathcal{G}]\mid\mathcal{F}]=\mathrm{E}[\mathrm{E}[X\mid\mathcal{F}]\mid\mathcal{G}]=\mathrm{E}[X\mid\mathcal{G}]$
+		\item If $X$ and $\mathcal{F}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{F}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X\mid\mathcal{F}]=X$.
+		\item If $Z$ is $\mathcal{F}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX\mid\mathcal{F}]=Z\mathrm{E}[X\mid\mathcal{F}]$
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[filtration]
@@ -507,7 +516,7 @@ If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\ma
 \end{example}
 
 \begin{definition}[stopping time]
-Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ with values in $T$. Then $\tau$  is called a stopping time (with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$), if the following condition holds:
+Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ with values in $T$. Then $\tau$  is called a \emph{stopping time} (with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$), if the following condition holds:
 \[
 \forall t\in T,\ \{\tau \leq t\}\in {\mathcal {F}}_{t}.
 \]
@@ -528,13 +537,13 @@ Let $\tau$  be a random variable defined on the filtered probability space $(\Om
 	\end{enumerate}
 \end{definition}
 \begin{definition}[submartingale]
-A discrete-time submartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
+A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 \[
 \mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\ge M_n.
 \]
 \end{definition}
 \begin{definition}[supermartingale]
-	A discrete-time supermartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
+	A discrete-time \emph{supermartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 	\[
 	\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\le M_n.
 	\]
@@ -542,7 +551,7 @@ A discrete-time submartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consist
 
 
 \section{Brownian Motion}
-\begin{definition}
+\begin{definition}[Brownian motion]
 	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
 	\begin{enumerate}
 		\item $B_0=0$.
@@ -551,10 +560,74 @@ A discrete-time submartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consist
 		\item For $t>0$, $B_t\sim N(0,t)$.
 	\end{enumerate}
 \end{definition}
+
+\begin{definition}[Gaussian process]
+A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only if for every finite set of indices $t_{1},\ldots ,t_{n}$ in the index set $T$, $(X_{t_1},X_{t_2},\cdots,X_{t_n})$ follows multivariate normal distribution $N(\mu,\Sigma)$.
+\end{definition}
+
+\begin{theorem}
+	$B=(B_t)_{t\ge0}$ is a Brownian motion if and only if $B$ is a Gaussian process satisfying
+	\begin{enumerate}
+		\item $B_0=0$,
+		\item $B$ has continuous paths,
+		\item For all $t\ge0$, $\mathrm{E}[B_t]=0$,
+		\item For all $s,t\ge0$, $\mathrm{E}[B_sB_t]=s\wedge t$.
+	\end{enumerate}
+\end{theorem}
+\begin{proposition}
+	Let $B=(B_t)_{t\ge0}$ be a Brownian motion.
+	\begin{enumerate}
+	\item For $k\ge1$, $\mathrm{E}[B_t^{2k-1}]=0$, $\mathrm{E}[B_t^{2k}]=t^{k}(2k-1)!!$.
+	\item $B$ is a Markov process. 
+	\item $B$ is a martingale.
+	\end{enumerate}
+\end{proposition}
+\begin{definition}[quadratic variation]	
+Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on a probability space  $(\Omega,\mathcal{F},\mathrm{P})$. The quadratic variation of $(X_t)_{t\ge 0}$ is the stochastic process, written as $[X]_t$, defined as
+\[
+[X]_{t}=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2} \quad\text{a.e.,}
+\] 
+where $P=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and the norm of the partition $P$ is the length of the longest of these subintervals, namely
+\[
+\Vert P\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
+\]
+\end{definition}
+\begin{theorem}
+	The quadratic variation of a Brownian motion $B$ exists, and is given by $[B]_t = t$. 
+\end{theorem}
+\begin{proof} 
+	Given a partition $P$ of the interval $[0,t]$, we have
+	\[
+	\begin{aligned}
+	\mathrm{E}\left[\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right]&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{2}\right]\\
+	&=\sum _{k=1}^{n}(t_{k}-t_{k-1})\\
+	&=t
+    \end{aligned}
+    \]
+    and
+    \[
+    \begin{aligned}
+	\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)&=\sum _{k=1}^{n}\mathrm{Var}\left((B_{t_{k}}-B_{t_{k-1}})^{2}\right)\\
+	&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{4}\right]-\sum _{k=1}^{n}\left(\mathrm{E}\left[\left(B_{t_{k}}-B_{t_{k-1}}\right)^{2}\right]\right)^{2}\\
+	&=\sum_{k=1}^{n}3(t_{k}-t_{k-1})^2-\sum _{k=1}^{n}\left(t_{k}-t_{k-1}\right)^{2}\\
+	&=2\sum_{k=1}^{n}(t_{k}-t_{k-1})^2\\
+	&\le 2\Vert P\Vert\sum_{k=1}^{n}(t_{k}-t_{k-1})\\
+	&= 2\Vert P\Vert t.
+	\end{aligned}
+	\]
+	Since
+	\[
+	\lim\limits_{\Vert P\Vert\to0 }\mathrm{E}\left[\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}-t\right)^2\right]=\lim\limits_{\Vert P\Vert \to0}\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)\le \lim\limits_{\Vert P\Vert\to0 }2\Vert P\Vert t=0,
+	\]
+	we conclude 
+	\[
+	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.e.}
+	\]
+\end{proof}
 \newpage
 
 \section*{Appendix}
-
+\subsection*{1.Properties of Common Distributions}
 \makegapedcells
 \setcellgapes{3pt}
 \newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}} 
@@ -595,6 +668,8 @@ A discrete-time submartingale is a stochastic process $M=(M_n)_{n\ge 0}$ consist
 		\\ \hline
 	\end{tabular}
 \end{table}
+
+\subsection*{2.Generating Function \& Characteristic Function}
 
 \begin{table}[H]
 	\centering

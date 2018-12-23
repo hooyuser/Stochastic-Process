@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  23 DEC 2018 03:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.3.25)  23 DEC 2018 16:28
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -910,42 +910,43 @@ line 402.
 [8]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
 t line 457.
- [9]
-Overfull \hbox (3.544pt too wide) in paragraph at lines 531--532
-[]\OT1/cmr/m/n/10 A discrete-time sub-martin-gale is a stochas-tic pro-cess $\O
-ML/cmm/m/it/10 M \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$
+ [9] [10]
+Overfull \hbox (2.98373pt too wide) in paragraph at lines 540--541
+[]\OT1/cmr/m/n/10 A discrete-time \OT1/cmr/m/it/10 sub-martin-gale \OT1/cmr/m/n
+/10 is a stochas-tic pro-cess $\OML/cmm/m/it/10 M \OT1/cmr/m/n/10 = (\OML/cmm/m
+/it/10 M[]\OT1/cmr/m/n/10 )[]$
  []
 
-[10] [11]
+[11] [12]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 571.
+(amsmath)                 on input line 644.
 
 
-Overfull \hbox (9.47357pt too wide) in paragraph at lines 566--580
+Overfull \hbox (9.47357pt too wide) in paragraph at lines 639--653
  [][] 
  []
 
-[12]
+[13]
 \tf@thm=\write4
 \openout4 = `"Stochastic Process.thm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 628.
- [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 628.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 703.
+ [14]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 703.
  (./Stochastic Process.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 628.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 628.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 703.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 703.
 Package rerunfilecheck Info: File `"Stochastic Process".out' has not changed.
 (rerunfilecheck)             Checksum: 8D5B670C42BE284B17334FB7A12A4902;451.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 628.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 703.
  ) 
 Here is how much of TeX's memory you used:
- 8212 strings out of 493013
- 114844 string characters out of 6136993
- 240269 words of memory out of 5000000
- 11536 multiletter control sequences out of 15000+600000
+ 8245 strings out of 493013
+ 115185 string characters out of 6136993
+ 240279 words of memory out of 5000000
+ 11544 multiletter control sequences out of 15000+600000
  10254 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,21n,35p,584b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -967,10 +968,10 @@ cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
 pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
 <c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/
 texlive/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on "Stochastic Process.pdf" (13 pages, 262350 bytes).
+Output written on "Stochastic Process.pdf" (14 pages, 272106 bytes).
 PDF statistics:
- 280 PDF objects out of 1000 (max. 8388607)
- 242 compressed objects within 3 object streams
- 98 named destinations out of 1000 (max. 500000)
+ 313 PDF objects out of 1000 (max. 8388607)
+ 274 compressed objects within 3 object streams
+ 123 named destinations out of 1000 (max. 500000)
  65 words of extra memory for PDF output out of 10000 (max. 10000000)
 
