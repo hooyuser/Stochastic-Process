@@ -46,15 +46,6 @@ For a given probability space $(\Omega ,{\mathcal{F}},P)$ and a measurable space
 \mathcal{I}_T=\{\{t_1,t_2,\cdots,t_n\}:t_1,\cdots,t_n\in T,\;n\ge 1\}.
 \]
 
-\begin{definition}[independent increments]
-	A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increments $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
-\end{definition}
-
-\begin{definition}[independent increments]
-  A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increments $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
-\end{definition}
-
-
 \begin{definition}[strictly stationary process]
 	Let $(X_t)_{t\in T}$ be a stochastic process and let \newline $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
 	\[
@@ -62,10 +53,13 @@ For a given probability space $(\Omega ,{\mathcal{F}},P)$ and a measurable space
 	\]
 \end{definition}
 
+\begin{definition}[independent increments]
+	A stochastic process $(X_t)_{t\in T}$ has \emph{independent increments} if for every $n\in \mathbb{N}_+$ and any $t_1\le t_2 \le\cdots\le t_n$, the increments $X_{t_2}-X_{t_1},X_{t_3}-X_{t_2},\cdots,X_{t_n}-X_{t_{n-1}}$ are independent.
+\end{definition}
 
-
-
-
+\begin{definition}[stationary increments]
+	A stochastic process $(X_t)_{t\in T}$ has \emph{stationary increments} if for all $s<t$, the probability distribution of the increments $X_{t}-X_{s}$ depends only on $t-s$.
+\end{definition}
 
 \section{Poisson Process}
 \begin{definition}[Poisson process (I)]
@@ -341,8 +335,12 @@ P^{(n+m)}=P^{(n)}P^{(m)}.
 	\end{aligned}
 	\]
 \end{proof}
+\noindent Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$. 
 
-\noindent Of course $P^{(1)}=P$. Thus by iteration we show $P^{(n)}$ coincides with $P^n$.
+\noindent Let $\pi(n)=\left(p_i^{(n)}\right)_{i\in S}$ denote the probability distribution of $X_n$, where $p_i^{(n)}=\mathrm{P}(X_n=i)$. Then we have
+\[
+\pi(n)=\pi(0)P^n.
+\]
 
 \subsection{Continuous-time Markov Chain}
 
@@ -512,7 +510,7 @@ If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\ma
 	\[
 	{\mathcal {F}}_{t}^X=\sigma (\{X_{s}:0\le s\le t\})
 	\]
-	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. And $(\mathcal {F}_{t}^X)_{t\ge0} $ is called the filtration induced by the stochastic process $X$.
+	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. We call $(\mathcal {F}_{t}^X)_{t\ge0} $ the filtration induced by the stochastic process $X$.
 \end{example}
 
 \begin{definition}[stopping time]
@@ -528,6 +526,14 @@ Let $\tau$  be a random variable defined on the filtered probability space $(\Om
 	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
 	\]
 \end{definition}
+
+\begin{example}
+	Given a discrete-time stochastic process $(X_{n})_{n\ge 0}$ defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0 },\mathrm{P})$ and a Borel set $B$,
+	\[
+	\tau=\inf\{n\ge0:X_n\in B\}
+	\]
+	is a stopping time, called the first hitting time.
+\end{example}
 
 \begin{definition}[martingale]
 	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
@@ -548,6 +554,10 @@ A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ 
 	\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\le M_n.
 	\]
 \end{definition}
+
+\begin{example}
+	Suppose $(M_n)_{n\ge 0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and that $\phi:\mathbb{R}\to\mathbb{R}$ is convex. If $\phi(M_n)$ is integrable for $n\ge0$, then $\left(\phi(M_n)\right)_{n\ge 0}$ is a submartingale.
+\end{example}
 
 
 \section{Brownian Motion}
@@ -583,7 +593,7 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[quadratic variation]	
-Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on a probability space  $(\Omega,\mathcal{F},\mathrm{P})$. The quadratic variation of $(X_t)_{t\ge 0}$ is the stochastic process, written as $[X]_t$, defined as
+Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on a probability space  $(\Omega,\mathcal{F},\mathrm{P})$. The \emph{quadratic} variation of $(X_t)_{t\ge 0}$ is the stochastic process, written as $[X]_t$, defined as
 \[
 [X]_{t}=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2} \quad\text{a.e.,}
 \] 
