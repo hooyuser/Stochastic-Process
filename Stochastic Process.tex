@@ -14,7 +14,7 @@
 \usepackage{bm}
 \usepackage{array,makecell}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{amsmath,amsfonts}
+\usepackage{amsmath,amsfonts,amssymb}
 \usepackage[thmmarks,amsmath]{ntheorem}
 \theorembodyfont{\upshape}
 \newtheorem{definition}{Definition}[section]
@@ -38,7 +38,7 @@
 % Create a new 1st level heading
 \section{Preliminaries}
 \begin{definition}[stochastic process]
-For a given probability space $(\Omega ,{\mathcal{F}},P)$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},P)$ indexed by some set $T$, which can be written as $X=\{X(t):t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
+For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X(t):t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
 \end{definition}
 
 \noindent For convenience, we always assume $T$ is a totally ordered set and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
@@ -473,6 +473,7 @@ which follows by
 	\end{enumerate}
 \end{theorem}
 \section{Martingale}
+\subsection{Basic Notion}
 \begin{definition}[conditional expectation]
 	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}[|X|] < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
 	\[
@@ -497,27 +498,52 @@ In probability theory, we show that conditional expectation exists and is unique
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[filtration]
-Let $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $I$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $i\in I$ let $\mathcal{F}_{i}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
+Let $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $T$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
 \[
-\mathbb{F} =(\mathcal{F}_{i})_{i\in I}
+\mathbb{F} =(\mathcal{F}_{t})_{t\in T}
 \]
 is called a \emph{filtration} if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
 \end{definition}
-If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}. A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
+If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}. A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$. 
 
-\begin{example}
+\noindent If $T=[0,\infty]$, the definition of $\mathcal{F}_{\infty}$ is usually specified as
+\[
+\mathcal{F}_{\infty}=\sigma\left(\bigcup_{t\ge0} \mathcal{F}_t\right)
+\]
+
+\begin{definition}[right-continuous filtration]
+Given a filtration $\mathbb{F}=(\mathcal{F}_{t})_{t\in T}$, define
+\[
+\mathcal{F}_{t+}:=\bigcap_{s>t}\mathcal{F}_{s}\quad,\forall t\in T.
+\]
+Then $\mathbb{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. The filtration $\mathbb {F}$ is called \emph{right-continuous} if and only if $\mathbb{F}^{+}=\mathbb {F}$.
+\end{definition}
+
+\begin{definition}[complete filtration]
+Let
+\[\mathcal{N}_{P}:=\{A\subset 2^\Omega \mid A\subset B\text{ for a }B\text{ with }\mathrm{P}(B)=0\}
+\]
+be the set of all sets that are contained within a $\mathrm{P}$-null set. A filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T}$ is called a \emph{complete filtration}, if every $\mathcal{F}_{t}$ contains $\mathcal{N}_{P}$. This is equivalent to $(\Omega,\mathcal{F}_{t},\mathrm{P})$ being a complete measure space for every $t\in T$.
+\end{definition}
+
+\begin{definition}[natural filtration]
 	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on the probability space $(\Omega,\mathcal{F},\mathrm{P})$. Then 
 	\[
 	{\mathcal {F}}_{t}^X=\sigma (\{X_{s}:0\le s\le t\})
 	\]
-	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. We call $(\mathcal {F}_{t}^X)_{t\ge0} $ the filtration induced by the stochastic process $X$.
-\end{example}
+	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. We call $(\mathcal {F}_{t}^X)_{t\ge0} $ the \emph{natural filtration} induced by the stochastic process $X$. $(\mathcal {F}_{t}^X)_{t\ge0} $ is the minimum filtration which $X$ is adapted to.
+\end{definition}
 
 \begin{definition}[stopping time]
 Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ with values in $T$. Then $\tau$  is called a \emph{stopping time} (with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$), if the following condition holds:
 \[
-\forall t\in T,\ \{\tau \leq t\}\in {\mathcal {F}}_{t}.
+\forall t\in T,\ \{\tau \leq t\}\in {\mathcal {F}}_{t}
 \]
+or equivalently
+\[
+X_{t} :=1_{\tau\le t}=\left\{\begin{array}{ll}{1} & {\text { if }  \tau\le t } \\ {0} & {\text { if }\tau >t}\end{array}\right.
+\]
+is adapted to $(\mathcal{F}_{t})_{t\in T }$.
 \end{definition}
 
 \begin{definition}[stopping time in discrete-time case]
@@ -526,29 +552,37 @@ Let $\tau$  be a random variable defined on the filtered probability space $(\Om
 	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
 	\]
 \end{definition}
-
 \begin{example}
 	Given a discrete-time stochastic process $(X_{n})_{n\ge 0}$ defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0 },\mathrm{P})$ and a Borel set $B$,
 	\[
 	\tau=\inf\{n\ge0:X_n\in B\}
 	\]
-	is a stopping time, called the first hitting time.
+	is a stopping time, called the \emph{first hitting time}. ($\inf\varnothing = \infty $)
 \end{example}
 
-\begin{definition}[martingale]
+\begin{definition}[stopping process]
+	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$. The stopping process $X^\tau$ is defined as $(X_{\tau \wedge t})_{t\in T}$, where
+	\begin{align*}
+	X_{\tau \wedge t}:\Omega&\longrightarrow S\\
+	\omega&\longmapsto X_{\tau(\omega) \wedge t}(\omega).
+	\end{align*}
+\end{definition}
+
+\subsection{Discrete-time Martingale}
+\begin{definition}[discrete-time martingale]
 	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
 	\begin{enumerate}
 		\item For $n\ge0$, $\mathrm{E}[|M_n|]<+\infty$;
 		\item For $n\ge0$, $\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]=M_n$.
 	\end{enumerate}
 \end{definition}
-\begin{definition}[submartingale]
+\begin{definition}[discrete-time submartingale]
 A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 \[
 \mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\ge M_n.
 \]
 \end{definition}
-\begin{definition}[supermartingale]
+\begin{definition}[discrete-time supermartingale]
 	A discrete-time \emph{supermartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 	\[
 	\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\le M_n.
@@ -558,6 +592,90 @@ A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ 
 \begin{example}
 	Suppose $(M_n)_{n\ge 0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and that $\phi:\mathbb{R}\to\mathbb{R}$ is convex. If $\phi(M_n)$ is integrable for $n\ge0$, then $\left(\phi(M_n)\right)_{n\ge 0}$ is a submartingale.
 \end{example}
+
+\subsection{Continuous-time Martingale}
+\begin{definition}[continuous-time martingale]
+	A continuous-time stochastic process $M=(M_t)_{t\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
+	\begin{enumerate}
+		\item For $t\ge0$, $\mathrm{E}[|M_t|]<+\infty$;
+		\item For $0\le t\le s<+\infty$, $\mathrm{E}[\,M_{s}\mid\mathcal{F}_t\,]=M_t$.
+	\end{enumerate}
+\end{definition}
+\begin{definition}[continuous martingale]
+	A continuous-time martingale $M=(M_t)_{t\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ is continuous if the paths of $M$ are almost surely continuous. That is, there exists an $\Omega_{0} \subset \Omega$ with $P\left(\Omega_{0}\right)=1$ such that for all $\omega \in \Omega_{0}$ the function
+	\begin{align*}
+	\gamma_\omega:[0, \infty)&\longrightarrow\mathbb{R}\\
+	t&\longmapsto X_{t}(\omega)
+	\end{align*}
+	is continuous.
+\end{definition}
+
+\begin{definition}[uniform integrability]
+	A class $\mathcal {C}$ of random variables is called \emph{uniformly integrable} if given $\varepsilon >0$, there exists $K\in [0,\infty )$ such that 
+	\[
+	\mathrm{E}\left(|X| 1_{|X| \geq K}\right) \leq \varepsilon \text { for all } X \in \mathcal{C}.
+	\]	
+\end{definition}
+
+\begin{theorem}[Doob's maximal inequalities in continuous time]
+If $M=(M_{t})_{t\ge0}$ is a continuous nonnegative submartingale on $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ and $\lambda>0,$ then for all $p \geq 1$ we have
+\[
+\lambda^{p} \mathrm{P}\left(\sup_{0 \le t \le T} M_{t}>\lambda\right) \le \mathrm{E}\left[M_{T}^{p}\right]
+\]
+and, if $M_{T} \in L^{p}(\Omega,\mathcal{F},\mathrm{P})$ for some $p>1,$ then we also have
+\[
+\left\|\sup_{0 \leq t \leq T} M_{t}\right\|_{p} \leq \frac{p}{p-1}\left\|M_{T}\right\|_{p}.
+\]
+\end{theorem}
+
+\begin{definition}[$L^p$ bounded martingale]
+	A martingale $M=(M_t)_{t\ge0}$ is said to be $L^p$ \emph{bounded} if 
+	$$
+	\sup _{t \geq 0} \mathrm{E}\left[|M_{t}|^{p}\right]<\infty.
+	$$
+\end{definition}
+
+
+\begin{theorem}[martingale convergence theorems in continuous time] Let $M=(M_{t})_{t\ge0}$ be a continuous martingale on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|^{p}\right] \leq B<\infty$ for some $p>1$ and all $t \geq 0,$ then there exists a random variable $M_{\infty}\in L^p(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|^p\right] \leq B$ such that
+\[
+\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1 \text { and } \lim _{t \rightarrow \infty}\left\|M_{t}-M_{\infty}\right\|_{p}=0.
+\]
+Also, if $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|\right]\le B<\infty$ for all $t \ge 0,$ then there exists a random variable $M_{\infty}\in L^1(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|\right] \leq B$ such that
+\[
+\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1.
+\]
+\end{theorem}
+\begin{proposition}
+All the $L^2$ bounded martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2$, where the inner product is defined as $\langle M, N\rangle_{H^{2}}:=\left\langle M_{\infty}, N_{\infty}\right\rangle_{L^{2}}=E\left[M_{\infty} N_{\infty}\right]$. All the $L^2$ bounded continuous martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2_c$, which is a closed subspace of $H^2$.
+\end{proposition}
+
+\begin{definition}[quadratic variation]	
+		Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. A stochastic process $Q=(\langle X\rangle_{t})_{t\ge0}$ is said to be the \emph{quadratic variation} of $(X_t)_{t\ge 0}$ if for all $t\ge0$, for all $\varepsilon>0$,
+	\[
+	\lim_{\left\Vert P_{[0,t]}\right\Vert \rightarrow 0}\mathrm{P}\left(\,\left|\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2}-\langle X\rangle_{t}\right|>\varepsilon\right)=0
+	\] 
+	where $P_{[0,t]}=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and the norm of the partition $P_{[0,t]}$ is the length of the longest of these subintervals, namely
+	\[
+	\left\Vert P_{[0,t]}\right\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
+	\]
+\end{definition}
+
+\begin{definition}[bracket process]	
+	The bracket process of two processes $X$ and $Y$ is
+	\[
+	\langle X, Y\rangle_{t}:=\frac{1}{4}\left(\langle X+Y\rangle_{t}-\langle X-Y\rangle_{t}\right).
+	\] 
+\end{definition}
+
+\begin{proposition}
+	All the $L^2$ bounded martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2$. All the $L^2$ bounded continuous martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2_c$, which is closed subspace of $H^2$.
+\end{proposition}
+
+
+
+
+
+
 
 
 \section{Brownian Motion}
@@ -592,16 +710,7 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 	\item $B$ is a martingale.
 	\end{enumerate}
 \end{proposition}
-\begin{definition}[quadratic variation]	
-Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on a probability space  $(\Omega,\mathcal{F},\mathrm{P})$. The \emph{quadratic} variation of $(X_t)_{t\ge 0}$ is the stochastic process, written as $[X]_t$, defined as
-\[
-[X]_{t}=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2} \quad\text{a.e.,}
-\] 
-where $P=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and the norm of the partition $P$ is the length of the longest of these subintervals, namely
-\[
-\Vert P\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
-\]
-\end{definition}
+
 \begin{theorem}
 	The quadratic variation of a Brownian motion $B$ exists, and is given by $[B]_t = t$. 
 \end{theorem}

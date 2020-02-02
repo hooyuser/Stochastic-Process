@@ -28,18 +28,30 @@
 \contentsline {definition}{{Definition}{5.{1}}{conditional expectation}}{10}{definition.5.1}
 \contentsline {proposition}{{Proposition}{5.{1}}{}}{10}{proposition.5.1}
 \contentsline {definition}{{Definition}{5.{2}}{filtration}}{10}{definition.5.2}
-\contentsline {example}{{Example}{5.{1}}{}}{10}{example.5.1}
-\contentsline {definition}{{Definition}{5.{3}}{stopping time}}{10}{definition.5.3}
-\contentsline {definition}{{Definition}{5.{4}}{stopping time in discrete-time case}}{11}{definition.5.4}
-\contentsline {example}{{Example}{5.{2}}{}}{11}{example.5.2}
-\contentsline {definition}{{Definition}{5.{5}}{martingale}}{11}{definition.5.5}
-\contentsline {definition}{{Definition}{5.{6}}{submartingale}}{11}{definition.5.6}
-\contentsline {definition}{{Definition}{5.{7}}{supermartingale}}{11}{definition.5.7}
-\contentsline {example}{{Example}{5.{3}}{}}{11}{example.5.3}
-\contentsline {definition}{{Definition}{6.{1}}{Brownian motion}}{11}{definition.6.1}
-\contentsline {definition}{{Definition}{6.{2}}{Gaussian process}}{11}{definition.6.2}
-\contentsline {theorem}{{Theorem}{6.{1}}{}}{11}{theorem.6.1}
-\contentsline {proposition}{{Proposition}{6.{1}}{}}{12}{proposition.6.1}
-\contentsline {definition}{{Definition}{6.{3}}{quadratic variation}}{12}{definition.6.3}
-\contentsline {theorem}{{Theorem}{6.{2}}{}}{12}{theorem.6.2}
-\contentsline {proof}{{Proof.}{7}{}}{12}{proof.7}
+\contentsline {definition}{{Definition}{5.{3}}{right-continuous filtration}}{10}{definition.5.3}
+\contentsline {definition}{{Definition}{5.{4}}{complete filtration}}{11}{definition.5.4}
+\contentsline {definition}{{Definition}{5.{5}}{natural filtration}}{11}{definition.5.5}
+\contentsline {definition}{{Definition}{5.{6}}{stopping time}}{11}{definition.5.6}
+\contentsline {definition}{{Definition}{5.{7}}{stopping time in discrete-time case}}{11}{definition.5.7}
+\contentsline {example}{{Example}{5.{1}}{}}{11}{example.5.1}
+\contentsline {definition}{{Definition}{5.{8}}{stopping process}}{11}{definition.5.8}
+\contentsline {definition}{{Definition}{5.{9}}{discrete-time martingale}}{11}{definition.5.9}
+\contentsline {definition}{{Definition}{5.{10}}{discrete-time submartingale}}{12}{definition.5.10}
+\contentsline {definition}{{Definition}{5.{11}}{discrete-time supermartingale}}{12}{definition.5.11}
+\contentsline {example}{{Example}{5.{2}}{}}{12}{example.5.2}
+\contentsline {definition}{{Definition}{5.{12}}{continuous-time martingale}}{12}{definition.5.12}
+\contentsline {definition}{{Definition}{5.{13}}{continuous martingale}}{12}{definition.5.13}
+\contentsline {definition}{{Definition}{5.{14}}{uniform integrability}}{12}{definition.5.14}
+\contentsline {theorem}{{Theorem}{5.{1}}{Doob's maximal inequalities in continuous time}}{12}{theorem.5.1}
+\contentsline {definition}{{Definition}{5.{15}}{$L^p$ bounded martingale}}{12}{definition.5.15}
+\contentsline {theorem}{{Theorem}{5.{2}}{martingale convergence theorems in continuous time}}{12}{theorem.5.2}
+\contentsline {proposition}{{Proposition}{5.{2}}{}}{13}{proposition.5.2}
+\contentsline {definition}{{Definition}{5.{16}}{quadratic variation}}{13}{definition.5.16}
+\contentsline {definition}{{Definition}{5.{17}}{bracket process}}{13}{definition.5.17}
+\contentsline {proposition}{{Proposition}{5.{3}}{}}{13}{proposition.5.3}
+\contentsline {definition}{{Definition}{6.{1}}{Brownian motion}}{13}{definition.6.1}
+\contentsline {definition}{{Definition}{6.{2}}{Gaussian process}}{13}{definition.6.2}
+\contentsline {theorem}{{Theorem}{6.{1}}{}}{13}{theorem.6.1}
+\contentsline {proposition}{{Proposition}{6.{1}}{}}{14}{proposition.6.1}
+\contentsline {theorem}{{Theorem}{6.{2}}{}}{14}{theorem.6.2}
+\contentsline {proof}{{Proof.}{7}{}}{14}{proof.7}
