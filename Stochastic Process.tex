@@ -14,7 +14,7 @@
 \usepackage{bm}
 \usepackage{array,makecell}
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amsmath,amsfonts,amssymb,mathrsfs}
 \usepackage[thmmarks,amsmath]{ntheorem}
 \theorembodyfont{\upshape}
 \newtheorem{definition}{Definition}[section]
@@ -248,14 +248,14 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 \begin{proposition}
 	Let $(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and jump $(Z_n)_{n\in \mathbb{N}_+}$. For convenience, assume $Z_n\overset{d}{=}Z$ and $\mathrm{E}[Z^2]<+\infty$.
 	\begin{enumerate}
-		\item $\mathrm{E}[Y_t]=\lambda tE[Z]$.
-		\item $\mathrm{Var}(Y_t)=\lambda tE[Z^2]$.
+		\item $\mathrm{E}[Y_t]=\lambda t\mathrm{E}[Z]$.
+		\item $\mathrm{Var}(Y_t)=\lambda t\mathrm{E}[Z^2]$.
 		\item The moment generating function $M_{Y_t}(a)=\mathrm{E}[e^{aY_t}]=e^{\lambda t(\mathrm{E}[e^{aZ}]-1)}=e^{\lambda t(M_Z(a)-1)}$
 	\end{enumerate}
 \end{proposition}
 \begin{proof}\hspace*{1em}	
 \begin{enumerate}
-	\item Since $Z_n$ is independent of $N_t$, we have $$\mathrm{E}[Y_t]=\mathrm{E}[\mathrm{E}[Y_t|N_t]]=\mathrm{E}\left[\mathrm{E}\left[\left.\sum _{n=1}^{N_t}Z_{n}\right|N_t\right]\right]=\mathrm{E}\left[\sum _{n=1}^{N_t}\mathrm{E}\left[\left.Z_{n}\right|N_t\right]\right]=\mathrm{E}[N_tZ]=\mathrm{E}[N_t]\mathrm{E}[Z]=\lambda tE[Z].$$
+	\item Since $Z_n$ is independent of $N_t$, we have $$\mathrm{E}[Y_t]=\mathrm{E}[\mathrm{E}[Y_t|N_t]]=\mathrm{E}\left[\mathrm{E}\left[\left.\sum _{n=1}^{N_t}Z_{n}\right|N_t\right]\right]=\mathrm{E}\left[\sum _{n=1}^{N_t}\mathrm{E}\left[\left.Z_{n}\right|N_t\right]\right]=\mathrm{E}[N_tZ]=\mathrm{E}[N_t]\mathrm{E}[Z]=\lambda t\mathrm{E}[Z].$$
 	\item Since $Z_n$ is independent of $N_t$, by the law of total variance $\mathrm{Var}(Y_t)$ can be calculated as
 	\begin{align*}
 		\mathrm{Var}(Y_t)&=\mathrm{E}[\mathrm{Var}(Y_t|N_t)]+\mathrm{Var}(\mathrm{E}[Y_t|N_t])\\
@@ -498,15 +498,23 @@ In probability theory, we show that conditional expectation exists and is unique
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[filtration]
-Let $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $T$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
+Suppose $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $T$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
 \[
 \mathbb{F} =(\mathcal{F}_{t})_{t\in T}
 \]
-is called a \emph{filtration} if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
+is called a \emph{filtration} on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
 \end{definition}
-If $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}. A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$. 
+\begin{definition}[filtered probability space]
+	If $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration on the probability space $(\Omega,\mathcal{F},\mathrm{P})$, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}.
+\end{definition}
 
-\noindent If $T=[0,\infty]$, the definition of $\mathcal{F}_{\infty}$ is usually specified as
+\begin{definition}[adapted process]
+	A stochastic process $X=(X_{t})_{t \in T}$ is called \emph{adapted} (to the filtration $(\mathcal{F}_{t})_{t\in T}$ ) if for any $t \in T, X_{t}$ is $\mathcal{F}_{t}$ -measurable, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
+\end{definition}
+
+A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$. 
+
+If $T=[0,\infty]$, the definition of $\mathcal{F}_{\infty}$ is usually specified as
 \[
 \mathcal{F}_{\infty}=\sigma\left(\bigcup_{t\ge0} \mathcal{F}_t\right)
 \]
@@ -546,22 +554,10 @@ X_{t} :=1_{\tau\le t}=\left\{\begin{array}{ll}{1} & {\text { if }  \tau\le t } \
 is adapted to $(\mathcal{F}_{t})_{t\in T }$.
 \end{definition}
 
-\begin{definition}[stopping time in discrete-time case]
-	Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ with values in $\mathbb{N}\cup\{+\infty\}$. Then $\tau$  is called a stopping time (with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$), if the following condition holds:
-	\[
-	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
-	\]
-\end{definition}
-\begin{example}
-	Given a discrete-time stochastic process $(X_{n})_{n\ge 0}$ defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0 },\mathrm{P})$ and a Borel set $B$,
-	\[
-	\tau=\inf\{n\ge0:X_n\in B\}
-	\]
-	is a stopping time, called the \emph{first hitting time}. ($\inf\varnothing = \infty $)
-\end{example}
 
-\begin{definition}[stopping process]
-	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$. The stopping process $X^\tau$ is defined as $(X_{\tau \wedge t})_{t\in T}$, where
+
+\begin{definition}[stopped process]
+	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$. The stopping process $X^\tau$ is defined as $(X_{\tau \wedge t})_{t\in T}$, where
 	\begin{align*}
 	X_{\tau \wedge t}:\Omega&\longrightarrow S\\
 	\omega&\longmapsto X_{\tau(\omega) \wedge t}(\omega).
@@ -592,6 +588,44 @@ A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ 
 \begin{example}
 	Suppose $(M_n)_{n\ge 0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and that $\phi:\mathbb{R}\to\mathbb{R}$ is convex. If $\phi(M_n)$ is integrable for $n\ge0$, then $\left(\phi(M_n)\right)_{n\ge 0}$ is a submartingale.
 \end{example}
+
+\begin{definition}[stopping time in discrete-time case]
+	Let $\tau$  be a random variable defined on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ with values in $\mathbb{N}\cup\{+\infty\}$. Then $\tau$ is called a stopping time (with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$), if the following condition holds:
+	\[
+	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
+	\]
+\end{definition}
+
+\begin{example}
+	Given a discrete-time stochastic process $(X_{n})_{n\ge 0}$ defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0 },\mathrm{P})$ and a Borel set $B$,
+	\[
+	\tau=\inf\{n\ge0:X_n\in B\}
+	\]
+	is a stopping time, called the \emph{first hitting time}. ($\inf\varnothing = \infty $)
+\end{example}
+
+\begin{definition}[martingale transform]
+The process $\widetilde{M}=(\widetilde{M}_{n})_{n\ge0}$ defined by setting $\widetilde{M}_{0}=M_{0}$ and by setting
+\[
+\widetilde{M}_{n}=M_{0}+A_{1}\left(M_{1}-M_{0}\right)+A_{2}\left(M_{2}-M_{1}\right)+\cdots+A_{n}\left(M_{n}-M_{n-1}\right)
+\]
+for $n \geq 1$ is called the martingale transform of $M$ by $A$.
+\end{definition}
+
+\begin{theorem}[martingale transform theorem]
+If $M=(M_{n})_{n\ge0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and if $A=(A_{n})_{n\ge0}$ is predicted process with respect to $(\mathcal{F}_{n})_{n\ge0}$, then the martingale transform $\widetilde{M}$ of $M$ by $A$ is itself a martingale with respect to $(\mathcal{F}_{n})_{n\ge0}$.
+\end{theorem}
+
+\begin{theorem}[stopping time theorem]
+If $M=(M_{n})_{n\ge0}$ is a martingale defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and $\tau$ is a stopping time with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$, then the stopped process $M^\tau=(M_{\tau\wedge{n}})_{n\ge0}$ is also a martingale defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and $\mathrm{E}[M_{\tau\wedge{n}}]=\mathrm{E}[M_0]$ for $n\ge0$.
+\end{theorem}
+
+\begin{theorem}[Doob's optional sampling theorem]
+Let $M=(M_{n})_{n\ge0}$ be a martingale defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$. Suppose $\mathrm{P}(\tau<\infty)=1$ and $M^\tau$ is $L^1$-bounded, then $\mathrm{E}[M_\tau]=\mathrm{E}[M_{0}]$.
+\end{theorem}
+\begin{proof}	
+Since $\mathrm{P}(\tau<\infty)=1, X_{\tau \wedge n} \rightarrow X_{\tau}$ w.p. 1 and $\left|X_{\tau}\right| \leq K<\infty$ and hence $\mathrm{E}\left[\left|X_{\tau}\right|\right]<\infty .$ Thus, $\mathrm{E}\left[\left|X_{\tau}-X_{\tau \wedge n}\right| \right]\leq 2 K \mathrm{P}(\tau>n) \rightarrow 0$.
+\end{proof}
 
 \subsection{Continuous-time Martingale}
 \begin{definition}[continuous-time martingale]
@@ -628,15 +662,16 @@ and, if $M_{T} \in L^{p}(\Omega,\mathcal{F},\mathrm{P})$ for some $p>1,$ then we
 \]
 \end{theorem}
 
-\begin{definition}[$L^p$ bounded martingale]
-	A martingale $M=(M_t)_{t\ge0}$ is said to be $L^p$ \emph{bounded} if 
+\begin{definition}[$L^p$-bounded martingale]
+	A martingale $M=(M_t)_{t\ge0}$ is said to be $L^p$-\emph{bounded} if 
 	$$
 	\sup _{t \geq 0} \mathrm{E}\left[|M_{t}|^{p}\right]<\infty.
 	$$
 \end{definition}
 
 
-\begin{theorem}[martingale convergence theorems in continuous time] Let $M=(M_{t})_{t\ge0}$ be a continuous martingale on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|^{p}\right] \leq B<\infty$ for some $p>1$ and all $t \geq 0,$ then there exists a random variable $M_{\infty}\in L^p(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|^p\right] \leq B$ such that
+\begin{theorem}[martingale convergence theorems in continuous time]\label{martingale convergence}
+Let $M=(M_{t})_{t\ge0}$ be a continuous martingale on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|^{p}\right] \leq B<\infty$ for some $p>1$ and all $t \geq 0,$ then there exists a random variable $M_{\infty}\in L^p(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|^p\right] \leq B$ such that
 \[
 \mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1 \text { and } \lim _{t \rightarrow \infty}\left\|M_{t}-M_{\infty}\right\|_{p}=0.
 \]
@@ -645,12 +680,18 @@ Also, if $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|\right]\le B<\infty$ f
 \mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1.
 \]
 \end{theorem}
-\begin{proposition}
-All the $L^2$ bounded martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2$, where the inner product is defined as $\langle M, N\rangle_{H^{2}}:=\left\langle M_{\infty}, N_{\infty}\right\rangle_{L^{2}}=E\left[M_{\infty} N_{\infty}\right]$. All the $L^2$ bounded continuous martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2_c$, which is a closed subspace of $H^2$.
+According to the theorem \ref{martingale convergence}, $M_{\infty}$ is well defined for any $L^p$-bounded martingale $M$. 
+
+\begin{proposition}[Hilbert spaces $\mathscr{M}^2$ and $\mathscr{M}^2_c$]
+Let $\mathcal{C}_0$ denote the collection of all the martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. All the $L^2$-bounded martingales $M\in\mathcal{C}_0$ constitute a Hilbert space, which is denoted by $\mathscr{M}^2$, with the inner product defined as 
+$$
+ (M, N)_{\mathscr{M}^2}:=\left( M_{\infty}, N_{\infty}\right)_{L^{2}}=\mathrm{E}\left[M_{\infty} N_{\infty}\right].
+$$
+All the $L^2$-bounded continuous martingales $M\in\mathcal{C}_0$ constitute a Hilbert space $\mathscr{M}^2_c$, which is a closed subspace of $\mathscr{M}^2$.
 \end{proposition}
 
 \begin{definition}[quadratic variation]	
-		Suppose that $(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. A stochastic process $Q=(\langle X\rangle_{t})_{t\ge0}$ is said to be the \emph{quadratic variation} of $(X_t)_{t\ge 0}$ if for all $t\ge0$, for all $\varepsilon>0$,
+		Suppose that $X=(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. The \emph{quadratic variation} of $X$ (if exists) is defined as the stochastic process $\langle X\rangle=(\langle X\rangle_{t})_{t\ge0}$ satisfying that for all $t\ge0$, for all $\varepsilon>0$,
 	\[
 	\lim_{\left\Vert P_{[0,t]}\right\Vert \rightarrow 0}\mathrm{P}\left(\,\left|\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2}-\langle X\rangle_{t}\right|>\varepsilon\right)=0
 	\] 
@@ -663,26 +704,65 @@ All the $L^2$ bounded martingales on the filtered probability space $(\Omega,\ma
 \begin{definition}[bracket process]	
 	The bracket process of two processes $X$ and $Y$ is
 	\[
-	\langle X, Y\rangle_{t}:=\frac{1}{4}\left(\langle X+Y\rangle_{t}-\langle X-Y\rangle_{t}\right).
+	\langle X, Y\rangle:=\frac{1}{4}\left(\langle X+Y\rangle-\langle X-Y\rangle\right)
 	\] 
+	if both $\langle X+Y\rangle$ and $\langle X-Y\rangle$ exist.
 \end{definition}
 
+
+A càdlàg (French: "continue à droite, limite à gauche"), RCLL ("right continuous with left limits"), or corlol ("continuous on (the) right, limit on (the) left") function is a function defined on the real numbers (or a subset of them) that is everywhere right-continuous and has left limits everywhere.
+
+\begin{theorem}[Doob–Meyer decomposition theorem]
+Let $Z$ be a càdlàg supermartingale satisfying
+\begin{enumerate}
+	\item $Z_0=0$ a.s;
+	\item The collection $\left\{Z_{T}\mid T \text { a finite-valued stopping time}\right\}$ is is uniformly integrable.
+\end{enumerate}
+Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale.
+\end{theorem}
+
+\begin{definition}[finite variation]	
+	A process $X$ is said to have \emph{finite variation} if it has bounded variation over every finite time interval with probability 1.	
+\end{definition}	
+
 \begin{proposition}
-	All the $L^2$ bounded martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2$. All the $L^2$ bounded continuous martingales on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ constitute a Hilbert space $H^2_c$, which is closed subspace of $H^2$.
+	If $M\in \mathscr{M}^2_c$, then its quadratic variation $\langle M\rangle$ exists and has finite variation. The almost sure limit of $\langle M\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
+	\[
+	\langle M\rangle_{\infty}=\lim_{t\to\infty}\langle M\rangle_{t}\quad\text{ a.s.}
+	\]
+	Moreover, $\langle M\rangle_{\infty}$ is integrable, and satisfies
+	\[
+	\mathrm{E}\left[\langle M\rangle_{\infty}\right]=\mathrm{E}\left[M_{\infty}^2\right].
+	\]
+\end{proposition}
+\begin{proposition}
+	If $M,N\in\mathscr{M}^2_c$, then $\langle M, N\rangle$ exists and $MN-\langle M, N\rangle$ is a uniformly integrable martingale. Consequently, the almost sure limit of $\langle M, N\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
+	\[
+	\langle M, N\rangle_{\infty}=\lim_{t\to\infty}\langle M, N\rangle_{t}\quad\text{ a.s.}
+	\]
+	Moreover, $\langle M, N\rangle_{\infty}$ is integrable, and satisfies
+	\[
+	\mathrm{E}\left[\langle M, N\rangle_{\infty}\right]=\mathrm{E}\left[M_{\infty} N_{\infty}\right].
+	\]
+\end{proposition}
+\begin{proposition}
+\[
+\int_{0}^{t}\left|X_{s}\right|\left|Y_{s}\right| d\langle M, N\rangle_{s} \leq\left(\int_{0}^{t} X_{s}^{2} d\langle M\rangle_{s}\right)^{\frac{1}{2}}\left(\int_{0}^{t} Y_{s}^{2} d\langle N\rangle_{s}\right)^{\frac{1}{2}}.
+\]
 \end{proposition}
 
-
-
-
-
-
+\begin{proposition}
+	\[
+	\left\langle M^{\tau}, N^{\tau}\right\rangle=\left\langle M^{\tau}, N\right\rangle=\langle M, N\rangle^{\tau}.
+	\]
+\end{proposition}
 
 
 \section{Brownian Motion}
 \begin{definition}[Brownian motion]
 	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
 	\begin{enumerate}
-		\item $B_0=0$.
+		\item $B_0=0$ a.s.
 		\item $(B_t)_{t\ge0}$ has continuous path, that is $t\mapsto B_t$ is almost surely continuous.
 		\item $(B_t)_{t\ge0}$ has independent and stationary increments.
 		\item For $t>0$, $B_t\sim N(0,t)$.
@@ -712,7 +792,7 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 \end{proposition}
 
 \begin{theorem}
-	The quadratic variation of a Brownian motion $B$ exists, and is given by $[B]_t = t$. 
+	The quadratic variation of a Brownian motion $B$ exists, and is given by $\langle B\rangle_{t}= t$. 
 \end{theorem}
 \begin{proof} 
 	Given a partition $P$ of the interval $[0,t]$, we have
@@ -740,9 +820,104 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 	\]
 	we conclude 
 	\[
-	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.e.}
+	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.s.}
 	\]
 \end{proof}
+
+\section{Itô Integral}
+\subsection{Stochastic Integrals for $L^2$-Bounded Martingales}
+\begin{definition}[progressively measurable]
+	Let $\Phi=(\Phi_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If for all $T\ge0$, the mapping
+	\begin{align*}
+	\Phi^{(T)}: \Omega \times [0, T]&\longrightarrow S\\
+	(\omega,t)&\longmapsto \Phi_t(\omega)
+	\end{align*}
+	is $\mathcal{F}_T\otimes \mathcal{B}([0,T])$ -measurable, we say $\Phi$ is \emph{progressively measurable}.
+\end{definition}
+
+\begin{proposition}[Hilbert space $\mathscr{L}^2(M)$]
+	Suppose $M\in \mathscr{M}^2_c$. Define
+	\begin{align*}
+	\mathrm{P}_{M}: \mathcal{F} \otimes \mathcal{B}([0, \infty))&\longrightarrow S\\
+	A&\longmapsto \mathrm{E}\left[\int_{0}^{\infty} \mathbf{1}_{A}(\omega, s) d\langle M\rangle_{s}\right]=\int_{\Omega}\left[\int_{0}^{\infty} \mathbf{1}_{A}(\omega, s) d\langle M\rangle_{s}(\omega)\right]d\mathrm{P}
+	\end{align*}
+	Then $\left( \Omega\times[0, \infty) ,  \mathcal{F}\otimes \mathcal{B}([0, \infty)), \mathrm{P}_{M}\right)$ is a measure space. Let 
+	$$
+	\mathscr{L}^2(M)=\{\Phi\in L^2\left( \Omega\times[0, \infty) ,\mathcal{F}\otimes \mathcal{B}([0, \infty)), \mathrm{P}_{M}\right):\Phi \text{ is progressively measurable}\}.
+	$$
+	$\mathscr{L}^2(M)$ is a closed subspace of $L^2\left( \Omega\times[0, \infty) ,\mathcal{F}\otimes \mathcal{B}([0, \infty)), \mathrm{P}_{M}\right)$ and also a Hilbert space, with the inner product written as
+	\[
+	(\Phi,\Psi)_{\mathscr{L}^2(M)}= \mathrm{E}\left[\int_{0}^{\infty} \Phi_s\Psi_s d\langle M\rangle_{s}\right].
+	\]
+	The associated norm is
+	\[
+	\|\Phi\|_{\mathscr{L}^2(M)}=\left(\mathrm{E}\left[\int_{0}^{\infty} \Phi_{s}^{2} d\langle M\rangle_{s}\right]\right)^{\tfrac{1}{2}}.
+	\]
+\end{proposition}
+
+\begin{definition}[elementary process]
+An elementary process is a progressive process of the form
+\[
+\Phi_{t}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i+1}\right]}(t)
+\]
+where $0=t_{0}<t_{1}<t_{2}<\cdots<t_{p}$ and for every $i \in\{0,1, \ldots, p-1\}, \Phi_{(i)}$ is a
+bounded $\mathscr{F}_{t_{i}}$ -measurable random variable.
+\end{definition}
+
+The set $\mathscr{E}$ of all elementary processes forms a linear subspace of $L^{2}(M) .$ To be precise, we should here say "equivalence classes of elementary processes" "(recall that $\Phi$ and $\Phi^{\prime}$ are identified in $\mathscr{L}^{2}(M)$ if $\left\|\Phi-\Phi^{\prime}\right\|_{\mathscr{L}^{2}(M)}=0$ ).
+
+\begin{proposition}
+For every $M \in \mathscr{M}^2_c, \mathscr{E}$ is dense in $\mathscr{L}^{2}(M)$.
+\end{proposition}
+
+\begin{theorem}
+Let $M \in \mathscr{M}^2_c .$ For every $\Phi \in \mathscr{E}$ of the form
+\[
+\Phi_{t}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i+1}\right]}(t)
+\]
+the formula
+\[
+(\Phi \cdot M)_{t}=\int_{0}^{t}\Phi_sdM_s:=\sum_{i=0}^{p-1} \Phi_{(i)}\left(M_{t_{i+1} \wedge t}-M_{t_{i} \wedge t}\right)
+\]
+defines a process $\Phi \cdot M \in \mathscr{M}^2_c.$ The mapping
+\begin{align*}
+I_M:\mathscr{L}^{2}(M)&\longrightarrow\mathscr{M}^2_c\\
+\Phi &\mapsto \Phi \cdot M
+\end{align*}
+is a linear isometry, which means
+\[
+\|\Phi \cdot M\|_{\mathscr{M}^2_c}=\left(\mathrm{E}\left[\left(\int_{0}^{\infty}\Phi_sdM_s\right)^2\right]\right)^{\tfrac{1}{2}}=\|\Phi\|_{\mathscr{L}^2(M)}=\left(\mathrm{E}\left[\int_{0}^{\infty} \Phi_{s}^{2} d\langle M\rangle_{s}\right]\right)^{\tfrac{1}{2}}.
+\]
+Furthermore, $\Phi \cdot M$ is the unique martingale in $\mathscr{M}^2_c$ that satisfies the property
+\begin{align*}
+\langle \Phi \cdot M, N\rangle&= \Phi \cdot\langle M, N\rangle, \quad \forall N \in\mathscr{M}^2_c,\\
+\left\langle \int_{0}^{t}\Phi_sdM_s, N_t\right\rangle&= \int_{0}^{t}\Phi_sd\left\langle M_s, N_s\right\rangle, \quad \forall N \in\mathscr{M}^2_c,\;t\in[0,\infty).
+\end{align*}
+We call $H \cdot M$ the stochastic integral of $H$ with respect to $M$.
+\end{theorem}
+
+\begin{proposition}
+	Assume that $M,N\in\mathscr{M}^2_c$, $\Phi\in\mathcal{L}^2(M)$, $\Psi\in\mathcal{L}^2(N)$. Then
+	\[
+	\left\langle\int_{0}^\cdot \Phi_{s} \mathrm{d} M_{s}, \int_{0}^\cdot \Psi_{s} \mathrm{d} N_{s}\right\rangle_{t}=\int_{0}^{t} \Phi_{s}\Psi_{s} \mathrm{d}\langle M, N\rangle_{s}.
+	\]
+\end{proposition}
+
+\begin{proposition}
+If $\tau$ is a stopping time, we have
+\begin{align*}
+\left(\mathbf{1}_{[0, \tau]} \Phi\right) \cdot M&=(\Phi \cdot M)^{\tau}=\Phi \cdot M^{\tau},\\
+\int_{0}^{t}\mathbf{1}_{[0, \tau]}(s)\Phi_sdM_s&=\int_{0}^{\tau\wedge t}\Phi_sdM_s=\int_{0}^{ t}\Phi_sdM_s^{\tau},\quad\forall t\in[0,\infty].
+\end{align*}
+\end{proposition}
+
+
+
+
+
+
+
+
 \newpage
 
 \section*{Appendix}
@@ -781,7 +956,9 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 		Uniform (continuous) $U(a,b)$&$\dfrac{1}{b-a}I_{[a,b]}(x)$&$\dfrac{a+b}{2}$&$\dfrac{(b-a)^{2}}{12}$\\ \hline
 		Exponential $Exp(\lambda)=\Gamma(1,\lambda )$&$\lambda e^{-\lambda x}I_{[0,+\infty)}(x)$&$\lambda^{-1}$ &$\lambda^{-2}$\\ \hline
 		Normal $N(\mu ,\sigma ^{2})$&${\dfrac {1}{\sqrt {2\pi \sigma ^{2}}}}e^{-{\frac {(x-\mu )^{2}}{2\sigma ^{2}}}}$&$\mu$&$\sigma^2$\\ \hline
+		Log-normal $LogN(\mu ,\sigma ^{2})$&$\dfrac{1}{x\sqrt{2 \pi\sigma^{2}}} \exp \left(-\frac{(\ln x-\mu)^{2}}{2 \sigma^{2}}\right)$&$e^{\gamma+\frac{\sigma^{2}}{2}}$&$e^{2\left(\gamma+\sigma^{2}\right)}-e^{2 \gamma+\sigma^{2}}$\\ \hline
 		Gamma $\Gamma (\alpha,\beta )$&$\dfrac{\beta ^{\alpha }}{\Gamma (\alpha )}x^{\alpha -1}e^{-\beta x}I_{(0,+\infty)}(x)$&$\dfrac{\alpha}{\beta}$&$\dfrac{\alpha}{\beta^2}$ \\ \hline
+		Beta $B(\alpha,\beta )$&$\dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{\mathrm{B}(\alpha, \beta)}I_{(0,1)}(x)$&$\dfrac{\alpha}{\alpha+\beta}$&$\dfrac{\alpha \beta}{(\alpha+\beta)^{2}(\alpha+\beta+1)}$ \\ \hline
 		Chi-squared $\chi^{2}_k=\Gamma (\frac{k}{2},\frac{1}{2})$ &$\dfrac{1}{2^{k/2}\Gamma (k/2)}\;x^{k/2-1}e^{-x/2}I_{(0,+\infty)}(x)$&$k$&$2k$ \\ \hline
 		Student's t $t_{\nu}$&$\dfrac { \Gamma \left( \frac { \nu + 1 } { 2 } \right) } { \sqrt { \nu \pi } \Gamma \left( \frac { \nu } { 2 } \right) } \left( 1 + \dfrac { x ^ { 2 } } { \nu } \right) ^ { - \frac { \nu + 1 } { 2 } }$&0&$\dfrac { \nu } { \nu - 2 }$ for $\nu > 2$
 		\\ \hline
@@ -810,6 +987,7 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 		Chi-squared $\chi^{2}_k$&$( 1 - 2 t ) ^ { - \frac { k } { 2 } } $&$ ( 1 - 2 i t ) ^ { - \frac { k } { 2 } } $ \\ \hline
 		Noncentral chi-squared $\chi^{2}_k(\lambda)$&$e^{\lambda t/( 1 - 2 t ) }( 1 - 2 t )^{- \frac{ k } { 2 } } $ & $ e ^ { i \lambda t / ( 1 - 2 i t ) } ( 1 - 2 i t ) ^{ - \frac { k } { 2 } } $ \\ \hline
 		Gamma $\Gamma (\alpha,\beta )$&$\left(1-{\dfrac{t}{\beta }}\right)^{-\alpha },\ t<\beta $ & $\left(1-{\dfrac{it}{\beta }}\right)^{-\alpha }$\\ \hline
+		Beta $B(\alpha,\beta )$&$1+\sum\limits_{k=1}^{\infty}\left(\prod\limits_{r=0}^{k-1} \dfrac{\alpha+r}{\alpha+\beta+r}\right) \dfrac{t^{k}}{k !}$ & $_{1} F_{1}(\alpha ; \alpha+\beta ; i t)$\\ \hline
 		Exponential $Exp(\lambda )$&$\dfrac{\lambda}{\lambda-t}, t < \lambda$ & $\dfrac{\lambda}{\lambda-it}$\\ \hline
 		Multivariate normal $N(\bm{\mu } ,\mathbf{\Sigma })$&$e ^ { \mathbf{t} ^ { T } \left( \bm{\mu} + \frac { 1 } { 2 } \mathbf{\Sigma } \mathbf{t} \right) }$&$e ^ { \mathbf{t} ^ { T } \left( i\bm{\mu} -\frac { 1 } { 2 } \mathbf{\Sigma } \mathbf{t} \right) }$ \\ \hline
 		Cauchy $Cauchy(\mu ,\theta )$&Does not exist&$e ^ { i t \mu - \theta | t | }$\\ \hline
