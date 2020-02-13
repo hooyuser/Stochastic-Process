@@ -1,14 +1,15 @@
 \contentsline {definition}{{Definition}{1.{1}}{stochastic process}}{1}{definition.1.1}
-\contentsline {definition}{{Definition}{1.{2}}{strictly stationary process}}{1}{definition.1.2}
-\contentsline {definition}{{Definition}{1.{3}}{independent increments}}{1}{definition.1.3}
-\contentsline {definition}{{Definition}{1.{4}}{stationary increments}}{1}{definition.1.4}
+\contentsline {definition}{{Definition}{1.{2}}{}}{1}{definition.1.2}
+\contentsline {definition}{{Definition}{1.{3}}{strictly stationary process}}{1}{definition.1.3}
+\contentsline {definition}{{Definition}{1.{4}}{independent increments}}{1}{definition.1.4}
+\contentsline {definition}{{Definition}{1.{5}}{stationary increments}}{1}{definition.1.5}
 \contentsline {definition}{{Definition}{2.{1}}{Poisson process (I)}}{1}{definition.2.1}
-\contentsline {definition}{{Definition}{2.{2}}{counting process}}{1}{definition.2.2}
+\contentsline {definition}{{Definition}{2.{2}}{counting process}}{2}{definition.2.2}
 \contentsline {definition}{{Definition}{2.{3}}{Poisson process (II)}}{2}{definition.2.3}
 \contentsline {definition}{{Definition}{2.{4}}{Poisson process (III)}}{2}{definition.2.4}
 \contentsline {proposition}{{Proposition}{2.{1}}{}}{2}{proposition.2.1}
 \contentsline {proof}{{Proof.}{1}{}}{2}{proof.1}
-\contentsline {proposition}{{Proposition}{2.{2}}{}}{4}{proposition.2.2}
+\contentsline {proposition}{{Proposition}{2.{2}}{}}{5}{proposition.2.2}
 \contentsline {proof}{{Proof.}{2}{}}{5}{proof.2}
 \contentsline {definition}{{Definition}{3.{1}}{compound Poisson distribution}}{5}{definition.3.1}
 \contentsline {definition}{{Definition}{3.{2}}{compound Poisson process}}{5}{definition.3.2}
@@ -17,60 +18,67 @@
 \contentsline {definition}{{Definition}{4.{1}}{discrete-time Markov chain}}{6}{definition.4.1}
 \contentsline {proposition}{{Proposition}{4.{1}}{Chapman–Kolmogorov equation}}{7}{proposition.4.1}
 \contentsline {proof}{{Proof.}{4}{}}{7}{proof.4}
-\contentsline {definition}{{Definition}{4.{2}}{continuous-time Markov chain}}{7}{definition.4.2}
+\contentsline {definition}{{Definition}{4.{2}}{continuous-time Markov chain}}{8}{definition.4.2}
 \contentsline {example}{{Example}{4.{1}}{}}{8}{example.4.1}
 \contentsline {proposition}{{Proposition}{4.{2}}{}}{8}{proposition.4.2}
 \contentsline {proof}{{Proof.}{5}{}}{8}{proof.5}
 \contentsline {definition}{{Definition}{4.{3}}{}}{8}{definition.4.3}
 \contentsline {lemma}{{Lemma}{4.{1}}{}}{8}{lemma.4.1}
-\contentsline {proof}{{Proof.}{6}{}}{8}{proof.6}
+\contentsline {proof}{{Proof.}{6}{}}{9}{proof.6}
 \contentsline {theorem}{{Theorem}{4.{1}}{}}{9}{theorem.4.1}
-\contentsline {definition}{{Definition}{5.{1}}{conditional expectation}}{10}{definition.5.1}
+\contentsline {definition}{{Definition}{5.{1}}{Brownian motion}}{10}{definition.5.1}
+\contentsline {definition}{{Definition}{5.{2}}{Gaussian process}}{10}{definition.5.2}
+\contentsline {theorem}{{Theorem}{5.{1}}{}}{10}{theorem.5.1}
 \contentsline {proposition}{{Proposition}{5.{1}}{}}{10}{proposition.5.1}
-\contentsline {definition}{{Definition}{5.{2}}{filtration}}{10}{definition.5.2}
-\contentsline {definition}{{Definition}{5.{3}}{filtered probability space}}{10}{definition.5.3}
-\contentsline {definition}{{Definition}{5.{4}}{adapted process}}{10}{definition.5.4}
-\contentsline {definition}{{Definition}{5.{5}}{right-continuous filtration}}{11}{definition.5.5}
-\contentsline {definition}{{Definition}{5.{6}}{complete filtration}}{11}{definition.5.6}
-\contentsline {definition}{{Definition}{5.{7}}{natural filtration}}{11}{definition.5.7}
-\contentsline {definition}{{Definition}{5.{8}}{stopping time}}{11}{definition.5.8}
-\contentsline {definition}{{Definition}{5.{9}}{stopped process}}{11}{definition.5.9}
-\contentsline {definition}{{Definition}{5.{10}}{discrete-time martingale}}{11}{definition.5.10}
-\contentsline {definition}{{Definition}{5.{11}}{discrete-time submartingale}}{11}{definition.5.11}
-\contentsline {definition}{{Definition}{5.{12}}{discrete-time supermartingale}}{11}{definition.5.12}
-\contentsline {example}{{Example}{5.{1}}{}}{12}{example.5.1}
-\contentsline {definition}{{Definition}{5.{13}}{stopping time in discrete-time case}}{12}{definition.5.13}
-\contentsline {example}{{Example}{5.{2}}{}}{12}{example.5.2}
-\contentsline {definition}{{Definition}{5.{14}}{martingale transform}}{12}{definition.5.14}
-\contentsline {theorem}{{Theorem}{5.{1}}{martingale transform theorem}}{12}{theorem.5.1}
-\contentsline {theorem}{{Theorem}{5.{2}}{stopping time theorem}}{12}{theorem.5.2}
-\contentsline {theorem}{{Theorem}{5.{3}}{Doob's optional sampling theorem}}{12}{theorem.5.3}
-\contentsline {proof}{{Proof.}{7}{}}{12}{proof.7}
-\contentsline {definition}{{Definition}{5.{15}}{continuous-time martingale}}{12}{definition.5.15}
-\contentsline {definition}{{Definition}{5.{16}}{continuous martingale}}{12}{definition.5.16}
-\contentsline {definition}{{Definition}{5.{17}}{uniform integrability}}{13}{definition.5.17}
-\contentsline {theorem}{{Theorem}{5.{4}}{Doob's maximal inequalities in continuous time}}{13}{theorem.5.4}
-\contentsline {definition}{{Definition}{5.{18}}{$L^p$-bounded martingale}}{13}{definition.5.18}
-\contentsline {theorem}{{Theorem}{5.{5}}{martingale convergence theorems in continuous time}}{13}{theorem.5.5}
-\contentsline {proposition}{{Proposition}{5.{2}}{Hilbert spaces $\mathscr {M}^2$ and $\mathscr {M}^2_c$}}{13}{proposition.5.2}
-\contentsline {definition}{{Definition}{5.{19}}{quadratic variation}}{13}{definition.5.19}
-\contentsline {definition}{{Definition}{5.{20}}{bracket process}}{14}{definition.5.20}
-\contentsline {theorem}{{Theorem}{5.{6}}{Doob–Meyer decomposition theorem}}{14}{theorem.5.6}
-\contentsline {definition}{{Definition}{5.{21}}{finite variation}}{14}{definition.5.21}
-\contentsline {proposition}{{Proposition}{5.{3}}{}}{14}{proposition.5.3}
-\contentsline {proposition}{{Proposition}{5.{4}}{}}{14}{proposition.5.4}
-\contentsline {proposition}{{Proposition}{5.{5}}{}}{14}{proposition.5.5}
-\contentsline {proposition}{{Proposition}{5.{6}}{}}{14}{proposition.5.6}
-\contentsline {definition}{{Definition}{6.{1}}{Brownian motion}}{15}{definition.6.1}
-\contentsline {definition}{{Definition}{6.{2}}{Gaussian process}}{15}{definition.6.2}
-\contentsline {theorem}{{Theorem}{6.{1}}{}}{15}{theorem.6.1}
-\contentsline {proposition}{{Proposition}{6.{1}}{}}{15}{proposition.6.1}
-\contentsline {theorem}{{Theorem}{6.{2}}{}}{15}{theorem.6.2}
-\contentsline {proof}{{Proof.}{8}{}}{15}{proof.8}
-\contentsline {definition}{{Definition}{7.{1}}{progressively measurable}}{16}{definition.7.1}
-\contentsline {proposition}{{Proposition}{7.{1}}{Hilbert space $\mathscr {L}^2(M)$}}{16}{proposition.7.1}
-\contentsline {definition}{{Definition}{7.{2}}{elementary process}}{16}{definition.7.2}
-\contentsline {proposition}{{Proposition}{7.{2}}{}}{17}{proposition.7.2}
-\contentsline {theorem}{{Theorem}{7.{1}}{}}{17}{theorem.7.1}
-\contentsline {proposition}{{Proposition}{7.{3}}{}}{17}{proposition.7.3}
-\contentsline {proposition}{{Proposition}{7.{4}}{}}{17}{proposition.7.4}
+\contentsline {theorem}{{Theorem}{5.{2}}{}}{10}{theorem.5.2}
+\contentsline {proof}{{Proof.}{7}{}}{10}{proof.7}
+\contentsline {definition}{{Definition}{6.{1}}{conditional expectation}}{11}{definition.6.1}
+\contentsline {proposition}{{Proposition}{6.{1}}{projection in $L^2(\Omega ,\mathcal {F},\mathrm {P})$}}{11}{proposition.6.1}
+\contentsline {proposition}{{Proposition}{6.{2}}{}}{12}{proposition.6.2}
+\contentsline {definition}{{Definition}{6.{2}}{filtration}}{12}{definition.6.2}
+\contentsline {definition}{{Definition}{6.{3}}{filtered probability space}}{12}{definition.6.3}
+\contentsline {definition}{{Definition}{6.{4}}{adapted process}}{12}{definition.6.4}
+\contentsline {definition}{{Definition}{6.{5}}{right-continuous filtration}}{12}{definition.6.5}
+\contentsline {definition}{{Definition}{6.{6}}{complete filtration}}{12}{definition.6.6}
+\contentsline {definition}{{Definition}{6.{7}}{natural filtration}}{13}{definition.6.7}
+\contentsline {definition}{{Definition}{6.{8}}{stopping time}}{13}{definition.6.8}
+\contentsline {definition}{{Definition}{6.{9}}{stopped process}}{13}{definition.6.9}
+\contentsline {definition}{{Definition}{6.{10}}{discrete-time martingale}}{13}{definition.6.10}
+\contentsline {definition}{{Definition}{6.{11}}{discrete-time submartingale}}{13}{definition.6.11}
+\contentsline {definition}{{Definition}{6.{12}}{discrete-time supermartingale}}{13}{definition.6.12}
+\contentsline {example}{{Example}{6.{1}}{}}{13}{example.6.1}
+\contentsline {definition}{{Definition}{6.{13}}{stopping time in discrete-time case}}{13}{definition.6.13}
+\contentsline {example}{{Example}{6.{2}}{}}{14}{example.6.2}
+\contentsline {definition}{{Definition}{6.{14}}{martingale transform}}{14}{definition.6.14}
+\contentsline {theorem}{{Theorem}{6.{1}}{martingale transform theorem}}{14}{theorem.6.1}
+\contentsline {theorem}{{Theorem}{6.{2}}{stopping time theorem}}{14}{theorem.6.2}
+\contentsline {theorem}{{Theorem}{6.{3}}{Doob's optional sampling theorem}}{14}{theorem.6.3}
+\contentsline {proof}{{Proof.}{8}{}}{14}{proof.8}
+\contentsline {definition}{{Definition}{6.{15}}{continuous-time martingale}}{14}{definition.6.15}
+\contentsline {definition}{{Definition}{6.{16}}{continuous martingale}}{14}{definition.6.16}
+\contentsline {definition}{{Definition}{6.{17}}{uniform integrability}}{14}{definition.6.17}
+\contentsline {theorem}{{Theorem}{6.{4}}{Doob's maximal inequalities in continuous time}}{15}{theorem.6.4}
+\contentsline {definition}{{Definition}{6.{18}}{$L^p$-bounded martingale}}{15}{definition.6.18}
+\contentsline {theorem}{{Theorem}{6.{5}}{martingale convergence theorems in continuous time}}{15}{theorem.6.5}
+\contentsline {proposition}{{Proposition}{6.{3}}{Hilbert spaces $\mathscr {M}^2_0$ and $\mathscr {M}^2_{0,c}$}}{15}{proposition.6.3}
+\contentsline {definition}{{Definition}{6.{19}}{quadratic variation}}{15}{definition.6.19}
+\contentsline {theorem}{{Theorem}{6.{6}}{Doob–Meyer decomposition theorem}}{16}{theorem.6.6}
+\contentsline {definition}{{Definition}{6.{20}}{finite variation}}{16}{definition.6.20}
+\contentsline {proposition}{{Proposition}{6.{4}}{}}{16}{proposition.6.4}
+\contentsline {definition}{{Definition}{6.{21}}{bracket process}}{16}{definition.6.21}
+\contentsline {proposition}{{Proposition}{6.{5}}{}}{16}{proposition.6.5}
+\contentsline {proposition}{{Proposition}{6.{6}}{}}{16}{proposition.6.6}
+\contentsline {proposition}{{Proposition}{6.{7}}{}}{16}{proposition.6.7}
+\contentsline {proposition}{{Proposition}{6.{8}}{}}{16}{proposition.6.8}
+\contentsline {definition}{{Definition}{6.{22}}{continuous local martingale}}{17}{definition.6.22}
+\contentsline {proposition}{{Proposition}{6.{9}}{linear space $\mathscr {M}^{\mathrm {loc}}_{0,c}$}}{17}{proposition.6.9}
+\contentsline {proposition}{{Proposition}{6.{10}}{}}{17}{proposition.6.10}
+\contentsline {proposition}{{Proposition}{6.{11}}{existence of quadratic variation}}{17}{proposition.6.11}
+\contentsline {proposition}{{Proposition}{6.{12}}{}}{17}{proposition.6.12}
+\contentsline {definition}{{Definition}{7.{1}}{progressively measurable}}{18}{definition.7.1}
+\contentsline {proposition}{{Proposition}{7.{1}}{Hilbert space $\mathscr {L}^2(M)$}}{18}{proposition.7.1}
+\contentsline {definition}{{Definition}{7.{2}}{elementary process}}{18}{definition.7.2}
+\contentsline {proposition}{{Proposition}{7.{2}}{}}{18}{proposition.7.2}
+\contentsline {theorem}{{Theorem}{7.{1}}{}}{18}{theorem.7.1}
+\contentsline {proposition}{{Proposition}{7.{3}}{}}{19}{proposition.7.3}
+\contentsline {proposition}{{Proposition}{7.{4}}{}}{19}{proposition.7.4}

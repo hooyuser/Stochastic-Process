@@ -4,10 +4,12 @@
 \BOOKMARK [1][-]{section.4}{Markov Chain}{}% 4
 \BOOKMARK [2][-]{subsection.4.1}{Discrete-time Markov Chain}{section.4}% 5
 \BOOKMARK [2][-]{subsection.4.2}{Continuous-time Markov Chain}{section.4}% 6
-\BOOKMARK [1][-]{section.5}{Martingale}{}% 7
-\BOOKMARK [2][-]{subsection.5.1}{Basic Notion}{section.5}% 8
-\BOOKMARK [2][-]{subsection.5.2}{Discrete-time Martingale}{section.5}% 9
-\BOOKMARK [2][-]{subsection.5.3}{Continuous-time Martingale}{section.5}% 10
-\BOOKMARK [1][-]{section.6}{Brownian Motion}{}% 11
-\BOOKMARK [1][-]{section.7}{It\364 Integral}{}% 12
-\BOOKMARK [2][-]{subsection.7.1}{Stochastic Integrals for L2-Bounded Martingales}{section.7}% 13
+\BOOKMARK [1][-]{section.5}{Brownian Motion}{}% 7
+\BOOKMARK [1][-]{section.6}{Martingale}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Basic Notion}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Discrete-time Martingale}{section.6}% 10
+\BOOKMARK [2][-]{subsection.6.3}{Continuous-time Martingale}{section.6}% 11
+\BOOKMARK [2][-]{subsection.6.4}{Local Martingale}{section.6}% 12
+\BOOKMARK [1][-]{section.7}{It\364 Integral}{}% 13
+\BOOKMARK [2][-]{subsection.7.1}{Stochastic Integrals for L2-Bounded Martingales}{section.7}% 14
+\BOOKMARK [2][-]{subsection.7.2}{Stochastic Integrals for Local Martingales}{section.7}% 15

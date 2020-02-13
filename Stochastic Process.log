@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.16)  3 FEB 2020 04:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.16)  14 FEB 2020 00:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -338,6 +338,10 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (d:/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
+(d:/texlive/2018/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup9
+)
 (d:/texlive/2018/texmf-dist/tex/latex/ntheorem/ntheorem.sty
 Style `ntheorem', Version 1.33 <2011/08/15>
 Package: ntheorem 2011/08/15 1.33
@@ -513,163 +517,192 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 (d:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 40.
+
+(d:/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
 nput line 40.
  [1
 
 {d:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 108.
+input line 122.
 Package hyperref Info: bookmark level for unknown proof defaults to 0 on input 
-line 110.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 113.
+line 124.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
 
 
 (d:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
 
 
-Package xcolor Warning: Incompatible color definition on input line 115.
+Package xcolor Warning: Incompatible color definition on input line 129.
 
 
-Package xcolor Warning: Incompatible color definition on input line 115.
+Package xcolor Warning: Incompatible color definition on input line 129.
 
 
-Package xcolor Warning: Incompatible color definition on input line 125.
+Package xcolor Warning: Incompatible color definition on input line 139.
 
 [2] [3]
-Overfull \hbox (43.93059pt too wide) detected at line 206
+Overfull \hbox (43.93059pt too wide) detected at line 220
 []
  []
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 206--208
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 220--222
 [][] 
  []
 
 [4]
 
-Package xcolor Warning: Incompatible color definition on input line 226.
+Package xcolor Warning: Incompatible color definition on input line 240.
 
 
-Overfull \hbox (16.37303pt too wide) in paragraph at lines 231--233
+Overfull \hbox (16.37303pt too wide) in paragraph at lines 245--247
 []\OT1/cmr/m/n/10 Suppose that $\OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^X \OML/cm
 m/m/it/10 Pois\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ and that 
 $\OML/cmm/m/it/10 Z[]; Z[]; Z[]; [] $
  []
 
 
-Overfull \hbox (7.45563pt too wide) detected at line 258
+Overfull \hbox (6.30289pt too wide) detected at line 272
 \OT1/cmr/m/n/10 E[\OML/cmm/m/it/10 Y[]\OT1/cmr/m/n/10 ] = E[E[\OML/cmm/m/it/10 
 Y[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]] = E [] = E [] = E[\
 OML/cmm/m/it/10 N[]Z\OT1/cmr/m/n/10 ] = E[\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]
-E[\OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ] = \OML/cmm/m/it/10 ^^UtE\OT1/cmr/m/n/10 [
+E[\OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ] = \OML/cmm/m/it/10 ^^Ut\OT1/cmr/m/n/10 E[
 \OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 :
  []
 
 [5] [6]
-Overfull \hbox (5.75291pt too wide) in paragraph at lines 318--319
+Overfull \hbox (5.75291pt too wide) in paragraph at lines 332--333
 []\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )[]$ be a discrete-
 time Markov chain
  []
 
-Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 360.
 [7]
+Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
+t line 374.
 
-Package xcolor Warning: Incompatible color definition on input line 385.
+
+Package xcolor Warning: Incompatible color definition on input line 399.
 
 
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 385--386
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 399--400
 [][] 
  []
 
 Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 400.
+line 414.
 [8]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 455.
- [9] [10] [11]
-Overfull \hbox (1.58386pt too wide) in paragraph at lines 593--594
+t line 469.
+ [9] [10] [11] [12]
+Overfull \hbox (1.58386pt too wide) in paragraph at lines 691--692
 []\OT1/cmr/m/n/10 Suppose $(\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$ is a mar-t
 in-gale de-fined on fil-tered prob-a-bil-ity space $(
 \OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 F\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OMS/c
 msy/m/n/10 F[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 P)$
  []
 
-
-Overfull \hbox (5.2194pt too wide) in paragraph at lines 598--600
+[13]
+Overfull \hbox (5.2194pt too wide) in paragraph at lines 734--736
 []\OT1/cmr/m/n/10 A continuous-time stochas-tic pro-cess $\OML/cmm/m/it/10 M \O
 T1/cmr/m/n/10 = (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$
  []
 
-[12]
-Overfull \hbox (12.46147pt too wide) in paragraph at lines 649--650
-\OML/cmm/m/it/10 E []$\OT1/cmr/m/n/10 . All the $\OML/cmm/m/it/10 L[]$ \OT1/cmr
-/m/n/10 bounded con-tin-u-ous mar-tin-gales on the fil-tered prob-a-bil-ity spa
-ce $(
-\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 F\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OMS/c
-msy/m/n/10 F[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 P)$
+[14]
+
+Package xcolor Warning: Incompatible color definition on input line 785.
+
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 888--890
+
  []
 
-[13] [14]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 923.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 923.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 923.
+
+[17] [18] [19]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 763.
+(amsmath)                 on input line 1039.
 
 
-Overfull \hbox (9.47357pt too wide) in paragraph at lines 758--772
+Overfull \hbox (9.47357pt too wide) in paragraph at lines 1034--1048
  [][] 
  []
 
-[15]
+
+Overfull \hbox (4.75368pt too wide) in paragraph at lines 1052--1067
+ [][] 
+ []
+
+[20]
 \tf@thm=\write4
 \openout4 = `"Stochastic Process.thm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 822.
- [16]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 822.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1101.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1101.
  (./Stochastic Process.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 822.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 822.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1101.
+
 Package rerunfilecheck Info: File `"Stochastic Process".out' has not changed.
-(rerunfilecheck)             Checksum: 6B7DBF6CBD88DE8EF5A407977F128EBD;662.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 822.
+(rerunfilecheck)             Checksum: ADAD6FD09FF6713D0366C047D6E0C5CA;968.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1101.
  ) 
 Here is how much of TeX's memory you used:
- 7988 strings out of 492649
- 111819 string characters out of 6133384
- 240133 words of memory out of 5000000
- 11620 multiletter control sequences out of 15000+600000
- 10254 words of font info for 38 fonts, out of 8000000 for 9000
+ 8107 strings out of 492649
+ 113414 string characters out of 6133384
+ 243268 words of memory out of 5000000
+ 11668 multiletter control sequences out of 15000+600000
+ 18052 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,35p,586b,508s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><d:/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><d:/texlive/2018/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmex10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i7.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><
-d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/t
-exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/201
-8/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr7.pfb><d:/texlive/2018/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.
-pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on "Stochastic Process.pdf" (16 pages, 287087 bytes).
+ 41i,21n,35p,529b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><d:/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><d:/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmcsc10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmex10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi12.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+<d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><d:/texliv
+e/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><d:/texlive/2018/t
+exmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><d:/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><d:/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr5.pfb><d:/texlive/2018/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr7.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><d:/t
+exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><d:/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><d:/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msam10.pfb><d:/texlive/2018/texmf-dist/
+fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2018/texmf-dist/font
+s/type1/public/amsfonts/symbols/msbm7.pfb><d:/texlive/2018/texmf-dist/fonts/typ
+e1/public/rsfs/rsfs10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/rsfs/r
+sfs7.pfb>
+Output written on "Stochastic Process.pdf" (21 pages, 343880 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 311 compressed objects within 4 object streams
- 144 named destinations out of 1000 (max. 500000)
- 89 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 460 PDF objects out of 1000 (max. 8388607)
+ 407 compressed objects within 5 object streams
+ 191 named destinations out of 1000 (max. 500000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

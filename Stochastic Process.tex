@@ -41,10 +41,24 @@
 For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X(t):t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
 \end{definition}
 
-\noindent For convenience, we always assume $T$ is a totally ordered set and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
+For convenience, we always assume $T$ is a totally ordered set and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
 \[
 \mathcal{I}_T=\{\{t_1,t_2,\cdots,t_n\}:t_1,\cdots,t_n\in T,\;n\ge 1\}.
 \]
+
+\begin{definition}
+Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
+$X$ is a \emph{modification} of $Y$ iff
+\[
+\forall t \in T,\; \mathrm{P}(X_t=Y_t)=1
+\]
+and $X$ is \emph{indistinguishable} from $Y$ iff
+\[
+\mathrm{P}(X=Y)=\mathrm{P}(\forall t \in T,\; X_t=Y_t)=1.
+\]
+\end{definition}
+If $X$ and $Y$ are indistinguishable, they are modifications of each other.
+
 
 \begin{definition}[strictly stationary process]
 	Let $(X_t)_{t\in T}$ be a stochastic process and let \newline $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
@@ -290,20 +304,20 @@ Let $Y=(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and j
 \begin{definition}[discrete-time Markov chain]
 	A \emph{discrete-time Markov chain} on a countable state space $S$ is a sequence of random variables $X_0, X_1, X_2,\cdots$ with the Markov property, namely that $\forall n\ge0,\ \forall j,i_0,i_1,\cdots,i_n\in S$,	
 	\[
-	\mathrm{P}(X_{n+1}=j\mid X_{0}=i_{0},X_{1}=i_{1},\cdots,X_{n}=i_{n})=\mathrm{P}(X_{n+1}=j\mid X_{n}=i_{n}), 
+	\mathrm{P}(X_{n+1}=j| X_{0}=i_{0},X_{1}=i_{1},\cdots,X_{n}=i_{n})=\mathrm{P}(X_{n+1}=j| X_{n}=i_{n}), 
 	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{0}=i_{0},\cdots ,X_{n}=i_{n})>0$.
 \end{definition}	
 Markov property may be interpreted as stating that the probability of moving to the next state depends only on the present state and not on the previous states. 
 
 \noindent A discrete-time Markov chain $(X_n)_{n\ge0}$ is \emph{time-homogeneous} if
 \[
-\mathrm{P}(X_{n+2}=j\mid X_{n+1}=i)=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
+\mathrm{P}(X_{n+2}=j| X_{n+1}=i)=\mathrm{P}(X_{n+1}=j| X_{n}=i)
 \]
 for all $n\ge0$ and all $i,j\in S$. We only focus on the discrete-time time-homogeneous Markov chain on a countable space if nothing is specified. 
 
 \noindent One can consider the (possibly infinite-dimensional) \emph{transition matrix}	$P=(p_{ij})_{i,j\in S}$, where
 \[
-p_{ij}=\mathrm{P}(X_{n+1}=j\mid X_{n}=i)
+p_{ij}=\mathrm{P}(X_{n+1}=j| X_{n}=i)
 \]
 is called \emph{one-step transition probability}. By the law of total probability it is clear to see 
 \[
@@ -311,7 +325,7 @@ is called \emph{one-step transition probability}. By the law of total probabilit
 \]
 Similarly we can define \emph{$n$-step transition matrix} $P^{(n)}=\left(p^{(n)}_{ij}\right)_{i,j\in S}$, where \emph{$n$-step transition probabilities} $p^{(n)}_{ij}$ is the probability that a process in state $i$ will be in state $j$ after $n$ additional transitions. That is,
 \[
-p^{(n)}_{ij}=\mathrm{P}(X_{k+n}=j\mid X_{k}=i).
+p^{(n)}_{ij}=\mathrm{P}(X_{k+n}=j| X_{k}=i).
 \]
 As is shown below, the Chapman–Kolmogorov equation enables us to calculate $n$-step transition matrix readily.
 \begin{proposition}[Chapman–Kolmogorov equation]\hypertarget{Proposition 4.1}{}
@@ -327,10 +341,10 @@ P^{(n+m)}=P^{(n)}P^{(m)}.
 \begin{proof}
 	\[
 	\begin{aligned}
-		p^{(n+m)}_{ij}&=\mathrm{P}(X_{n+m}=j\mid X_{0}=i)\\
-		&=\sum_{k\in S}\mathrm{P}(X_{n+m}=j,X_{n}=k\mid X_{0}=i)\\
-		&=\sum_{k\in S}\mathrm{P}(X_{n}=k\mid X_{0}=i)\mathrm{P}(X_{n+m}=j\mid X_{0}=i,X_{n}=k)\\
-		&=\sum_{k\in S}\mathrm{P}(X_{n}=k\mid X_{0}=i)\mathrm{P}(X_{n+m}=j\mid X_{n}=k)\\
+		p^{(n+m)}_{ij}&=\mathrm{P}(X_{n+m}=j| X_{0}=i)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n+m}=j,X_{n}=k| X_{0}=i)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n}=k| X_{0}=i)\mathrm{P}(X_{n+m}=j| X_{0}=i,X_{n}=k)\\
+		&=\sum_{k\in S}\mathrm{P}(X_{n}=k| X_{0}=i)\mathrm{P}(X_{n+m}=j| X_{n}=k)\\
 		&=\sum_{k\in S}p^{(n)}_{ik}p^{(m)}_{kj}
 	\end{aligned}
 	\]
@@ -347,13 +361,13 @@ P^{(n+m)}=P^{(n)}P^{(m)}.
 \begin{definition}[continuous-time Markov chain]
 	A \emph{continuous-time Markov chain} on a countable state space $S$ is a stochastic $(X_t)_{t\ge 0}$ with the Markov property: for all $ n\ge0$, all $0\le t_0\le t_1\le \cdots\le t_n$, and all	$j,i_0,\cdots,i_n\in S$,
 	\[
-	\mathrm{P}(X_{t_{n+1}}=j\mid X_{t_0}=i_{1},X_{t_1}=i_{2},\cdots,X_{t_n}=i_{n})=\mathrm{P}(X_{t_{n+1}}=j\mid X_{t_n}=i_{n}), 
+	\mathrm{P}(X_{t_{n+1}}=j| X_{t_0}=i_{1},X_{t_1}=i_{2},\cdots,X_{t_n}=i_{n})=\mathrm{P}(X_{t_{n+1}}=j| X_{t_n}=i_{n}), 
 	\] if both conditional probabilities are well defined, i.e., if $ 	\mathrm{P}(X_{1}=i_{1},\cdots ,X_{n}=i_{n})>0$.
 \end{definition}
 
 \noindent A continuous-time Markov chain $(X_t)_{t\ge0}$ is \emph{time-homogeneous} if
 \[
-\mathrm{P}(X_{s+t}=j\mid X_{s}=i)=\mathrm{P}(X_{t}=j\mid X_{0}=i)=p_{ij}(t)
+\mathrm{P}(X_{s+t}=j| X_{s}=i)=\mathrm{P}(X_{t}=j| X_{0}=i)=p_{ij}(t)
 \]
 for all $s,t\ge0$ and all $i,j\in S$. 
 \begin{example}
@@ -395,7 +409,7 @@ A continuous-time Markov chain is \emph{regular} if it satisfy the following con
 \end{cases}
 \]
 \end{definition}
-Since $p_{ij}(0)=\mathrm{P}(X_{t}=j\mid X_{0}=i)=\delta_{ij}$, regularity implies $p_{ij}(t)$ is continuous at $t=0$. Furthermore, we have the following stronger results. We always assume continuous-time Markov chain is regular afterwards.
+Since $p_{ij}(0)=\mathrm{P}(X_{t}=j| X_{0}=i)=\delta_{ij}$, regularity implies $p_{ij}(t)$ is continuous at $t=0$. Furthermore, we have the following stronger results. We always assume continuous-time Markov chain is regular afterwards.
 \begin{lemma}
 	If a continuous-time Markov chain is regular, for any fixed $i,j\in S$, $p_{ij}(t)$ is uniformly continuous with respect to $t$. 
 \end{lemma}
@@ -441,7 +455,7 @@ The $q_{ij}$ can be seen as measuring how quickly the transition from $i$ to $j$
 
 \noindent Since $P(0)=I$, it can be shown that
 \[
-\mathrm{P}(X_{t+h}=j\mid X_t=i)=p_{ij}(h)=\delta _{ij}+q_{ij}h+o(h). 
+\mathrm{P}(X_{t+h}=j| X_t=i)=p_{ij}(h)=\delta _{ij}+q_{ij}h+o(h). 
 \]
 As an intermediate consequence, if the state space $S$ is finite, we have   
 \[
@@ -472,29 +486,113 @@ which follows by
 		\]
 	\end{enumerate}
 \end{theorem}
+
+\section{Brownian Motion}
+\begin{definition}[Brownian motion]
+	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
+	\begin{enumerate}
+		\item $B_0=0$ a.s.
+		\item $(B_t)_{t\ge0}$ has continuous path, that is $t\mapsto B_t$ is almost surely continuous.
+		\item $(B_t)_{t\ge0}$ has independent and stationary increments.
+		\item For $t>0$, $B_t\sim N(0,t)$.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Gaussian process]
+	A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only if for every finite set of indices $t_{1},\ldots ,t_{n}$ in the index set $T$, $(X_{t_1},X_{t_2},\cdots,X_{t_n})$ follows multivariate normal distribution $N(\mu,\Sigma)$.
+\end{definition}
+
+\begin{theorem}
+	$B=(B_t)_{t\ge0}$ is a Brownian motion if and only if $B$ is a Gaussian process satisfying
+	\begin{enumerate}
+		\item $B_0=0$,
+		\item $B$ has continuous paths,
+		\item For all $t\ge0$, $\mathrm{E}[B_t]=0$,
+		\item For all $s,t\ge0$, $\mathrm{E}[B_sB_t]=s\wedge t$.
+	\end{enumerate}
+\end{theorem}
+\begin{proposition}
+	Let $B=(B_t)_{t\ge0}$ be a Brownian motion.
+	\begin{enumerate}
+		\item For $k\ge1$, $\mathrm{E}[B_t^{2k-1}]=0$, $\mathrm{E}[B_t^{2k}]=t^{k}(2k-1)!!$.
+		\item $B$ is a Markov process. 
+		\item $B$ is a martingale.
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}
+	The quadratic variation of a Brownian motion $B$ exists, and is given by $\langle B\rangle_{t}= t$. 
+\end{theorem}
+\begin{proof} 
+	Given a partition $P$ of the interval $[0,t]$, we have
+	\[
+	\begin{aligned}
+	\mathrm{E}\left[\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right]&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{2}\right]\\
+	&=\sum _{k=1}^{n}(t_{k}-t_{k-1})\\
+	&=t
+	\end{aligned}
+	\]
+	and
+	\[
+	\begin{aligned}
+	\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)&=\sum _{k=1}^{n}\mathrm{Var}\left((B_{t_{k}}-B_{t_{k-1}})^{2}\right)\\
+	&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{4}\right]-\sum _{k=1}^{n}\left(\mathrm{E}\left[\left(B_{t_{k}}-B_{t_{k-1}}\right)^{2}\right]\right)^{2}\\
+	&=\sum_{k=1}^{n}3(t_{k}-t_{k-1})^2-\sum _{k=1}^{n}\left(t_{k}-t_{k-1}\right)^{2}\\
+	&=2\sum_{k=1}^{n}(t_{k}-t_{k-1})^2\\
+	&\le 2\Vert P\Vert\sum_{k=1}^{n}(t_{k}-t_{k-1})\\
+	&= 2\Vert P\Vert t.
+	\end{aligned}
+	\]
+	Since
+	\[
+	\lim\limits_{\Vert P\Vert\to0 }\mathrm{E}\left[\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}-t\right)^2\right]=\lim\limits_{\Vert P\Vert \to0}\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)\le \lim\limits_{\Vert P\Vert\to0 }2\Vert P\Vert t=0,
+	\]
+	we conclude 
+	\[
+	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.s.}
+	\]
+\end{proof}
+
+
+
 \section{Martingale}
 \subsection{Basic Notion}
 \begin{definition}[conditional expectation]
-	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}[|X|] < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
+	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}[\left|X\right|] < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
 	\[
 	\mathrm{E}[X I_A] = \mathrm{E}[ZI_A] \quad\text{ for all }A \in \mathcal{G}
 	\] 
-	is called the \emph{conditional expectation} of $Y$ given $\mathcal{G}$ and is written as $\mathrm{E}(X\mid\mathcal{G})$.
+	is called the \emph{conditional expectation} of $Y$ given $\mathcal{G}$ and is written as $\mathrm{E}(X|\mathcal{G})$.
 \end{definition}
 In probability theory, we show that conditional expectation exists and is unique up to absolutely surely equality. If not pointed out explicitly, all equalities and inequalities involving conditional expectation are considered to hold absolutely surely. 
+
+\begin{proposition}[projection in $L^2(\Omega,\mathcal{F},\mathrm{P})$]
+	Assume $X\in L^2(\Omega,\mathcal{F},\mathrm{P})$ and $\mathcal{G}$ is a sub-$\sigma$-algebra of $\mathcal{F}$. The set
+	\[
+	S_\mathcal{G}=\{Y\in L^2(\Omega,\mathcal{F},\mathrm{P}):\sigma(Y)\in \mathcal{G}\}
+	\]
+	is a closed subspace of $L^2(\Omega,\mathcal{F},\mathrm{P})$.
+	The conditional expectation mapping
+	\begin{align*}
+	\mathrm{E}(\cdot|\mathcal{G}):L^2(\Omega,\mathcal{F},\mathrm{P})&\longrightarrow S_\mathcal{G}\\
+	X&\longmapsto \mathrm{E}(X|\mathcal{G})
+	\end{align*}
+	is a projection to $S_\mathcal{G}$.
+\end{proposition}
+
 \begin{proposition}
 	Let $X$, $Y$, $X_n$ be integrable $\mathcal{F}$-measurable random variables on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ and  $\mathcal{G}\subset\mathcal{F}$ be a $\sigma$-algebra.
 	\begin{enumerate}  
-		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY\mid\mathcal{F}]=a\mathrm{E}[X\mid\mathcal{F}]+b\mathrm{E}[Y\mid\mathcal{F}]$.
-		\item If $X$ equals a constant $a$, then $\mathrm{E}[X\mid\mathcal{F}]=a$.
-		\item If $X\ge Y$,  then $\mathrm{E}[X\mid\mathcal{F}]\ge\mathrm{E}[Y\mid\mathcal{F}]$.
-		\item $|\mathrm{E}[X\mid\mathcal{F}]|\le\mathrm{E}[|X|\mid\mathcal{F}]$.
-		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X\mid\mathcal{F}])\le\mathrm{E}[\phi(X)\mid\mathcal{F}]$.
-		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n\mid\mathcal{F}]=\mathrm{E}[X\mid\mathcal{F}]$.
-		\item $\mathrm{E}[\mathrm{E}[X\mid\mathcal{F}]]=\mathrm{E}[X]$.
-		\item $\mathrm{E}[\mathrm{E}[X\mid\mathcal{G}]\mid\mathcal{F}]=\mathrm{E}[\mathrm{E}[X\mid\mathcal{F}]\mid\mathcal{G}]=\mathrm{E}[X\mid\mathcal{G}]$
-		\item If $X$ and $\mathcal{F}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{F}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X\mid\mathcal{F}]=X$.
-		\item If $Z$ is $\mathcal{F}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX\mid\mathcal{F}]=Z\mathrm{E}[X\mid\mathcal{F}]$
+		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY|\mathcal{F}]=a\mathrm{E}[X|\mathcal{F}]+b\mathrm{E}[Y|\mathcal{F}]$.
+		\item If $X$ equals a constant $a$, then $\mathrm{E}[X|\mathcal{F}]=a$.
+		\item If $X\ge Y$,  then $\mathrm{E}[X|\mathcal{F}]\ge\mathrm{E}[Y|\mathcal{F}]$.
+		\item $\left|\mathrm{E}[X|\mathcal{F}]\right|\le\mathrm{E}[\left|X\right||\mathcal{F}]$.
+		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X|\mathcal{F}])\le\mathrm{E}[\phi(X)|\mathcal{F}]$.
+		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n|\mathcal{F}]=\mathrm{E}[X|\mathcal{F}]$.
+		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{F}]]=\mathrm{E}[X]$.
+		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{G}]|\mathcal{F}]=\mathrm{E}[\mathrm{E}[X|\mathcal{F}]|\mathcal{G}]=\mathrm{E}[X|\mathcal{G}]$
+		\item If $X$ and $\mathcal{F}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{F}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X|\mathcal{F}]=X$.
+		\item If $Z$ is $\mathcal{F}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX|\mathcal{F}]=Z\mathrm{E}[X|\mathcal{F}]$
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[filtration]
@@ -529,7 +627,7 @@ Then $\mathbb{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. The filtrati
 
 \begin{definition}[complete filtration]
 Let
-\[\mathcal{N}_{P}:=\{A\subset 2^\Omega \mid A\subset B\text{ for a }B\text{ with }\mathrm{P}(B)=0\}
+\[\mathcal{N}_{P}:=\{A\subset 2^\Omega | A\subset B\text{ for a }B\text{ with }\mathrm{P}(B)=0\}
 \]
 be the set of all sets that are contained within a $\mathrm{P}$-null set. A filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T}$ is called a \emph{complete filtration}, if every $\mathcal{F}_{t}$ contains $\mathcal{N}_{P}$. This is equivalent to $(\Omega,\mathcal{F}_{t},\mathrm{P})$ being a complete measure space for every $t\in T$.
 \end{definition}
@@ -564,24 +662,28 @@ is adapted to $(\mathcal{F}_{t})_{t\in T }$.
 	\end{align*}
 \end{definition}
 
+It is useful to observe that, if $\mu$ is another stopping time, then
+\[
+(X^\tau)^\mu=(X^\mu)^\tau=X^{\mu\wedge\tau}.
+\]
 \subsection{Discrete-time Martingale}
 \begin{definition}[discrete-time martingale]
 	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
 	\begin{enumerate}
 		\item For $n\ge0$, $\mathrm{E}[|M_n|]<+\infty$;
-		\item For $n\ge0$, $\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]=M_n$.
+		\item For $n\ge0$, $\mathrm{E}[M_{n+1}|\mathcal{F}_n]=M_n$.
 	\end{enumerate}
 \end{definition}
 \begin{definition}[discrete-time submartingale]
 A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 \[
-\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\ge M_n.
+\mathrm{E}[M_{n+1}|\mathcal{F}_n]\ge M_n.
 \]
 \end{definition}
 \begin{definition}[discrete-time supermartingale]
 	A discrete-time \emph{supermartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
 	\[
-	\mathrm{E}[M_{n+1}\mid\mathcal{F}_n]\le M_n.
+	\mathrm{E}[M_{n+1}|\mathcal{F}_n]\le M_n.
 	\]
 \end{definition}
 
@@ -624,15 +726,15 @@ If $M=(M_{n})_{n\ge0}$ is a martingale defined on the filtered probability space
 Let $M=(M_{n})_{n\ge0}$ be a martingale defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$. Suppose $\mathrm{P}(\tau<\infty)=1$ and $M^\tau$ is $L^1$-bounded, then $\mathrm{E}[M_\tau]=\mathrm{E}[M_{0}]$.
 \end{theorem}
 \begin{proof}	
-Since $\mathrm{P}(\tau<\infty)=1, X_{\tau \wedge n} \rightarrow X_{\tau}$ w.p. 1 and $\left|X_{\tau}\right| \leq K<\infty$ and hence $\mathrm{E}\left[\left|X_{\tau}\right|\right]<\infty .$ Thus, $\mathrm{E}\left[\left|X_{\tau}-X_{\tau \wedge n}\right| \right]\leq 2 K \mathrm{P}(\tau>n) \rightarrow 0$.
+Since $\mathrm{P}(\tau<\infty)=1$, $X_{\tau \wedge n} \stackrel{a.s.}{\longrightarrow}X_{\tau}$ and $\left|X_{\tau}\right| \leq K<\infty$ and hence $\mathrm{E}\left[\left|X_{\tau}\right|\right]<\infty .$ Thus, $\mathrm{E}\left[\left|X_{\tau}-X_{\tau \wedge n}\right| \right]\leq 2 K \mathrm{P}(\tau>n) \rightarrow 0$.
 \end{proof}
 
 \subsection{Continuous-time Martingale}
 \begin{definition}[continuous-time martingale]
 	A continuous-time stochastic process $M=(M_t)_{t\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
 	\begin{enumerate}
-		\item For $t\ge0$, $\mathrm{E}[|M_t|]<+\infty$;
-		\item For $0\le t\le s<+\infty$, $\mathrm{E}[\,M_{s}\mid\mathcal{F}_t\,]=M_t$.
+		\item For $t\ge0$, $\mathrm{E}[|M_t|]<+\infty$, that is, $M_t$ is $L^1$-bounded;
+		\item For $0\le t\le s<+\infty$, $\mathrm{E}[\,M_{s}|\mathcal{F}_t\,]=M_t$.
 	\end{enumerate}
 \end{definition}
 \begin{definition}[continuous martingale]
@@ -682,16 +784,16 @@ Also, if $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|\right]\le B<\infty$ f
 \end{theorem}
 According to the theorem \ref{martingale convergence}, $M_{\infty}$ is well defined for any $L^p$-bounded martingale $M$. 
 
-\begin{proposition}[Hilbert spaces $\mathscr{M}^2$ and $\mathscr{M}^2_c$]
-Let $\mathcal{C}_0$ denote the collection of all the martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. All the $L^2$-bounded martingales $M\in\mathcal{C}_0$ constitute a Hilbert space, which is denoted by $\mathscr{M}^2$, with the inner product defined as 
+\begin{proposition}[Hilbert spaces $\mathscr{M}^2_0$ and $\mathscr{M}^2_{0,c}$]
+Let $\mathscr{M}_0$ denote the collection of all the martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. All the $L^2$-bounded martingales $M\in\mathscr{M}_0$ constitute a Hilbert space, which is denoted by $\mathscr{M}^2_{0}$, with the inner product defined as 
 $$
- (M, N)_{\mathscr{M}^2}:=\left( M_{\infty}, N_{\infty}\right)_{L^{2}}=\mathrm{E}\left[M_{\infty} N_{\infty}\right].
+ (M, N)_{\mathscr{M}^2_{0}}:=\left( M_{\infty}, N_{\infty}\right)_{L^{2}}=\mathrm{E}\left[M_{\infty} N_{\infty}\right].
 $$
-All the $L^2$-bounded continuous martingales $M\in\mathcal{C}_0$ constitute a Hilbert space $\mathscr{M}^2_c$, which is a closed subspace of $\mathscr{M}^2$.
+All the $L^2$-bounded continuous martingales $M\in\mathscr{M}_0$ constitute a Hilbert space $\mathscr{M}^2_{0,c}$, which is a closed subspace of $\mathscr{M}^2_{0}$. It follows that $\mathscr{M}^2_{0,c}\subset\mathscr{M}^2_{0}\subset\mathscr{M}_{0}$.
 \end{proposition}
 
 \begin{definition}[quadratic variation]	
-		Suppose that $X=(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. The \emph{quadratic variation} of $X$ (if exists) is defined as the stochastic process $\langle X\rangle=(\langle X\rangle_{t})_{t\ge0}$ satisfying that for all $t\ge0$, for all $\varepsilon>0$,
+	Suppose that $X=(X_t)_{t\ge 0}$ is a real-valued stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. The \emph{quadratic variation} of $X$ (if exists) is defined as the stochastic process $\langle X\rangle=(\langle X\rangle_{t})_{t\ge0}$ satisfying that for all $t\ge0$, for all $\varepsilon>0$,
 	\[
 	\lim_{\left\Vert P_{[0,t]}\right\Vert \rightarrow 0}\mathrm{P}\left(\,\left|\sum _{k=1}^{n}(X_{t_{k}}-X_{t_{k-1}})^{2}-\langle X\rangle_{t}\right|>\varepsilon\right)=0
 	\] 
@@ -701,22 +803,13 @@ All the $L^2$-bounded continuous martingales $M\in\mathcal{C}_0$ constitute a Hi
 	\]
 \end{definition}
 
-\begin{definition}[bracket process]	
-	The bracket process of two processes $X$ and $Y$ is
-	\[
-	\langle X, Y\rangle:=\frac{1}{4}\left(\langle X+Y\rangle-\langle X-Y\rangle\right)
-	\] 
-	if both $\langle X+Y\rangle$ and $\langle X-Y\rangle$ exist.
-\end{definition}
-
-
 A càdlàg (French: "continue à droite, limite à gauche"), RCLL ("right continuous with left limits"), or corlol ("continuous on (the) right, limit on (the) left") function is a function defined on the real numbers (or a subset of them) that is everywhere right-continuous and has left limits everywhere.
 
 \begin{theorem}[Doob–Meyer decomposition theorem]
 Let $Z$ be a càdlàg supermartingale satisfying
 \begin{enumerate}
 	\item $Z_0=0$ a.s;
-	\item The collection $\left\{Z_{T}\mid T \text { a finite-valued stopping time}\right\}$ is is uniformly integrable.
+	\item The collection $\left\{Z_{T}| T \text { a finite-valued stopping time}\right\}$ is is uniformly integrable.
 \end{enumerate}
 Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale.
 \end{theorem}
@@ -725,8 +818,10 @@ Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ s
 	A process $X$ is said to have \emph{finite variation} if it has bounded variation over every finite time interval with probability 1.	
 \end{definition}	
 
+The quadratic variation exists for all continuous finite variation processes, and is zero.
+ 
 \begin{proposition}
-	If $M\in \mathscr{M}^2_c$, then its quadratic variation $\langle M\rangle$ exists and has finite variation. The almost sure limit of $\langle M\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
+	If $M\in \mathscr{M}^2_{0,c}$, then its quadratic variation $\langle M\rangle$ exists and has finite variation. The almost sure limit of $\langle M\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
 	\[
 	\langle M\rangle_{\infty}=\lim_{t\to\infty}\langle M\rangle_{t}\quad\text{ a.s.}
 	\]
@@ -735,8 +830,17 @@ Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ s
 	\mathrm{E}\left[\langle M\rangle_{\infty}\right]=\mathrm{E}\left[M_{\infty}^2\right].
 	\]
 \end{proposition}
+
+\begin{definition}[bracket process]	
+	The bracket process of two processes $X$ and $Y$ is
+	\[
+	\langle X, Y\rangle:=\frac{1}{4}\left(\langle X+Y\rangle-\langle X-Y\rangle\right)
+	\] 
+	if both $\langle X+Y\rangle$ and $\langle X-Y\rangle$ exist.
+\end{definition}
+
 \begin{proposition}
-	If $M,N\in\mathscr{M}^2_c$, then $\langle M, N\rangle$ exists and $MN-\langle M, N\rangle$ is a uniformly integrable martingale. Consequently, the almost sure limit of $\langle M, N\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
+	If $M,N\in\mathscr{M}^2_{0,c}$, then $\langle M, N\rangle$ exists and $MN-\langle M, N\rangle$ is a uniformly integrable martingale. Consequently, the almost sure limit of $\langle M, N\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
 	\[
 	\langle M, N\rangle_{\infty}=\lim_{t\to\infty}\langle M, N\rangle_{t}\quad\text{ a.s.}
 	\]
@@ -745,6 +849,17 @@ Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ s
 	\mathrm{E}\left[\langle M, N\rangle_{\infty}\right]=\mathrm{E}\left[M_{\infty} N_{\infty}\right].
 	\]
 \end{proposition}
+
+\begin{proposition}
+For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c},$
+
+\begin{enumerate}
+	\item $\left\langle\alpha M+\beta M^{\prime}, N\right\rangle=\alpha\langle M, N\rangle+\beta\left\langle M^{\prime}, N\right\rangle$
+	\item$\langle M, N\rangle=\langle N, M\rangle$
+	\item$\langle M, M\rangle=\langle M\rangle \geq 0$ and $\langle M\rangle= 0 \iff M=0$
+\end{enumerate}
+\end{proposition}
+
 \begin{proposition}
 \[
 \int_{0}^{t}\left|X_{s}\right|\left|Y_{s}\right| d\langle M, N\rangle_{s} \leq\left(\int_{0}^{t} X_{s}^{2} d\langle M\rangle_{s}\right)^{\frac{1}{2}}\left(\int_{0}^{t} Y_{s}^{2} d\langle N\rangle_{s}\right)^{\frac{1}{2}}.
@@ -757,74 +872,54 @@ Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ s
 	\]
 \end{proposition}
 
-
-\section{Brownian Motion}
-\begin{definition}[Brownian motion]
-	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
-	\begin{enumerate}
-		\item $B_0=0$ a.s.
-		\item $(B_t)_{t\ge0}$ has continuous path, that is $t\mapsto B_t$ is almost surely continuous.
-		\item $(B_t)_{t\ge0}$ has independent and stationary increments.
-		\item For $t>0$, $B_t\sim N(0,t)$.
-	\end{enumerate}
+\subsection{Local Martingale}
+\begin{definition}[continuous local martingale]
+	An adapted process $M=\left(M_{t}\right)_{t \geq 0}$ with continuous sample paths is called a \emph{continuous local martingale} if there exists a nondecreasing sequence $\left(\tau_{n}\right)_{n \geq 0}$ of stopping times such that $\tau_{n} \uparrow \infty$ and, for every $n,$ the stopped process $M^{\tau_{n}}$ is a martingale.
+	
+	The sequence of stopping times $\left(\tau_{n}\right)_{n\ge0}$ is called the \emph{localizing sequence}
+	for (or is said to reduce) $M$ if $\tau_{n} \uparrow \infty$ and, for every $n,$ the stopped process $M^{\tau_{n}}$ is a martingale.
 \end{definition}
 
-\begin{definition}[Gaussian process]
-A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only if for every finite set of indices $t_{1},\ldots ,t_{n}$ in the index set $T$, $(X_{t_1},X_{t_2},\cdots,X_{t_n})$ follows multivariate normal distribution $N(\mu,\Sigma)$.
-\end{definition}
 
-\begin{theorem}
-	$B=(B_t)_{t\ge0}$ is a Brownian motion if and only if $B$ is a Gaussian process satisfying
+\begin{proposition}[linear space $\mathscr{M}^{\mathrm{loc}}_{0,c}$]
+	Let $\mathscr{M}_0^{\mathrm{loc}}$ denote the collection of all the local martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. All the continuous local martingales $M\in\mathscr{M}^{\mathrm{loc}}_{0}$ constitute a vector space, which is denoted by $\mathscr{M}^{\mathrm{loc}}_{0,c}$.
+\end{proposition}
+
+\begin{proposition}~\\
 	\begin{enumerate}
-		\item $B_0=0$,
-		\item $B$ has continuous paths,
-		\item For all $t\ge0$, $\mathrm{E}[B_t]=0$,
-		\item For all $s,t\ge0$, $\mathrm{E}[B_sB_t]=s\wedge t$.
-	\end{enumerate}
-\end{theorem}
-\begin{proposition}
-	Let $B=(B_t)_{t\ge0}$ be a Brownian motion.
-	\begin{enumerate}
-	\item For $k\ge1$, $\mathrm{E}[B_t^{2k-1}]=0$, $\mathrm{E}[B_t^{2k}]=t^{k}(2k-1)!!$.
-	\item $B$ is a Markov process. 
-	\item $B$ is a martingale.
+		\item $\mathscr{M}_{0,c}\subset\mathscr{M}^{\mathrm{loc}}_{0,c}$, and for any $M\in\mathscr{M}_{0,c}$ the sequence $\tau_{n}=n\;(n\ge0)$ reduces $M$. 
+		\item A nonnegative continuous local martingale $M$ such that $M_{0} \in L^{1}(\Omega,\mathcal{F}_0,\mathrm{P})$ is a supermartingale.
+		\item A continuous local martingale $M$ such that there exists a random variable $Z \in L^{1}(\Omega,\mathcal{F},\mathrm{P})$ with $\left|M_{t}\right| \leq Z$ for every $t \geq 0$ (in particular a bounded continuous local martingale) is a uniformly integrable martingale.
+		\item For $M \in \mathscr{M}^{\mathrm{loc}}_{0,c}$ and a stopping time $\tau,$ we have $M^{\tau} \in \mathscr{M}^{\mathrm{loc}}_{0,c}$.
+		\item For $M \in \mathscr{M}^{\mathrm{loc}}_{0,c}$, the sequence
+		$\tau_{n}=\inf \left\{t \geq 0:\left|M_{t}\right| \geq n\right\}\;(n\ge0)$	reduces $M$.
+		\item If $\left(\tau_{n}\right)_{n\ge0}$ reduces $M$ and $\left(\upsilon_{n}\right)_{n\ge0}$ is a sequence of stopping times such that $\upsilon_{n} \uparrow \infty$, then the sequence $\left(\tau_{n} \wedge \upsilon_{n}\right)_{n\ge0}$ also reduces $M$.
 	\end{enumerate}
 \end{proposition}
 
-\begin{theorem}
-	The quadratic variation of a Brownian motion $B$ exists, and is given by $\langle B\rangle_{t}= t$. 
-\end{theorem}
-\begin{proof} 
-	Given a partition $P$ of the interval $[0,t]$, we have
+\begin{proposition}[existence of quadratic variation]	
+	Let $M=\left(M_{t}\right)_{t \geq 0}$ be a continuous local martingale. There exists an	increasing process $Q=\left(Q\right)_{t \geq 0}$, which is unique up to indistinguishability, such that $(M_{t}^{2}-Q_{t})_{t \geq 0}$ is a continuous local martingale. Furthermore, $Q$ is exactly the quadratic variation of $M$.
+\end{proposition}
+
+\begin{proposition}
+	If $M,N\in \mathscr{M}^{\mathrm{loc}}_{0,c}$, the bracket process of $M$ and $N$ is well defined as
 	\[
-	\begin{aligned}
-	\mathrm{E}\left[\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right]&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{2}\right]\\
-	&=\sum _{k=1}^{n}(t_{k}-t_{k-1})\\
-	&=t
-    \end{aligned}
-    \]
-    and
-    \[
-    \begin{aligned}
-	\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)&=\sum _{k=1}^{n}\mathrm{Var}\left((B_{t_{k}}-B_{t_{k-1}})^{2}\right)\\
-	&=\sum _{k=1}^{n}\mathrm{E}\left[(B_{t_{k}}-B_{t_{k-1}})^{4}\right]-\sum _{k=1}^{n}\left(\mathrm{E}\left[\left(B_{t_{k}}-B_{t_{k-1}}\right)^{2}\right]\right)^{2}\\
-	&=\sum_{k=1}^{n}3(t_{k}-t_{k-1})^2-\sum _{k=1}^{n}\left(t_{k}-t_{k-1}\right)^{2}\\
-	&=2\sum_{k=1}^{n}(t_{k}-t_{k-1})^2\\
-	&\le 2\Vert P\Vert\sum_{k=1}^{n}(t_{k}-t_{k-1})\\
-	&= 2\Vert P\Vert t.
-	\end{aligned}
+	\langle M, N\rangle_{t}:=\frac{1}{4}\left(\langle M+N\rangle_{t}-\langle M-N\rangle_{t}\right).
 	\]
-	Since
+	Furthermore, for all $t\ge0$,
 	\[
-	\lim\limits_{\Vert P\Vert\to0 }\mathrm{E}\left[\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}-t\right)^2\right]=\lim\limits_{\Vert P\Vert \to0}\mathrm{Var}\left(\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}\right)\le \lim\limits_{\Vert P\Vert\to0 }2\Vert P\Vert t=0,
+	\langle M, N\rangle_{t}=\mathop{\mathrm{plim}}\limits_{\left\Vert P_{[0,t]}\right\Vert \rightarrow 0} \sum_{k=1}^{n}\left(M_{t_{k}}-M_{t_{k-1}}\right)\left(N_{t_{k}}-N_{t_{k-1}}\right),
 	\]
-	we conclude 
+	where $P_{[0,t]}=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and 
 	\[
-	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.s.}
+	\left\Vert P_{[0,t]}\right\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
 	\]
-\end{proof}
+\end{proposition}
+
+
 
 \section{Itô Integral}
+If not specified explicitly, the stochastic processes and random variables are always assumed to be defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$.
 \subsection{Stochastic Integrals for $L^2$-Bounded Martingales}
 \begin{definition}[progressively measurable]
 	Let $\Phi=(\Phi_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If for all $T\ge0$, the mapping
@@ -836,7 +931,7 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 \end{definition}
 
 \begin{proposition}[Hilbert space $\mathscr{L}^2(M)$]
-	Suppose $M\in \mathscr{M}^2_c$. Define
+	Suppose $M\in \mathscr{M}^2_{0,c}$. Define
 	\begin{align*}
 	\mathrm{P}_{M}: \mathcal{F} \otimes \mathcal{B}([0, \infty))&\longrightarrow S\\
 	A&\longmapsto \mathrm{E}\left[\int_{0}^{\infty} \mathbf{1}_{A}(\omega, s) d\langle M\rangle_{s}\right]=\int_{\Omega}\left[\int_{0}^{\infty} \mathbf{1}_{A}(\omega, s) d\langle M\rangle_{s}(\omega)\right]d\mathrm{P}
@@ -853,6 +948,11 @@ A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only i
 	\[
 	\|\Phi\|_{\mathscr{L}^2(M)}=\left(\mathrm{E}\left[\int_{0}^{\infty} \Phi_{s}^{2} d\langle M\rangle_{s}\right]\right)^{\tfrac{1}{2}}.
 	\]
+	Therefore, $\mathscr{L}^2(M)$ consists of all the progressive processes $\Phi$ such that
+	\[
+	\mathrm{E}\left[\int_{0}^{\infty} \Phi_{s}^{2} d\langle M\rangle_{s}\right]<\infty
+	\]
+	with the identifications for all processes that only differ on $\mathrm{P}_M$-null sets.
 \end{proposition}
 
 \begin{definition}[elementary process]
@@ -867,11 +967,11 @@ bounded $\mathscr{F}_{t_{i}}$ -measurable random variable.
 The set $\mathscr{E}$ of all elementary processes forms a linear subspace of $L^{2}(M) .$ To be precise, we should here say "equivalence classes of elementary processes" "(recall that $\Phi$ and $\Phi^{\prime}$ are identified in $\mathscr{L}^{2}(M)$ if $\left\|\Phi-\Phi^{\prime}\right\|_{\mathscr{L}^{2}(M)}=0$ ).
 
 \begin{proposition}
-For every $M \in \mathscr{M}^2_c, \mathscr{E}$ is dense in $\mathscr{L}^{2}(M)$.
+For every $M \in \mathscr{M}^2_{0,c}, \mathscr{E}$ is dense in $\mathscr{L}^{2}(M)$.
 \end{proposition}
 
 \begin{theorem}
-Let $M \in \mathscr{M}^2_c .$ For every $\Phi \in \mathscr{E}$ of the form
+Let $M \in \mathscr{M}^2_{0,c} .$ For every $\Phi \in \mathscr{E}$ of the form
 \[
 \Phi_{t}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i+1}\right]}(t)
 \]
@@ -879,44 +979,45 @@ the formula
 \[
 (\Phi \cdot M)_{t}=\int_{0}^{t}\Phi_sdM_s:=\sum_{i=0}^{p-1} \Phi_{(i)}\left(M_{t_{i+1} \wedge t}-M_{t_{i} \wedge t}\right)
 \]
-defines a process $\Phi \cdot M \in \mathscr{M}^2_c.$ The mapping
+defines a process $\Phi \cdot M \in \mathscr{M}^2_{0,c}.$ The mapping $I_M^*:\mathscr{E}\to\mathscr{M}^2_{0,c},\;\Phi \mapsto \Phi \cdot M$ can extend to a linear isometry
 \begin{align*}
-I_M:\mathscr{L}^{2}(M)&\longrightarrow\mathscr{M}^2_c\\
-\Phi &\mapsto \Phi \cdot M
+I_M:\mathscr{L}^{2}(M)&\longrightarrow\mathscr{M}^2_{0,c}\\
+\Phi &\longmapsto \Phi \cdot M,
 \end{align*}
-is a linear isometry, which means
+which means
 \[
 \|\Phi \cdot M\|_{\mathscr{M}^2_c}=\left(\mathrm{E}\left[\left(\int_{0}^{\infty}\Phi_sdM_s\right)^2\right]\right)^{\tfrac{1}{2}}=\|\Phi\|_{\mathscr{L}^2(M)}=\left(\mathrm{E}\left[\int_{0}^{\infty} \Phi_{s}^{2} d\langle M\rangle_{s}\right]\right)^{\tfrac{1}{2}}.
 \]
-Furthermore, $\Phi \cdot M$ is the unique martingale in $\mathscr{M}^2_c$ that satisfies the property
+Furthermore, $\Phi \cdot M$ is the unique martingale in $\mathscr{M}^2_{0,c}$ that satisfies the property
 \begin{align*}
-\langle \Phi \cdot M, N\rangle&= \Phi \cdot\langle M, N\rangle, \quad \forall N \in\mathscr{M}^2_c,\\
-\left\langle \int_{0}^{t}\Phi_sdM_s, N_t\right\rangle&= \int_{0}^{t}\Phi_sd\left\langle M_s, N_s\right\rangle, \quad \forall N \in\mathscr{M}^2_c,\;t\in[0,\infty).
+\langle \Phi \cdot M, N\rangle&= \Phi \cdot\langle M, N\rangle, \quad \forall N \in\mathscr{M}^2_{0,c},\\
+\left\langle \int_{0}^{\cdot}\Phi_sdM_s, N\right\rangle_t&= \int_{0}^{t}\Phi_sd\left\langle M, N\right\rangle_s, \quad \forall N \in\mathscr{M}^2_{0,c},\;t\in[0,\infty).
 \end{align*}
 We call $H \cdot M$ the stochastic integral of $H$ with respect to $M$.
 \end{theorem}
 
 \begin{proposition}
-	Assume that $M,N\in\mathscr{M}^2_c$, $\Phi\in\mathcal{L}^2(M)$, $\Psi\in\mathcal{L}^2(N)$. Then
+	Assume that $M,N\in\mathscr{M}^2_{0,c}$, $\Phi\in\mathscr{L}^2(M)$, $\Psi\in\mathscr{L}^2(N)$. Then
 	\[
-	\left\langle\int_{0}^\cdot \Phi_{s} \mathrm{d} M_{s}, \int_{0}^\cdot \Psi_{s} \mathrm{d} N_{s}\right\rangle_{t}=\int_{0}^{t} \Phi_{s}\Psi_{s} \mathrm{d}\langle M, N\rangle_{s}.
+	\left\langle\int_{0}^\cdot \Phi_{s} \mathrm{d} M_{s}, \int_{0}^\cdot \Psi_{s} \mathrm{d} N_{s}\right\rangle_{t}=\int_{0}^{t} \Phi_{s}\Psi_{s} \mathrm{d}\langle M, N\rangle_{s},\quad\forall t\in[0,\infty].
 	\]
 \end{proposition}
 
 \begin{proposition}
-If $\tau$ is a stopping time, we have
+If $\tau$ is a stopping time with respect to $(\mathcal{F}_t)_{t\ge0}$, we have
 \begin{align*}
 \left(\mathbf{1}_{[0, \tau]} \Phi\right) \cdot M&=(\Phi \cdot M)^{\tau}=\Phi \cdot M^{\tau},\\
 \int_{0}^{t}\mathbf{1}_{[0, \tau]}(s)\Phi_sdM_s&=\int_{0}^{\tau\wedge t}\Phi_sdM_s=\int_{0}^{ t}\Phi_sdM_s^{\tau},\quad\forall t\in[0,\infty].
 \end{align*}
 \end{proposition}
 
+\subsection{Stochastic Integrals for Local Martingales}
 
-
-
-
-
-
+We will now use the identities ( 5.3) to extend the definition of $\Phi \cdot M$ to an arbitrary continuous local martingale. If $M\in\mathscr{M}^{\mathrm{loc}}_{0,c}$, we write $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ for the set of all progressive processes $\Phi$ such that for all $t\ge0$,
+\[
+\int_{0}^{t} \Phi_{s}^{2} \mathrm{d}\langle M, M\rangle_{s}<\infty.
+\]
+For future reference, we note that $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ can again be viewed as an ``ordinary" $L^{2}$-space and thus has a Hilbert space structure. Clearly we see $\mathscr{L}^{2}(M)\subset\mathscr{L}_{\mathrm{loc}}^{2}(M)$.
 
 \newpage
 
