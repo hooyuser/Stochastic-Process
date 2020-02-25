@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.16)  14 FEB 2020 00:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2019.3.16)  16 FEB 2020 14:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -396,33 +396,36 @@ Package ntheorem Info: option `amsmath' handling for `thmmarks' loaded on input
 \c@currpropositionctr=\count125
 \c@endpropositionctr=\count126
 \c@proposition=\count127
-\c@currtheoremctr=\count128
-\c@endtheoremctr=\count129
-\c@theorem=\count130
-\c@currlemmactr=\count131
-\c@endlemmactr=\count132
-\c@lemma=\count133
-\c@currproofctr=\count134
-\c@endproofctr=\count135
-\c@proof=\count136
+\c@currcorollaryctr=\count128
+\c@endcorollaryctr=\count129
+\c@corollary=\count130
+\c@currtheoremctr=\count131
+\c@endtheoremctr=\count132
+\c@theorem=\count133
+\c@currlemmactr=\count134
+\c@endlemmactr=\count135
+\c@lemma=\count136
+\c@currproofctr=\count137
+\c@endproofctr=\count138
+\c@proof=\count139
 
 (./Stochastic Process.aux)
 \openout1 = `"Stochastic Process.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -460,16 +463,16 @@ LaTeX Font Info:    ... okay on input line 32.
 
 (d:/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count137
+\scratchcounter=\count140
 \scratchdimen=\dimen136
 \scratchbox=\box32
-\nofMPsegments=\count138
-\nofMParguments=\count139
+\nofMPsegments=\count141
+\nofMParguments=\count142
 \everyMPshowfont=\toks47
-\MPscratchCnt=\count140
+\MPscratchCnt=\count143
 \MPscratchDim=\dimen137
-\MPnumerator=\count141
-\makeMPintoPDFobject=\count142
+\MPnumerator=\count144
+\makeMPintoPDFobject=\count145
 \everyMPtoPDFconversion=\toks48
 ) (d:/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -489,7 +492,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring ON on input line 32.
+Package hyperref Info: Link coloring ON on input line 33.
 
 (d:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -497,81 +500,141 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (d:/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count143
+\c@section@level=\count146
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
 (./Stochastic Process.out) (./Stochastic Process.out)
 \@outlinefile=\write3
 \openout3 = `"Stochastic Process.out"'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 40.
+ (./Stochastic Process.toc
 
+Package xcolor Warning: Incompatible color definition on input line 1.
+
+
+Package xcolor Warning: Incompatible color definition on input line 2.
+
+
+Package xcolor Warning: Incompatible color definition on input line 3.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 (d:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 40.
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 
 (d:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 40.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 3.
 
 (d:/texlive/2018/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
+
+Package xcolor Warning: Incompatible color definition on input line 4.
+
+
+Package xcolor Warning: Incompatible color definition on input line 5.
+
+
+Package xcolor Warning: Incompatible color definition on input line 6.
+
+
+Package xcolor Warning: Incompatible color definition on input line 7.
+
+
+Package xcolor Warning: Incompatible color definition on input line 8.
+
+
+Package xcolor Warning: Incompatible color definition on input line 9.
+
+
+Package xcolor Warning: Incompatible color definition on input line 10.
+
+
+Package xcolor Warning: Incompatible color definition on input line 11.
+
+
+Package xcolor Warning: Incompatible color definition on input line 12.
+
+
+Package xcolor Warning: Incompatible color definition on input line 13.
+
+
+Package xcolor Warning: Incompatible color definition on input line 14.
+
+
+Package xcolor Warning: Incompatible color definition on input line 15.
+
+
+Package xcolor Warning: Incompatible color definition on input line 16.
+
+
+Package xcolor Warning: Incompatible color definition on input line 17.
+
+
+Package xcolor Warning: Incompatible color definition on input line 18.
+
+
+Package xcolor Warning: Incompatible color definition on input line 19.
+
+)
+\tf@toc=\write4
+\openout4 = `"Stochastic Process.toc"'.
+
 Package hyperref Info: bookmark level for unknown definition defaults to 0 on i
-nput line 40.
+nput line 43.
  [1
 
-{d:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+{d:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on 
-input line 122.
+input line 126.
 Package hyperref Info: bookmark level for unknown proof defaults to 0 on input 
-line 124.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 127.
+line 128.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 131.
 
 
 (d:/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 127.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 131.
 
 
-Package xcolor Warning: Incompatible color definition on input line 129.
+Package xcolor Warning: Incompatible color definition on input line 133.
 
 
-Package xcolor Warning: Incompatible color definition on input line 129.
+Package xcolor Warning: Incompatible color definition on input line 133.
 
 
-Package xcolor Warning: Incompatible color definition on input line 139.
+Package xcolor Warning: Incompatible color definition on input line 143.
 
-[2] [3]
-Overfull \hbox (43.93059pt too wide) detected at line 220
+[3]
+Overfull \hbox (43.93059pt too wide) detected at line 224
 []
  []
 
-
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 220--222
+[4]
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 224--226
 [][] 
  []
 
-[4]
 
-Package xcolor Warning: Incompatible color definition on input line 240.
+Package xcolor Warning: Incompatible color definition on input line 244.
 
 
-Overfull \hbox (16.37303pt too wide) in paragraph at lines 245--247
+Overfull \hbox (16.37303pt too wide) in paragraph at lines 249--251
 []\OT1/cmr/m/n/10 Suppose that $\OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ^^X \OML/cm
 m/m/it/10 Pois\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^U\OT1/cmr/m/n/10 )$ and that 
 $\OML/cmm/m/it/10 Z[]; Z[]; Z[]; [] $
  []
 
-
-Overfull \hbox (6.30289pt too wide) detected at line 272
+[5]
+Overfull \hbox (6.30289pt too wide) detected at line 276
 \OT1/cmr/m/n/10 E[\OML/cmm/m/it/10 Y[]\OT1/cmr/m/n/10 ] = E[E[\OML/cmm/m/it/10 
 Y[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]] = E [] = E [] = E[\
 OML/cmm/m/it/10 N[]Z\OT1/cmr/m/n/10 ] = E[\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 ]
@@ -579,103 +642,120 @@ E[\OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ] = \OML/cmm/m/it/10 ^^Ut\OT1/cmr/m/n/10 E[
 \OML/cmm/m/it/10 Z\OT1/cmr/m/n/10 ]\OML/cmm/m/it/10 :
  []
 
-[5] [6]
-Overfull \hbox (5.75291pt too wide) in paragraph at lines 332--333
+[6] [7]
+Overfull \hbox (5.75291pt too wide) in paragraph at lines 336--337
 []\OT1/cmr/m/n/10 Let $(\OML/cmm/m/it/10 X[]\OT1/cmr/m/n/10 )[]$ be a discrete-
 time Markov chain
  []
 
-[7]
 Package hyperref Info: bookmark level for unknown example defaults to 0 on inpu
-t line 374.
+t line 378.
+[8]
+
+Package xcolor Warning: Incompatible color definition on input line 403.
 
 
-Package xcolor Warning: Incompatible color definition on input line 399.
-
-
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 399--400
+Overfull \hbox (25.00003pt too wide) in paragraph at lines 403--404
 [][] 
  []
 
 Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input 
-line 414.
-[8]
+line 418.
+[9]
 Package hyperref Info: bookmark level for unknown theorem defaults to 0 on inpu
-t line 469.
- [9] [10] [11] [12]
-Overfull \hbox (1.58386pt too wide) in paragraph at lines 691--692
+t line 473.
+ [10] [11] [12] [13]
+Overfull \hbox (7.0063pt too wide) in paragraph at lines 671--673
+[]\OT1/cmr/m/n/10 Let $[][]$ be an adapted pro-cess de-fined on the fil-tered p
+rob-a-bil-ity space $(
+\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 F\OML/cmm/m/it/10 ; \U/msb/m/n/10 F\OML/cmm
+/m/it/10 ; \OT1/cmr/m/n/10 P)$
+ []
+
+
+Overfull \hbox (1.58386pt too wide) in paragraph at lines 710--711
 []\OT1/cmr/m/n/10 Suppose $(\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$ is a mar-t
 in-gale de-fined on fil-tered prob-a-bil-ity space $(
 \OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 F\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 (\OMS/c
 msy/m/n/10 F[]\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 P)$
  []
 
-[13]
-Overfull \hbox (5.2194pt too wide) in paragraph at lines 734--736
+[14]
+Overfull \hbox (5.2194pt too wide) in paragraph at lines 757--759
 []\OT1/cmr/m/n/10 A continuous-time stochas-tic pro-cess $\OML/cmm/m/it/10 M \O
 T1/cmr/m/n/10 = (\OML/cmm/m/it/10 M[]\OT1/cmr/m/n/10 )[]$
  []
 
-[14]
+[15]
 
-Package xcolor Warning: Incompatible color definition on input line 785.
+Package xcolor Warning: Incompatible color definition on input line 810.
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 888--890
+[16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 913--915
 
  []
 
 
+Overfull \hbox (1.11662pt too wide) in paragraph at lines 946--947
+[]\OT1/cmr/m/n/10 A pro-cess $\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = [][]$ is a c
+on-tin-u-ous semi-martin-
+ []
+
+[18]
+
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 923.
+(hyperref)                removing `math shift' on input line 975.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 923.
+(hyperref)                removing `superscript' on input line 975.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 923.
+(hyperref)                removing `math shift' on input line 975.
 
-[17] [18] [19]
+[19] [20] [21]
+Package hyperref Info: bookmark level for unknown corollary defaults to 0 on in
+put line 1170.
+ [22]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 1039.
+(amsmath)                 on input line 1212.
 
 
-Overfull \hbox (9.47357pt too wide) in paragraph at lines 1034--1048
+Overfull \hbox (9.47357pt too wide) in paragraph at lines 1207--1221
  [][] 
  []
 
 
-Overfull \hbox (4.75368pt too wide) in paragraph at lines 1052--1067
+Overfull \hbox (4.75368pt too wide) in paragraph at lines 1225--1240
  [][] 
  []
 
-[20]
-\tf@thm=\write4
-\openout4 = `"Stochastic Process.thm"'.
+[23]
+\tf@thm=\write5
+\openout5 = `"Stochastic Process.thm"'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1101.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1274.
+ [24]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1274.
  (./Stochastic Process.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1101.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1274.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1274.
 
 Package rerunfilecheck Info: File `"Stochastic Process".out' has not changed.
-(rerunfilecheck)             Checksum: ADAD6FD09FF6713D0366C047D6E0C5CA;968.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1101.
+(rerunfilecheck)             Checksum: 70BA345441ED7CE85B332878D4F3AC7C;1319.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1274.
  ) 
 Here is how much of TeX's memory you used:
- 8107 strings out of 492649
- 113414 string characters out of 6133384
- 243268 words of memory out of 5000000
- 11668 multiletter control sequences out of 15000+600000
+ 8176 strings out of 492649
+ 114383 string characters out of 6133384
+ 243774 words of memory out of 5000000
+ 11704 multiletter control sequences out of 15000+600000
  18052 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,35p,529b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,21n,35p,533b,502s stack positions out of 5000i,500n,10000p,200000b,80000s
 <d:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><d:/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><d:/texlive/201
 8/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><d:/texlive/2018/texmf-d
@@ -699,10 +779,10 @@ fonts/type1/public/amsfonts/symbols/msbm10.pfb><d:/texlive/2018/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm7.pfb><d:/texlive/2018/texmf-dist/fonts/typ
 e1/public/rsfs/rsfs10.pfb><d:/texlive/2018/texmf-dist/fonts/type1/public/rsfs/r
 sfs7.pfb>
-Output written on "Stochastic Process.pdf" (21 pages, 343880 bytes).
+Output written on "Stochastic Process.pdf" (24 pages, 357640 bytes).
 PDF statistics:
- 460 PDF objects out of 1000 (max. 8388607)
- 407 compressed objects within 5 object streams
- 191 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 482 compressed objects within 5 object streams
+ 221 named destinations out of 1000 (max. 500000)
+ 153 words of extra memory for PDF output out of 10000 (max. 10000000)
 

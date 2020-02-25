@@ -1,15 +1,19 @@
 \BOOKMARK [1][-]{section.1}{Preliminaries}{}% 1
 \BOOKMARK [1][-]{section.2}{Poisson Process}{}% 2
-\BOOKMARK [1][-]{section.3}{Compound Poisson Process}{}% 3
-\BOOKMARK [1][-]{section.4}{Markov Chain}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Discrete-time Markov Chain}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Continuous-time Markov Chain}{section.4}% 6
-\BOOKMARK [1][-]{section.5}{Brownian Motion}{}% 7
-\BOOKMARK [1][-]{section.6}{Martingale}{}% 8
-\BOOKMARK [2][-]{subsection.6.1}{Basic Notion}{section.6}% 9
-\BOOKMARK [2][-]{subsection.6.2}{Discrete-time Martingale}{section.6}% 10
-\BOOKMARK [2][-]{subsection.6.3}{Continuous-time Martingale}{section.6}% 11
-\BOOKMARK [2][-]{subsection.6.4}{Local Martingale}{section.6}% 12
-\BOOKMARK [1][-]{section.7}{It\364 Integral}{}% 13
-\BOOKMARK [2][-]{subsection.7.1}{Stochastic Integrals for L2-Bounded Martingales}{section.7}% 14
-\BOOKMARK [2][-]{subsection.7.2}{Stochastic Integrals for Local Martingales}{section.7}% 15
+\BOOKMARK [2][-]{subsection.2.1}{Poisson Process}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Compound Poisson Process}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Markov Chain}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Discrete-time Markov Chain}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Continuous-time Markov Chain}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Brownian Motion}{}% 8
+\BOOKMARK [1][-]{section.5}{Martingale}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Basic Notion}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Discrete-time Martingale}{section.5}% 11
+\BOOKMARK [2][-]{subsection.5.3}{Continuous-time Martingale}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.4}{Continuous Local Martingale}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.5}{Continuous Semimartingales}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Stochastic Integration}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Stochastic Integrals for L2-Bounded Martingales}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Stochastic Integrals for Continuous Local Martingales}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{Stochastic Integrals for Continuous Semimartingales}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.4}{It\364's Formula}{section.6}% 19

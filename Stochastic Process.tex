@@ -20,6 +20,7 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{example}{Example}[section]
 \newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \theoremstyle{nonumberplain}
@@ -34,14 +35,16 @@
 	\textsc{\Huge Stochastic Process}	
 \end{center}
 \vspace{1em} 
-
+\tableofcontents
 % Create a new 1st level heading
 \section{Preliminaries}
+$n \ge k$ is used as an alternative for the
+statement $n\in\mathbb{Z}_{\ge k}=\mathbb{Z}\cap[k,\infty)$. $t \ge s$ is used as an alternative for the statement $t\in\mathbb{R}_{\ge s}=\mathbb{R}\cap[s,\infty)$.
 \begin{definition}[stochastic process]
-For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X(t):t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
+For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X_t(\omega):X_t(\omega)\text{ is a random variable on } (\Omega ,\mathcal{F},\mathrm{P}),t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
 \end{definition}
 
-For convenience, we always assume $T$ is a totally ordered set and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
+For convenience, we always assume $T=\mathbb{R}_{\ge 0}$ or $T=\mathbb{Z}_{\ge 0}$ and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
 \[
 \mathcal{I}_T=\{\{t_1,t_2,\cdots,t_n\}:t_1,\cdots,t_n\in T,\;n\ge 1\}.
 \]
@@ -76,6 +79,7 @@ If $X$ and $Y$ are indistinguishable, they are modifications of each other.
 \end{definition}
 
 \section{Poisson Process}
+\subsection{Poisson Process}
 \begin{definition}[Poisson process (I)]
 	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
 	\begin{enumerate}[(i)]
@@ -240,7 +244,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	Apply \hyperlink{Definition 2.1(ii)}{Definition 2.1(ii)} and it is straightforward to show the properties.
 \end{proof}
 
-\section{Compound Poisson Process}
+\subsection{Compound Poisson Process}
 \begin{definition}[compound Poisson distribution]
 	Suppose that
 	$N\sim Pois(\lambda )$ and that $Z_{1},Z_{2},Z_{3},\cdots $ are i.i.d. random variables independent of $N$ with a probability measure $v(dy)$ on $\mathbb{R}$. Then the probability distribution of the sum of $N$ i.i.d. random variables
@@ -577,22 +581,22 @@ In probability theory, we show that conditional expectation exists and is unique
 	\mathrm{E}(\cdot|\mathcal{G}):L^2(\Omega,\mathcal{F},\mathrm{P})&\longrightarrow S_\mathcal{G}\\
 	X&\longmapsto \mathrm{E}(X|\mathcal{G})
 	\end{align*}
-	is a projection to $S_\mathcal{G}$.
+	is a projection to the subspace $S_\mathcal{G}$ in $L^2(\Omega,\mathcal{F},\mathrm{P})$.
 \end{proposition}
 
 \begin{proposition}
-	Let $X$, $Y$, $X_n$ be integrable $\mathcal{F}$-measurable random variables on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ and  $\mathcal{G}\subset\mathcal{F}$ be a $\sigma$-algebra.
+	Let $X$, $Y$, $X_n$ be integrable $\mathcal{F}$-measurable random variables on a probability space $(\Omega,\mathcal{F},\mathrm{P})$. Assume  $\mathcal{G},\mathcal{H}$ are $\sigma$-algebras such that $\mathcal{H}\subset\mathcal{G}\subset\mathcal{F}$.
 	\begin{enumerate}  
-		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY|\mathcal{F}]=a\mathrm{E}[X|\mathcal{F}]+b\mathrm{E}[Y|\mathcal{F}]$.
-		\item If $X$ equals a constant $a$, then $\mathrm{E}[X|\mathcal{F}]=a$.
-		\item If $X\ge Y$,  then $\mathrm{E}[X|\mathcal{F}]\ge\mathrm{E}[Y|\mathcal{F}]$.
-		\item $\left|\mathrm{E}[X|\mathcal{F}]\right|\le\mathrm{E}[\left|X\right||\mathcal{F}]$.
-		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X|\mathcal{F}])\le\mathrm{E}[\phi(X)|\mathcal{F}]$.
-		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n|\mathcal{F}]=\mathrm{E}[X|\mathcal{F}]$.
-		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{F}]]=\mathrm{E}[X]$.
-		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{G}]|\mathcal{F}]=\mathrm{E}[\mathrm{E}[X|\mathcal{F}]|\mathcal{G}]=\mathrm{E}[X|\mathcal{G}]$
-		\item If $X$ and $\mathcal{F}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{F}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X|\mathcal{F}]=X$.
-		\item If $Z$ is $\mathcal{F}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX|\mathcal{F}]=Z\mathrm{E}[X|\mathcal{F}]$
+		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY|\mathcal{G}]=a\mathrm{E}[X|\mathcal{G}]+b\mathrm{E}[Y|\mathcal{G}]$.
+		\item If $X$ equals a constant $a$, then $\mathrm{E}[X|\mathcal{G}]=a$.
+		\item If $X\ge Y$,  then $\mathrm{E}[X|\mathcal{G}]\ge\mathrm{E}[Y|\mathcal{G}]$.
+		\item $\left|\mathrm{E}[X|\mathcal{G}]\right|\le\mathrm{E}[\left|X\right||\mathcal{G}]$.
+		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X|\mathcal{G}])\le\mathrm{E}[\phi(X)|\mathcal{G}]$.
+		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n|\mathcal{G}]=\mathrm{E}[X|\mathcal{G}]$.
+		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{G}]]=\mathrm{E}[X]$.
+		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{H}]|\mathcal{G}]=\mathrm{E}[\mathrm{E}[X|\mathcal{G}]|\mathcal{H}]=\mathrm{E}[X|\mathcal{H}]$
+		\item If $X$ and $\mathcal{G}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{G}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X|\mathcal{G}]=X$.
+		\item If $Z$ is $\mathcal{G}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX|\mathcal{G}]=Z\mathrm{E}[X|\mathcal{G}]$
 	\end{enumerate}
 \end{proposition}
 \begin{definition}[filtration]
@@ -612,9 +616,9 @@ is called a \emph{filtration} on the probability space $(\Omega,\mathcal{F},\mat
 
 A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$. 
 
-If $T=[0,\infty]$, the definition of $\mathcal{F}_{\infty}$ is usually specified as
+The definition of $\mathcal{F}_{\infty}$ is usually specified as
 \[
-\mathcal{F}_{\infty}=\sigma\left(\bigcup_{t\ge0} \mathcal{F}_t\right)
+\mathcal{F}_{\infty}=\sigma\left(\bigcup_{t\in T} \mathcal{F}_t\right)
 \]
 
 \begin{definition}[right-continuous filtration]
@@ -652,20 +656,35 @@ X_{t} :=1_{\tau\le t}=\left\{\begin{array}{ll}{1} & {\text { if }  \tau\le t } \
 is adapted to $(\mathcal{F}_{t})_{t\in T }$.
 \end{definition}
 
-
-
 \begin{definition}[stopped process]
-	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$. The stopping process $X^\tau$ is defined as $(X_{\tau \wedge t})_{t\in T}$, where
+	Let $X=(X_{t})_{t\in T}$ be a stochastic process defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T},\mathrm{P})$ and $\tau$ be a stopping time with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$. The stopping process $X^\tau$ is defined as $(X_{\tau \wedge t})_{t\in T}$, where
 	\begin{align*}
 	X_{\tau \wedge t}:\Omega&\longrightarrow S\\
 	\omega&\longmapsto X_{\tau(\omega) \wedge t}(\omega).
 	\end{align*}
 \end{definition}
-
 It is useful to observe that, if $\mu$ is another stopping time, then
 \[
 (X^\tau)^\mu=(X^\mu)^\tau=X^{\mu\wedge\tau}.
 \]
+\begin{proposition}
+	Let $\left(X_{t}\right)_{t \geq 0}$ be an adapted process defined on the filtered probability space $(\Omega,\mathcal{F},\mathbb{F},\mathrm{P})$ with values in a metric space $(E, d)$.
+	\begin{enumerate}  
+		\item Assume that the sample paths of $X$ are right-continuous, and let $O$ be an open subset of $E$. Then
+		\[
+		\tau_{O}=\inf \left\{t \geq 0: X_{t} \in O\right\}
+		\]
+		is a stopping time of the filtration $\mathbb{F}^+$.
+		\item Assume that the sample paths of $X$ are continuous, and let $F$ be a closed subset
+		of $E$. Then
+		\[
+		\tau_{F}=\inf \left\{t \geq 0: X_{t} \in F\right\}
+		\]
+		is a stopping time of the filtration $\mathbb{F}$.
+	\end{enumerate}
+\end{proposition}
+
+
 \subsection{Discrete-time Martingale}
 \begin{definition}[discrete-time martingale]
 	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
@@ -694,16 +713,20 @@ A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ 
 \begin{definition}[stopping time in discrete-time case]
 	Let $\tau$  be a random variable defined on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ with values in $\mathbb{N}\cup\{+\infty\}$. Then $\tau$ is called a stopping time (with respect to the filtration $(\mathcal{F}_{n})_{n\ge 0}$), if the following condition holds:
 	\[
+	\forall n\in\mathbb{N},\ \{\tau \le n\}\in {\mathcal {F}}_{n}
+	\]
+	or equivalently
+	\[
 	\forall n\in\mathbb{N},\ \{\tau =n\}\in {\mathcal {F}}_{n}.
 	\]
 \end{definition}
-
+Since $\{\tau=\infty\}^{c}=\bigcup\limits_{n\ge0}\{\tau=n\} \in \mathcal{F}_{\infty}$, we can deduce that $\{\tau=\infty\}\in \mathcal{F}_{\infty}$.
 \begin{example}
 	Given a discrete-time stochastic process $(X_{n})_{n\ge 0}$ defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0 },\mathrm{P})$ and a Borel set $B$,
 	\[
 	\tau=\inf\{n\ge0:X_n\in B\}
 	\]
-	is a stopping time, called the \emph{first hitting time}. ($\inf\varnothing = \infty $)
+	is a stopping time of the filtration $(\mathcal{F}_{n})_{n\ge0 }$, called the \emph{first hitting time}. ($\inf\varnothing = \infty $)
 \end{example}
 
 \begin{definition}[martingale transform]
@@ -746,6 +769,14 @@ Since $\mathrm{P}(\tau<\infty)=1$, $X_{\tau \wedge n} \stackrel{a.s.}{\longright
 	is continuous.
 \end{definition}
 
+\begin{definition}[$L^p$-bounded martingale]
+	A martingale $M=(M_t)_{t\ge0}$ is said to be $L^p$-\emph{bounded} if 
+	$$
+	\sup _{t \geq 0} \mathrm{E}\left[|M_{t}|^{p}\right]<\infty.
+	$$
+\end{definition}
+
+
 \begin{definition}[uniform integrability]
 	A class $\mathcal {C}$ of random variables is called \emph{uniformly integrable} if given $\varepsilon >0$, there exists $K\in [0,\infty )$ such that 
 	\[
@@ -764,12 +795,6 @@ and, if $M_{T} \in L^{p}(\Omega,\mathcal{F},\mathrm{P})$ for some $p>1,$ then we
 \]
 \end{theorem}
 
-\begin{definition}[$L^p$-bounded martingale]
-	A martingale $M=(M_t)_{t\ge0}$ is said to be $L^p$-\emph{bounded} if 
-	$$
-	\sup _{t \geq 0} \mathrm{E}\left[|M_{t}|^{p}\right]<\infty.
-	$$
-\end{definition}
 
 
 \begin{theorem}[martingale convergence theorems in continuous time]\label{martingale convergence}
@@ -809,7 +834,7 @@ A càdlàg (French: "continue à droite, limite à gauche"), RCLL ("right contin
 Let $Z$ be a càdlàg supermartingale satisfying
 \begin{enumerate}
 	\item $Z_0=0$ a.s;
-	\item The collection $\left\{Z_{T}| T \text { a finite-valued stopping time}\right\}$ is is uniformly integrable.
+	\item The collection $\left\{Z_{\tau}| \tau \text {a finite-valued stopping time}\right\}$ is uniformly integrable.
 \end{enumerate}
 Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale.
 \end{theorem}
@@ -872,7 +897,7 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 	\]
 \end{proposition}
 
-\subsection{Local Martingale}
+\subsection{Continuous Local Martingale}
 \begin{definition}[continuous local martingale]
 	An adapted process $M=\left(M_{t}\right)_{t \geq 0}$ with continuous sample paths is called a \emph{continuous local martingale} if there exists a nondecreasing sequence $\left(\tau_{n}\right)_{n \geq 0}$ of stopping times such that $\tau_{n} \uparrow \infty$ and, for every $n,$ the stopped process $M^{\tau_{n}}$ is a martingale.
 	
@@ -898,7 +923,7 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 \end{proposition}
 
 \begin{proposition}[existence of quadratic variation]	
-	Let $M=\left(M_{t}\right)_{t \geq 0}$ be a continuous local martingale. There exists an	increasing process $Q=\left(Q\right)_{t \geq 0}$, which is unique up to indistinguishability, such that $(M_{t}^{2}-Q_{t})_{t \geq 0}$ is a continuous local martingale. Furthermore, $Q$ is exactly the quadratic variation of $M$.
+	Let $M=\left(M_{t}\right)_{t \geq 0}$ be a continuous local martingale. There exists an	increasing finite variation process $Q=\left(Q\right)_{t \geq 0}$, which is unique up to indistinguishability, such that $(M_{t}^{2}-Q_{t})_{t \geq 0}$ is a continuous local martingale. Furthermore, $Q$ is exactly the quadratic variation of $M$.
 \end{proposition}
 
 \begin{proposition}
@@ -916,9 +941,36 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 	\]
 \end{proposition}
 
+\subsection{Continuous Semimartingales}
+\begin{definition}[continuous semimartingale]
+A process $X=\left(X_{t}\right)_{t \geq 0}$ is a continuous semimartingale if it can be written in the form
+\[
+X_{t}=M_{t}+A_{t}
+\]
+where $M$ is a continuous local martingale and $A$ is a continuous finite variation process.
+\end{definition}
+The decomposition $X=M+A$ is unique up to indistinguishability.
 
+\begin{definition}[bracket process]
+Let $X=M+A$ and $Y=M^{\prime}+A^{\prime}$ be the canonical decompositions of two continuous semimartingales $X$ and $Y$. The bracket $\langle X, Y\rangle$ is the finite variation process defined by
+\[
+\langle X, Y\rangle_{t}=\left\langle M, M^{\prime}\right\rangle_{t}
+\]
+In particular, we have $\langle X\rangle_{t}=\langle M\rangle_{t}$.
+\end{definition}
 
-\section{Itô Integral}
+\begin{proposition}
+	Assume $X$ and $Y$ are two continuous semimartingales. For all $t\ge0$,
+	\[
+	\sum_{k=1}^{n}\left(M_{t_{k}}-M_{t_{k-1}}\right)\left(N_{t_{k}}-N_{t_{k-1}}\right)\stackrel{p}{\longrightarrow}\langle M, N\rangle_{t},\quad\left\Vert P_{[0,t]}\right\Vert \longrightarrow 0,
+	\]
+	where $P_{[0,t]}=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and 
+	\[
+	\left\Vert P_{[0,t]}\right\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
+	\]
+\end{proposition}
+
+\section{Stochastic Integration}
 If not specified explicitly, the stochastic processes and random variables are always assumed to be defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$.
 \subsection{Stochastic Integrals for $L^2$-Bounded Martingales}
 \begin{definition}[progressively measurable]
@@ -993,7 +1045,7 @@ Furthermore, $\Phi \cdot M$ is the unique martingale in $\mathscr{M}^2_{0,c}$ th
 \langle \Phi \cdot M, N\rangle&= \Phi \cdot\langle M, N\rangle, \quad \forall N \in\mathscr{M}^2_{0,c},\\
 \left\langle \int_{0}^{\cdot}\Phi_sdM_s, N\right\rangle_t&= \int_{0}^{t}\Phi_sd\left\langle M, N\right\rangle_s, \quad \forall N \in\mathscr{M}^2_{0,c},\;t\in[0,\infty).
 \end{align*}
-We call $H \cdot M$ the stochastic integral of $H$ with respect to $M$.
+We call $\Phi \cdot M$ the stochastic integral of $\Phi$ with respect to $M$.
 \end{theorem}
 
 \begin{proposition}
@@ -1011,13 +1063,134 @@ If $\tau$ is a stopping time with respect to $(\mathcal{F}_t)_{t\ge0}$, we have
 \end{align*}
 \end{proposition}
 
-\subsection{Stochastic Integrals for Local Martingales}
+\subsection{Stochastic Integrals for Continuous Local Martingales}
 
 We will now use the identities ( 5.3) to extend the definition of $\Phi \cdot M$ to an arbitrary continuous local martingale. If $M\in\mathscr{M}^{\mathrm{loc}}_{0,c}$, we write $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ for the set of all progressive processes $\Phi$ such that for all $t\ge0$,
 \[
-\int_{0}^{t} \Phi_{s}^{2} \mathrm{d}\langle M, M\rangle_{s}<\infty.
+\int_{0}^{t} \Phi_{s}^{2} \mathrm{d}\langle M\rangle_{s}<\infty.
 \]
-For future reference, we note that $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ can again be viewed as an ``ordinary" $L^{2}$-space and thus has a Hilbert space structure. Clearly we see $\mathscr{L}^{2}(M)\subset\mathscr{L}_{\mathrm{loc}}^{2}(M)$.
+For future reference, we note that $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ can again be viewed as an ``ordinary" $L^{2}$-space and thus has a Hilbert space structure. Clearly we see $\mathscr{L}^{2}(M)\subset\mathscr{L}_{\mathrm{loc}}^{2}(M)$ for $M\in\mathscr{M}^{2}_{0,c}$.
+
+
+\begin{theorem}[stochastic integrals for continuous local martingales]
+	Let $M\in\mathscr{M}^{\mathrm{loc}}_{0,c}$. For every $\Phi \in \mathscr{L}_{\mathrm{loc}}^{2}(M)$ there exists a unique continuous local martingale in $\mathscr{M}^{\mathrm{loc}}_{0,c}$ , which is denoted by $\Phi \cdot M$ or $\int_{0}^{\cdot}\Phi_sdM_s$, such that for every $N\in\mathscr{M}^{\mathrm{loc}}_{0,c}$,
+	\[
+	\langle \Phi \cdot M, N\rangle= \Phi \cdot\langle M, N\rangle.
+	\]
+	If $M'\in\mathscr{M}^{\mathrm{loc}}_{c}$, then $M'-M_0\in \mathscr{L}_{\mathrm{loc}}^{2}(M)$ and we can define
+	\[
+	\int_{0}^{\cdot}\Phi_sdM'_s:=\Phi\cdot(M'-M_0).
+	\]
+	If $\Phi \in \mathscr{L}_{\text {loc }}^{2}(M)$ and $\Psi$ is a progressive process, we have $\Psi \in \mathscr{L}_{\text {loc }}^{2}(\Phi \cdot M)$ if and only if $\Phi \Psi \in \mathscr{L}_{\mathrm{loc}}^{2}(M),$ and then
+	\[
+	\Phi \cdot(\Psi \cdot M)=(\Phi \Psi) \cdot M.
+	\]
+	Finally, if $M\in\mathscr{M}^{2}_{0,c}$, and $\Phi \in\mathscr{L}^{2}(M),$ the definition of $\Phi \cdot M$ is consistent with that of Theorem 5.4.
+\end{theorem}
+
+\begin{proposition}
+	If $\tau$ is a stopping time with respect to $(\mathcal{F}_t)_{t\ge0}$, we have
+	\[
+	\left(\mathbf{1}_{[0, \tau]} \Phi\right) \cdot M=(\Phi \cdot M)^{\tau}=\Phi \cdot M^{\tau}.
+	\]
+\end{proposition}
+
+\subsection{Stochastic Integrals for Continuous Semimartingales}
+We finally extend the definition of stochastic integrals to continuous semimartingales. 
+\begin{definition}[locally bounded]
+We say that a progressive process $\Phi$ is locally bounded if
+\[
+\forall t \geq 0, \quad \sup _{s \leq t}\left|\Phi_{s}\right|<\infty \quad \text { a.s. }
+\]
+or equivalently there exist a sequence of stopping times $(\tau_{n})_{n \geq 0}$ and a sequence of constants $(C_n)_{n \geq 0}$ such that
+\[
+\forall n \geq 0, \quad \forall t \geq 0, \quad \left|\Phi_{t}^{\tau_{n}}\right| \leq C_{n}\quad \text { a.s. }
+\]
+\end{definition}
+
+In particular, any adapted process with continuous sample paths is a locally bounded progressive process. If $\Phi$ is (progressive and) locally bounded, then for every finite variation process $V,$ we have
+\[
+\forall t \geq 0, \quad \int_{0}^{t}\left|\Phi_{s}\right|\left|\mathrm{d} V_{s}\right|<\infty, \quad \text { a.s. }
+\]
+and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous local martingale $M$.
+
+\begin{definition}[stochastic integrals for continuous semimartingales]
+	Let $X$ be a continuous semimartingale and let $X=M+V$ be its canonical decomposition. If $\Phi$ is a locally bounded progressive process, the stochastic integral $\Phi \cdot X$ is the continuous semimartingale with canonical decomposition
+	\[
+	\Phi \cdot X=\Phi \cdot M+\Phi \cdot V
+	\]
+	and we write
+	\[
+	(\Phi \cdot X)_{t}=\int_{0}^{t} \Phi_{s} \mathrm{d} X_{s}
+	\]
+\end{definition}
+
+
+\begin{proposition}
+	\begin{enumerate}
+		\item The mapping $(\Phi, X) \mapsto \Phi \cdot X$ is bilinear.
+		\item $\Phi \cdot(\Psi \cdot X)=(\Phi \Psi) \cdot X,$ if $\Phi$ and $\Psi$ are progressive and locally bounded.
+		\item For every stopping time $\tau$, $(\Phi \cdot X)^{\tau}=\Phi \mathbf{1}_{[0, \tau]} \cdot X=\Phi \cdot X^{\tau}$.
+		\item If $X$ is a continuous local martingale, resp. if $X$ is a finite variation process, then the same holds for $\Phi \cdot X$.
+		\item If $H$ is of the form 
+		$$
+		\Phi_{s}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i}+1\right)}(s),
+		$$
+		where $0=t_{0}<t_{1}<$
+		$\cdots<t_{p},$ and, for every $i \in\{0,1, \ldots, p-1\}, H_{(i)}$ is $\mathcal{F}_{t_{i}}$-measurable, then
+		\[
+		\int_{0}^{t} \Phi_{s} \mathrm{d} X_{s}=\sum_{i=0}^{p-1} \Phi_{(i)}\left(X_{t_{i+1} \wedge t}-X_{t_{i} \wedge t}\right).
+		\]
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}
+	Assume that $\Phi$ is a process with continuous sample paths and that $X$ is continuous semimartingales. Then, for every $t>0$,
+	\[
+	\sum_{k=1}^{n} \Phi_{t_{k-1}}\left(X_{t_{k}}-X_{t_{k-1}}\right)\stackrel{p}{\longrightarrow}\int_{0}^{t} \Phi_{s} \mathrm{d} X_{s},\quad\left\Vert P_{[0,t]}\right\Vert \longrightarrow 0,
+	\]
+	where $P_{[0,t]}=\{(t_0,\cdots,t_n):0=t_0<t_1<\cdots<t_n=t\}$ ranges over partitions of the interval $[0,t]$ and 
+	\[
+	\left\Vert P_{[0,t]}\right\Vert=\max\limits_{1\le k\le n}{|t_k-t_{k-1}|}.
+	\]
+\end{proposition}
+
+\subsection{Itô's Formula}
+\begin{theorem}[Itô's formula]
+	Let $X^{1}, \ldots, X^{p}$ be $p$ continuous semimartingales, and let $F\in C^2(\mathbb{R}^{p})$ be a twice continuously differentiable real function. Then, for every $t \geq 0$
+	\[
+	\begin{aligned}
+	F\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=F\left(X_{0}^{1}, \cdots, X_{0}^{p}\right) &+\sum_{i=1}^{p} \int_{0}^{t} \frac{\partial F}{\partial x^{i}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) d X_{s}^{i} \\
+	&+\frac{1}{2} \sum_{i, j=1}^{p} \int_{0}^{t} \frac{\partial^{2} F}{\partial x^{i} \partial x^{j}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) d\left\langle X^{i}, X^{j}\right\rangle_{s}.
+	\end{aligned}
+	\]
+\end{theorem}
+
+\begin{corollary}[formula of integration by parts]
+	Take $p=2$ and $F(x, y)=x y$ in the theorem. If $X$ and $Y$ are two continuous semimartingales, we have
+	\[
+	X_{t} Y_{t}=X_{0} Y_{0}+\int_{0}^{t} X_{s} \mathrm{d} Y_{s}+\int_{0}^{t} Y_{s} \mathrm{d} X_{s}+\langle X, Y\rangle_{t}.
+	\]
+	In particular, if $Y=X$
+	\[
+	X_{t}^{2}=X_{0}^{2}+2 \int_{0}^{t} X_{s} \mathrm{d} X_{s}+\langle X\rangle_{t}.
+	\]
+\end{corollary}
+
+\begin{corollary}
+	\begin{enumerate}
+		\item Let $F\in C^2(\mathbb{R})$.
+		$$F\left(B_{t}\right)=F\left(B_{0}\right)+\int_{0}^{t} F^{\prime}\left(B_{s}\right) d B_{s}+\frac{1}{2} \int_{0}^{t} F^{\prime \prime}\left(B_{s}\right) d s.$$
+		\item Let $F(t,x)\in C^2(\mathbb{R}^2)$.
+		\[
+		F\left(t, B_{t}\right)=F\left(0, B_{0}\right)+\int_{0}^{t} \frac{\partial F}{\partial x}\left(s, B_{s}\right) d B_{s}+\int_{0}^{t}\left(\frac{\partial F}{\partial t}+\frac{1}{2} \frac{\partial^{2} F}{\partial x^{2}}\right)\left(s, B_{s}\right) d s
+		\]
+	\end{enumerate}
+	
+	
+\end{corollary}
+
 
 \newpage
 
