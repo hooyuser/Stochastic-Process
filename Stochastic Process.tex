@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 % Comment the following line to NOT allow the usage of umlauts
 \usepackage[utf8]{inputenc}
 % Uncomment the following line to allow the usage of graphics (.png, .jpg)
@@ -31,42 +31,135 @@
 
 % Start the document
 \begin{document}
-	\begin{center}
+~\\
+\begin{center}	
+	~\\ 
+	\vspace{6em} 
 	\textsc{\Huge Stochastic Process}	
+	~\\
+	\vspace{2.5em} 
+	{\Large }
+	~\\
+	\vspace{6em}
+	\textsf{H.C.}
+	~\\
+	\vspace{5in}  
+	{\large Latest Update: \today}
 \end{center}
-\vspace{1em} 
 \tableofcontents
 % Create a new 1st level heading
-\section{Preliminaries}
+\chapter{Preliminaries}
+\section{General stochastic process}
 $n \ge k$ is used as an alternative for the
 statement $n\in\mathbb{Z}_{\ge k}=\mathbb{Z}\cap[k,\infty)$. $t \ge s$ is used as an alternative for the statement $t\in\mathbb{R}_{\ge s}=\mathbb{R}\cap[s,\infty)$.
 \begin{definition}[stochastic process]
-For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{E})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X_t(\omega):X_t(\omega)\text{ is a random variable on } (\Omega ,\mathcal{F},\mathrm{P}),t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
+For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{S})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X_t:X_t\text{ is a random variable on } (\Omega ,\mathcal{F},\mathrm{P}),t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
 \end{definition}
 
-For convenience, we always assume $T=\mathbb{R}_{\ge 0}$ or $T=\mathbb{Z}_{\ge 0}$ and denote the collection of all finite subsets of $T$ by $\mathcal{I}_T$, namely
-\[
-\mathcal{I}_T=\{\{t_1,t_2,\cdots,t_n\}:t_1,\cdots,t_n\in T,\;n\ge 1\}.
-\]
+Note the identification (up to bijections) among the collection of mappings $\{X_t\in S^\Omega:\sigma(X_t)\in\mathcal{F},t\in T\}$, the mapping $X_\cdot(-):T \to S^\Omega,t\mapsto\left(\omega\mapsto X_{t}(\omega)\right)$, the mapping $X_\cdot(\cdot):\Omega \times T\rightarrow S,(\omega,t)\mapsto X_t(\omega)$ and the mapping $X_{-}(\cdot):\Omega\to S^T,\omega\mapsto \left(t\mapsto X_{t}(\omega)\right)$, each of which can be denoted by $X$.
+
+The following proposition actually gives an equivalent definition of stochastic process.
+\begin{proposition}[measurability of $X:\Omega\to S^T$]
+	Define the evaluation mappings
+	\begin{align*}
+	\pi_t:S^T&\longrightarrow S\\
+	f&\longmapsto f(t)
+	\end{align*}
+	and the $\sigma$-algebra on $S^T$
+	\[
+	\mathcal{S}^T:=\sigma\left(\prod_{t\in T}\pi_t\right).
+	\]
+	A function $X: \Omega \rightarrow S^T$ is $\mathcal{F}/\mathcal{S}^{T}$-measurable iff $X_{t}: \Omega \rightarrow S$ is $\mathcal{F}/\mathcal{S}$-measurable for every $t \in T$.
+\end{proposition}
+
+\begin{definition}[measurable stochastic process]
+	A stochastic process $X$ defined on $(\Omega ,{\mathcal{F}},\mathrm{P})$ is measurable if, for all $A \in \mathcal{B}\left(\mathbf{R}^{N}\right)$
+	\[
+	\left\{(t, \omega): X_{t}(\omega) \in A\right\} \in \mathcal{B}([0, \infty)) \otimes \mathcal{F}
+	\]
+\end{definition}
+\begin{definition}[the distribution of a process]
+	The distribution of a process $X: \Omega \rightarrow S^T$ is the pushforward measure $P\circ X^{-1}$.
+\end{definition}
+We use the notation $X \stackrel{d}{=} Y$ to represent that $X$ and $Y$ have the same distribution.
+
+\begin{definition}[family of finite dimensional distributions]
+	The family 
+	$$\mathfrak{D}_X:=\left\{\mu_{(t_{1}, t_{2}, \cdots, t_{k})}:= \mathrm{P}\circ\left(X_{t_{1}}, \cdots, X_{t_{k}}\right)^{-1}:\right.\left.\left(t_{1}, t_{2}, \cdots, t_{k}\right) \in T^k,k\ge1\right\}$$ of probability distributions is called	the \emph{family of finite dimensional distributions (fdds) associated with the stochastic process $(X_{t})_{t\in T}$}.
+\end{definition}
+
+\begin{proposition}
+	Let $X,Y$ be processes on $(\Omega ,{\mathcal{F}},\mathrm{P})$ with paths in $S^T$. Then $X \stackrel{d}{=} Y$ iff
+	\[
+	\left(X_{t_{1}}, \cdots, X_{t_{n}}\right) \stackrel{d}{=}\left(Y_{t_{1}}, \cdots, Y_{t_{n}}\right), \quad \forall t_{1}, \cdots, t_{n} \in T,\quad n\ge 1.
+	\]
+\end{proposition}
 
 \begin{definition}
-Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
-$X$ is a \emph{modification} of $Y$ iff
-\[
-\forall t \in T,\; \mathrm{P}(X_t=Y_t)=1
-\]
-and $X$ is \emph{indistinguishable} from $Y$ iff
-\[
-\mathrm{P}(X=Y)=\mathrm{P}(\forall t \in T,\; X_t=Y_t)=1.
-\]
+	Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
+	$X$ is a \emph{modification} of $Y$ iff
+	\[
+	\forall t \in T,\; \mathrm{P}(X_t=Y_t)=1
+	\]
+	and $X$ is \emph{indistinguishable} from $Y$ iff
+	\[
+	\mathrm{P}(X=Y)=\mathrm{P}(\forall t \in T,\; X_t=Y_t)=1.
+	\]
 \end{definition}
 If $X$ and $Y$ are indistinguishable, they are modifications of each other.
 
+\begin{proposition}[transfer of regularity]
+		Let $S$ be a a separable metric space and $X, Y$ be processes on $(\Omega ,{\mathcal{F}},\mathrm{P})$ with paths in $U \subset S^T$ such that $X \stackrel{d}{=} Y$. Assume that $Y$ has paths in some set $U \subset S^{T}$ that is Borel for the $\sigma$-algebra $\mathcal{U}=(\mathcal{B}(S))^{T}\cap U$. Then even $X$ has a modification with paths in $U \subset S^{T}$.
+\end{proposition}
+
+\begin{definition}[Independence of stochastic processes]
+	$N$ stochastic processes $X^{(1)},X^{(2)},\cdots,X^{(N)}$ defined on the same probability space $(\Omega, \mathcal{F}, P)$ are said to be independent if for all $n\ge1$ and for all $t_{1}, \cdots, t_{n} \in T,$ the $N$ random vectors $\left(X^{(1)}_{t_{1}}, \cdots, X^{(1)}_{t_{n}}\right), \left(X^{(2)}_{t_{1}}, \cdots, X^{(2)}_{t_{n}}\right),\cdots,\left(X^{(N)}_{t_{1}}, \cdots, X^{(N)}_{t_{n}}\right)$ are independent, i.e. if
+	\[
+	F_{X^{(1)}_{t_{1}}, \cdots, X^{(1)}_{t_{n}}, \cdots, X^{(N)}_{t_{1}}, \cdots, X^{(N)}_{t_{n}}}\left(x^{(1)}_{1}, \cdots, x^{(1)}_{n}, \cdots, x^{(N)}_{1}, \cdots, x^{(N)}_{n}\right)=\prod_{i=1}^N F_{X^{(i)}_{t_1}, \cdots, X^{(i)}_{t_{n}}}\left(x^{(i)}_{1}, \cdots, x^{(i)}_{n}\right) .
+	\]
+\end{definition}
+
+
+\section{Stochastic process valued in $\mathbb{R}$}
+
+For simplicity, we always assume that $T=\mathbb{R}_{\ge 0}$ or $T=\mathbb{Z}_{\ge 0}$ and that $(S,\mathcal{S})=(\mathbb{R},\mathcal{B}(\mathbb{R}))$.
+
+\begin{proposition}[consistency conditions]
+	Given a family of finite dimensional distributions,
+	$$
+	\mathfrak{D}=\left\{\mu_{\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{k}\right)}:\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{k}\right) \in T^{k}, k\ge1 \right\},
+	$$
+	it satisfies the following consistency conditions: for any $k\ge2$, $\left(t_{1}, t_{2}, \cdots, t_{k}\right) \in T^k$, and any $B_{1}, B_{2}, \cdots, B_{k}$ in $\mathcal{B}(\mathbb{R})$,
+	\begin{enumerate}
+		\item[(C1)] $\mu_{\left(t_{1}, t_{2}, \cdots, t_{k}\right)}\left(B_{1} \times \cdots \times B_{k-1} \times \mathbb{R}\right)=\mu_{\left(t_{1}, t_{2}, \cdots, t_{k}\right)}\left(B_{1} \times \cdots \times B_{k-1}\right)$
+		\item[(C2)] For any permutation $\left(i_{1}, i_{2}, \cdots, i_{k}\right)$ of $(1,2, \cdots, k)$,
+		\[
+		\mu_{\left(t_{i_{1}}, t_{i_{2}}, \cdots, t_{i_{k}}\right)}\left(B_{i_{1}} \times B_{i_{2}} \times \cdots \times B_{i_{k}}\right)=\mu_{\left(t_{1}, t_{2}, \cdots, t_{k}\right)}\left(B_{1} \times B_{2} \times \cdots \times B_{k}\right)
+		\]
+	\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[Kolmogorov's consistency theorem]
+	Let $T$ be a nonempty set. Let 
+	$$
+	\mathfrak{D}_{T} =\left\{\nu_{\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{k}\right)}:\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{k}\right) \in T^{k}, k\ge1 \right\}
+	$$
+	be a family of probability distributions such that for each $\left(t_{1}, t_{2}, \cdots, t_{k}\right) \in T^k,k\ge1$
+	\begin{enumerate}[(i)]
+		\item $\nu_{\left(\alpha_{1}, \alpha_{2}, \cdots, \alpha_{k}\right)}$ is a probability distribution on $\left(\mathbb{R}^{k}, \mathcal{B}\left(\mathbb{R}^{k}\right)\right)$
+		\item consistency conditions C1 and C2 hold
+	\end{enumerate}
+	Then, there exists a probability space $(\Omega, \mathcal{F}, P)$ and a stochastic process $(X_t)_{t\in T}$ on $(\Omega, \mathcal{F}, P)$ such that $D_{T}$ is the family of finite dimensional distributions associated with $(X_t)_{t\in T}$.
+\end{theorem}
+
+
+
+
 
 \begin{definition}[strictly stationary process]
-	Let $(X_t)_{t\in T}$ be a stochastic process and let \newline $F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\ldots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\ldots ,t_{k}$,
+	Let $(X_t)_{t\in T}$ be a stochastic process and let \newline $F_{{X}}(x_{{t_{1}+\tau }},\cdots ,x_{{t_{k}+\tau }})$ represent the  distribution function of the joint distribution of $(X_t)_{t\in T}$ at times $t_{1}+\tau ,\cdots ,t_{k}+\tau$ . Then, $(X_t)_{t\in T}$ is said to be strictly stationary if, for all $k$, for all $\tau$, and for all $ t_{1},\cdots ,t_{k}$,
 	\[
-	F_{{X}}(x_{{t_{1}+\tau }},\ldots ,x_{{t_{k}+\tau }})=F_{{X}}(x_{{t_{1}}},\ldots ,x_{{t_{k}}}).
+	F_{{X}}(x_{{t_{1}+\tau }},\cdots ,x_{{t_{k}+\tau }})=F_{{X}}(x_{{t_{1}}},\cdots ,x_{{t_{k}}}).
 	\]
 \end{definition}
 
@@ -78,8 +171,8 @@ If $X$ and $Y$ are indistinguishable, they are modifications of each other.
 	A stochastic process $(X_t)_{t\in T}$ has \emph{stationary increments} if for all $s<t$, the probability distribution of the increments $X_{t}-X_{s}$ depends only on $t-s$.
 \end{definition}
 
+\chapter{Poisson Process}
 \section{Poisson Process}
-\subsection{Poisson Process}
 \begin{definition}[Poisson process (I)]
 	A stochastic process $(N_t)_{t\ge0}$ defined on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ is said to be a \emph{Poisson process} with rate $\lambda>0$ if
 	\begin{enumerate}[(i)]
@@ -244,7 +337,7 @@ For any $0\le s<t$, the counting process $N_t-N_s$ represents the number of even
 	Apply \hyperlink{Definition 2.1(ii)}{Definition 2.1(ii)} and it is straightforward to show the properties.
 \end{proof}
 
-\subsection{Compound Poisson Process}
+\section{Compound Poisson Process}
 \begin{definition}[compound Poisson distribution]
 	Suppose that
 	$N\sim Pois(\lambda )$ and that $Z_{1},Z_{2},Z_{3},\cdots $ are i.i.d. random variables independent of $N$ with a probability measure $v(dy)$ on $\mathbb{R}$. Then the probability distribution of the sum of $N$ i.i.d. random variables
@@ -303,8 +396,8 @@ Let $Y=(Y_t)_{t\ge 0}$ be a compound Poisson process with a rate $\lambda$ and j
 \]
 
 
-\section{Markov Chain}
-\subsection{Discrete-time Markov Chain}
+\chapter{Markov Chain}
+\section{Discrete-time Markov Chain}
 \begin{definition}[discrete-time Markov chain]
 	A \emph{discrete-time Markov chain} on a countable state space $S$ is a sequence of random variables $X_0, X_1, X_2,\cdots$ with the Markov property, namely that $\forall n\ge0,\ \forall j,i_0,i_1,\cdots,i_n\in S$,	
 	\[
@@ -360,7 +453,7 @@ P^{(n+m)}=P^{(n)}P^{(m)}.
 \pi(n)=\pi(0)P^n.
 \]
 
-\subsection{Continuous-time Markov Chain}
+\section{Continuous-time Markov Chain}
 
 \begin{definition}[continuous-time Markov chain]
 	A \emph{continuous-time Markov chain} on a countable state space $S$ is a stochastic $(X_t)_{t\ge 0}$ with the Markov property: for all $ n\ge0$, all $0\le t_0\le t_1\le \cdots\le t_n$, and all	$j,i_0,\cdots,i_n\in S$,
@@ -491,7 +584,8 @@ which follows by
 	\end{enumerate}
 \end{theorem}
 
-\section{Brownian Motion}
+\chapter{Brownian Motion}
+\section{1-dimensional Brownian Motion}
 \begin{definition}[Brownian motion]
 	A stochastic process $(B_t)_{t\ge0}$ is called a \emph{Brownian motion} if
 	\begin{enumerate}
@@ -503,7 +597,7 @@ which follows by
 \end{definition}
 
 \begin{definition}[Gaussian process]
-	A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only if for every finite set of indices $t_{1},\ldots ,t_{n}$ in the index set $T$, $(X_{t_1},X_{t_2},\cdots,X_{t_n})$ follows multivariate normal distribution $N(\mu,\Sigma)$.
+	A stochastic process $(X_t)_{t\in T}$ is a \emph{Gaussian process} if and only if for every finite set of indices $t_{1},\cdots ,t_{n}$ in the index set $T$, $(X_{t_1},X_{t_2},\cdots,X_{t_n})$ follows multivariate normal distribution $N(\mu,\Sigma)$.
 \end{definition}
 
 \begin{theorem}
@@ -556,49 +650,22 @@ which follows by
 	[B]_t=\lim_{\Vert P\Vert \rightarrow 0}\sum _{k=1}^{n}(B_{t_{k}}-B_{t_{k-1}})^{2}=t\quad\text{a.s.}
 	\]
 \end{proof}
-
-
-
-\section{Martingale}
-\subsection{Basic Notion}
-\begin{definition}[conditional expectation]
-	Let $X$ be a $\mathcal{F}$-measurable random variable on a probability space $(\Omega,\mathcal{F},\mathrm{P})$ such that $\mathrm{E}[\left|X\right|] < \infty$. Given a $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$, a random variable $Z$ that is $\mathcal{G}$-measurable and satisfies 
-	\[
-	\mathrm{E}[X I_A] = \mathrm{E}[ZI_A] \quad\text{ for all }A \in \mathcal{G}
-	\] 
-	is called the \emph{conditional expectation} of $Y$ given $\mathcal{G}$ and is written as $\mathrm{E}(X|\mathcal{G})$.
+\section{$N$-dimensional Brownian Motion}
+\begin{definition}[$N$-dimensional Brownian Motion]
+	The $N$-dimemsional stochastic process $B=\left(B^{(1)}, B^{(2)}, \cdots, B^{(N)}\right)$ is
+	$a$ (standard) $N$-dimensional Brownian motion if the $N$-components $B^{(i)}$ are independent one-dimensional standard Brownian motions.
 \end{definition}
-In probability theory, we show that conditional expectation exists and is unique up to absolutely surely equality. If not pointed out explicitly, all equalities and inequalities involving conditional expectation are considered to hold absolutely surely. 
 
-\begin{proposition}[projection in $L^2(\Omega,\mathcal{F},\mathrm{P})$]
-	Assume $X\in L^2(\Omega,\mathcal{F},\mathrm{P})$ and $\mathcal{G}$ is a sub-$\sigma$-algebra of $\mathcal{F}$. The set
+\begin{theorem}[Lévy characterisation]
+	Let $M=\left(M^{(1)}, M^{(2)}, \cdots, M^{(N)}\right)$ be a $N$-dimensional stochastic process where $M^{(i)}\in\mathscr{M}_0^{\mathrm{loc}}(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. Then $M$ is an $N$-dimensional Brownian Motion if and only if 
 	\[
-	S_\mathcal{G}=\{Y\in L^2(\Omega,\mathcal{F},\mathrm{P}):\sigma(Y)\in \mathcal{G}\}
+	\left\langle M^{(i)},M^{(j)}\right\rangle_t=\delta_{ij}t,\qquad\forall t\ge0.
 	\]
-	is a closed subspace of $L^2(\Omega,\mathcal{F},\mathrm{P})$.
-	The conditional expectation mapping
-	\begin{align*}
-	\mathrm{E}(\cdot|\mathcal{G}):L^2(\Omega,\mathcal{F},\mathrm{P})&\longrightarrow S_\mathcal{G}\\
-	X&\longmapsto \mathrm{E}(X|\mathcal{G})
-	\end{align*}
-	is a projection to the subspace $S_\mathcal{G}$ in $L^2(\Omega,\mathcal{F},\mathrm{P})$.
-\end{proposition}
+\end{theorem}
 
-\begin{proposition}
-	Let $X$, $Y$, $X_n$ be integrable $\mathcal{F}$-measurable random variables on a probability space $(\Omega,\mathcal{F},\mathrm{P})$. Assume  $\mathcal{G},\mathcal{H}$ are $\sigma$-algebras such that $\mathcal{H}\subset\mathcal{G}\subset\mathcal{F}$.
-	\begin{enumerate}  
-		\item If $a$, $b$ are constants, then $\mathrm{E}[aX+bY|\mathcal{G}]=a\mathrm{E}[X|\mathcal{G}]+b\mathrm{E}[Y|\mathcal{G}]$.
-		\item If $X$ equals a constant $a$, then $\mathrm{E}[X|\mathcal{G}]=a$.
-		\item If $X\ge Y$,  then $\mathrm{E}[X|\mathcal{G}]\ge\mathrm{E}[Y|\mathcal{G}]$.
-		\item $\left|\mathrm{E}[X|\mathcal{G}]\right|\le\mathrm{E}[\left|X\right||\mathcal{G}]$.
-		\item If $\phi$ is a convex function on $\mathbb{R}$ and $\phi(X)$ is integrable, then $\phi(\mathrm{E}[X|\mathcal{G}])\le\mathrm{E}[\phi(X)|\mathcal{G}]$.
-		\item If $\lim\limits_{n\to\infty}X_n=X$ and $|X_n|\le X$, then $\lim\limits_{n\to\infty}\mathrm{E}[X_n|\mathcal{G}]=\mathrm{E}[X|\mathcal{G}]$.
-		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{G}]]=\mathrm{E}[X]$.
-		\item $\mathrm{E}[\mathrm{E}[X|\mathcal{H}]|\mathcal{G}]=\mathrm{E}[\mathrm{E}[X|\mathcal{G}]|\mathcal{H}]=\mathrm{E}[X|\mathcal{H}]$
-		\item If $X$ and $\mathcal{G}$ are independent, that is, whenever $A\in\sigma(X)$ and $B\in\mathcal{G}$, $\mathrm{P}(A\cap B)= \mathrm{P}(A) \mathrm{P}(B)$, then $\mathrm{E}[X|\mathcal{G}]=X$.
-		\item If $Z$ is $\mathcal{G}$-measurable and $ZX$ is integrable, then $\mathrm{E}[ZX|\mathcal{G}]=Z\mathrm{E}[X|\mathcal{G}]$
-	\end{enumerate}
-\end{proposition}
+\chapter{Martingale}
+\section{Basic Notion}
+
 \begin{definition}[filtration]
 Suppose $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $T$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
 \[
@@ -685,7 +752,7 @@ It is useful to observe that, if $\mu$ is another stopping time, then
 \end{proposition}
 
 
-\subsection{Discrete-time Martingale}
+\section{Discrete-time Martingale}
 \begin{definition}[discrete-time martingale]
 	A discrete-time stochastic process $M=(M_n)_{n\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
 	\begin{enumerate}
@@ -752,7 +819,7 @@ Let $M=(M_{n})_{n\ge0}$ be a martingale defined on the filtered probability spac
 Since $\mathrm{P}(\tau<\infty)=1$, $X_{\tau \wedge n} \stackrel{a.s.}{\longrightarrow}X_{\tau}$ and $\left|X_{\tau}\right| \leq K<\infty$ and hence $\mathrm{E}\left[\left|X_{\tau}\right|\right]<\infty .$ Thus, $\mathrm{E}\left[\left|X_{\tau}-X_{\tau \wedge n}\right| \right]\leq 2 K \mathrm{P}(\tau>n) \rightarrow 0$.
 \end{proof}
 
-\subsection{Continuous-time Martingale}
+\section{Continuous-time Martingale}
 \begin{definition}[continuous-time martingale]
 	A continuous-time stochastic process $M=(M_t)_{t\ge 0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ is a \emph{martingale} if it satisfies
 	\begin{enumerate}
@@ -834,7 +901,7 @@ A càdlàg (French: "continue à droite, limite à gauche"), RCLL ("right contin
 Let $Z$ be a càdlàg supermartingale satisfying
 \begin{enumerate}
 	\item $Z_0=0$ a.s;
-	\item The collection $\left\{Z_{\tau}| \tau \text {a finite-valued stopping time}\right\}$ is uniformly integrable.
+	\item The collection $\left\{Z_{\tau}| \tau \text { is a finite-valued stopping time}\right\}$ is uniformly integrable.
 \end{enumerate}
 Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale.
 \end{theorem}
@@ -897,7 +964,7 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 	\]
 \end{proposition}
 
-\subsection{Continuous Local Martingale}
+\section{Continuous Local Martingale}
 \begin{definition}[continuous local martingale]
 	An adapted process $M=\left(M_{t}\right)_{t \geq 0}$ with continuous sample paths is called a \emph{continuous local martingale} if there exists a nondecreasing sequence $\left(\tau_{n}\right)_{n \geq 0}$ of stopping times such that $\tau_{n} \uparrow \infty$ and, for every $n,$ the stopped process $M^{\tau_{n}}$ is a martingale.
 	
@@ -907,7 +974,7 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 
 
 \begin{proposition}[linear space $\mathscr{M}^{\mathrm{loc}}_{0,c}$]
-	Let $\mathscr{M}_0^{\mathrm{loc}}$ denote the collection of all the local martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. All the continuous local martingales $M\in\mathscr{M}^{\mathrm{loc}}_{0}$ constitute a vector space, which is denoted by $\mathscr{M}^{\mathrm{loc}}_{0,c}$.
+	Let $\mathscr{M}_0^{\mathrm{loc}}(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ denote the collection of all the local martingales $M$ defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with initial value $M_0=0$ a.s.. For simplicity we will just denote $\mathscr{M}^{\mathrm{loc}}_{0,c}$ when the underlying filtered probability space is clear. All the continuous local martingales $M\in\mathscr{M}^{\mathrm{loc}}_{0}$ constitute a vector space, which is denoted by $\mathscr{M}^{\mathrm{loc}}_{0,c}$.
 \end{proposition}
 
 \begin{proposition}~\\
@@ -941,7 +1008,7 @@ For all $\alpha, \beta \in \mathbb{R}$, $M, M^{\prime}, N \in \mathscr{M}^2_{0,c
 	\]
 \end{proposition}
 
-\subsection{Continuous Semimartingales}
+\section{Continuous Semimartingales}
 \begin{definition}[continuous semimartingale]
 A process $X=\left(X_{t}\right)_{t \geq 0}$ is a continuous semimartingale if it can be written in the form
 \[
@@ -970,9 +1037,9 @@ In particular, we have $\langle X\rangle_{t}=\langle M\rangle_{t}$.
 	\]
 \end{proposition}
 
-\section{Stochastic Integration}
+\chapter{Stochastic Integration}
 If not specified explicitly, the stochastic processes and random variables are always assumed to be defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$.
-\subsection{Stochastic Integrals for $L^2$-Bounded Martingales}
+\section{Stochastic Integrals for $L^2$-Bounded Martingales}
 \begin{definition}[progressively measurable]
 	Let $\Phi=(\Phi_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If for all $T\ge0$, the mapping
 	\begin{align*}
@@ -1012,7 +1079,7 @@ An elementary process is a progressive process of the form
 \[
 \Phi_{t}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i+1}\right]}(t)
 \]
-where $0=t_{0}<t_{1}<t_{2}<\cdots<t_{p}$ and for every $i \in\{0,1, \ldots, p-1\}, \Phi_{(i)}$ is a
+where $0=t_{0}<t_{1}<t_{2}<\cdots<t_{p}$ and for every $i \in\{0,1, \cdots, p-1\}, \Phi_{(i)}$ is a
 bounded $\mathscr{F}_{t_{i}}$ -measurable random variable.
 \end{definition}
 
@@ -1063,9 +1130,9 @@ If $\tau$ is a stopping time with respect to $(\mathcal{F}_t)_{t\ge0}$, we have
 \end{align*}
 \end{proposition}
 
-\subsection{Stochastic Integrals for Continuous Local Martingales}
+\section{Stochastic Integrals for Continuous Local Martingales}
 
-We will now use the identities ( 5.3) to extend the definition of $\Phi \cdot M$ to an arbitrary continuous local martingale. If $M\in\mathscr{M}^{\mathrm{loc}}_{0,c}$, we write $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ for the set of all progressive processes $\Phi$ such that for all $t\ge0$,
+We will now use extend the definition of $\Phi \cdot M$ to an arbitrary continuous local martingale. If $M\in\mathscr{M}^{\mathrm{loc}}_{0,c}$, we write $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ for the set of all progressive processes $\Phi$ such that for all $t\ge0$,
 \[
 \int_{0}^{t} \Phi_{s}^{2} \mathrm{d}\langle M\rangle_{s}<\infty.
 \]
@@ -1095,7 +1162,7 @@ For future reference, we note that $\mathscr{L}_{\mathrm{loc}}^{2}(M)$ can again
 	\]
 \end{proposition}
 
-\subsection{Stochastic Integrals for Continuous Semimartingales}
+\section{Stochastic Integrals for Continuous Semimartingales}
 We finally extend the definition of stochastic integrals to continuous semimartingales. 
 \begin{definition}[locally bounded]
 We say that a progressive process $\Phi$ is locally bounded if
@@ -1137,7 +1204,7 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 		\Phi_{s}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i}+1\right)}(s),
 		$$
 		where $0=t_{0}<t_{1}<$
-		$\cdots<t_{p},$ and, for every $i \in\{0,1, \ldots, p-1\}, H_{(i)}$ is $\mathcal{F}_{t_{i}}$-measurable, then
+		$\cdots<t_{p},$ and, for every $i \in\{0,1, \cdots, p-1\}, H_{(i)}$ is $\mathcal{F}_{t_{i}}$-measurable, then
 		\[
 		\int_{0}^{t} \Phi_{s} \mathrm{d} X_{s}=\sum_{i=0}^{p-1} \Phi_{(i)}\left(X_{t_{i+1} \wedge t}-X_{t_{i} \wedge t}\right).
 		\]
@@ -1156,9 +1223,9 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 	\]
 \end{proposition}
 
-\subsection{Itô's Formula}
+\section{Itô's Formula}
 \begin{theorem}[Itô's formula]
-	Let $X^{1}, \ldots, X^{p}$ be $p$ continuous semimartingales, and let $F\in C^2(\mathbb{R}^{p})$ be a twice continuously differentiable real function. Then, for every $t \geq 0$
+	Let $X^{1}, \cdots, X^{p}$ be $p$ continuous semimartingales, and let $F\in C^2(\mathbb{R}^{p})$ be a twice continuously differentiable real function. Then, for every $t \geq 0$
 	\[
 	\begin{aligned}
 	F\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=F\left(X_{0}^{1}, \cdots, X_{0}^{p}\right) &+\sum_{i=1}^{p} \int_{0}^{t} \frac{\partial F}{\partial x^{i}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) d X_{s}^{i} \\
@@ -1194,8 +1261,11 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 
 \newpage
 
-\section*{Appendix}
-\subsection*{1.Properties of Common Distributions}
+\chapter*{Appendix}
+
+
+
+\section*{1.Properties of Common Distributions}
 \makegapedcells
 \setcellgapes{3pt}
 \newcommand{\minitab}[2][l]{\begin{tabular}{#1}#2\end{tabular}} 
@@ -1239,7 +1309,7 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 	\end{tabular}
 \end{table}
 
-\subsection*{2.Generating Function \& Characteristic Function}
+\section*{2.Generating Function \& Characteristic Function}
 
 \begin{table}[H]
 	\centering
@@ -1270,5 +1340,13 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 	\end{tabular}
 \end{table}
 
+\newpage
+
+\begin{thebibliography}{99}  
+	\bibitem{ref1}Gall J F L. Brownian Motion, Martingales, and Stochastic Calculus[J]. 2018.
+	\bibitem{ref2}Morimoto H. Stochastic control and mathematical modeling[M]. Cambridge University Press, 2010.
+	\bibitem{ref3}Athreya K B, Lahiri S N. Measure theory and probability theory[M]. Springer Science \& Business Media, 2006.  
+	\bibitem{ref4}Pivato M. Stoshastic processes and stochastic integration[J]. 1999.
+\end{thebibliography}
 
 \end{document}
