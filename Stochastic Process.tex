@@ -15,6 +15,10 @@
 \usepackage{array,makecell}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{amsmath,amsfonts,amssymb,mathrsfs}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,arrows,graphs,graphs.standard,calc,decorations.markings}
+
+
 \usepackage[thmmarks,amsmath]{ntheorem}
 \theorembodyfont{\upshape}
 \newtheorem{definition}{Definition}[section]
@@ -31,6 +35,8 @@
 
 % Start the document
 \begin{document}
+	  
+
 ~\\
 \begin{center}	
 	~\\ 
@@ -49,39 +55,156 @@
 \tableofcontents
 % Create a new 1st level heading
 \chapter{Preliminaries}
-\section{General stochastic process}
+
 $n \ge k$ is used as an alternative for the
 statement $n\in\mathbb{Z}_{\ge k}=\mathbb{Z}\cap[k,\infty)$. $t \ge s$ is used as an alternative for the statement $t\in\mathbb{R}_{\ge s}=\mathbb{R}\cap[s,\infty)$.
 \begin{definition}[stochastic process]
-For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{S})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X_t:X_t\text{ is a random variable on } (\Omega ,\mathcal{F},\mathrm{P}),t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $S$ is called its state space. 
+For a given probability space $(\Omega ,{\mathcal{F}},\mathrm{P})$ and a measurable space $(S,\mathcal{S})$, a \emph{stochastic process} is a collection of $S$-valued random variables on $(\Omega ,{\mathcal{F}},\mathrm{P})$ indexed by some set $T$, which can be written as $X=\{X_t:X_t\text{ is a random variable on } (\Omega ,\mathcal{F},\mathrm{P}),t\in T\}$ or $X=(X_t)_{t\in T}$ or $X:\Omega \times T\rightarrow S$. This mathematical space $(S,\mathcal{S})$ is called its state space. 
 \end{definition}
 
-Note the identification (up to bijections) among the collection of mappings $\{X_t\in S^\Omega:\sigma(X_t)\in\mathcal{F},t\in T\}$, the mapping $X_\cdot(-):T \to S^\Omega,t\mapsto\left(\omega\mapsto X_{t}(\omega)\right)$, the mapping $X_\cdot(\cdot):\Omega \times T\rightarrow S,(\omega,t)\mapsto X_t(\omega)$ and the mapping $X_{-}(\cdot):\Omega\to S^T,\omega\mapsto \left(t\mapsto X_{t}(\omega)\right)$, each of which can be denoted by $X$.
+Note the identification (up to appropriate bijections) among the collection of mappings $\{X_t\in S^\Omega:\sigma(X_t)\in\mathcal{F},t\in T\}$, the mapping $X_\cdot(-):T \to S^\Omega,t\mapsto\left(\omega\mapsto X_{t}(\omega)\right)$, the mapping $X_\cdot(\cdot):\Omega \times T\rightarrow S,(\omega,t)\mapsto X_t(\omega)$ and the mapping $X_{-}(\cdot):\Omega\to S^T,\omega\mapsto \left(t\mapsto X_{t}(\omega)\right)$, each of which can be denoted by $X$.
 
 The following proposition actually gives an equivalent definition of stochastic process.
 \begin{proposition}[measurability of $X:\Omega\to S^T$]
-	Define the evaluation mappings
+	There is a natural bijection between $S^T$ and $\prod_{t\in T}S_t$
 	\begin{align*}
-	\pi_t:S^T&\longrightarrow S\\
-	f&\longmapsto f(t)
-	\end{align*}
-	and the $\sigma$-algebra on $S^T$
+	i:S^T&\longrightarrow \prod_{t\in T}S_t\\
+	f&\longmapsto (f(t))_{t\in T}
+	\end{align*} 
+	Therefore, we can identify $S^T$ and $\prod_{t\in T}S_t$ and then define the $\sigma$-algebra on $S^T$
 	\[
-	\mathcal{S}^T:=\sigma\left(\prod_{t\in T}\pi_t\right).
+	\mathcal{S}^T:=\bigotimes_{i\in T}\mathcal{S}_i.
 	\]
 	A function $X: \Omega \rightarrow S^T$ is $\mathcal{F}/\mathcal{S}^{T}$-measurable iff $X_{t}: \Omega \rightarrow S$ is $\mathcal{F}/\mathcal{S}$-measurable for every $t \in T$.
 \end{proposition}
 
-\begin{definition}[measurable stochastic process]
-	A stochastic process $X$ defined on $(\Omega ,{\mathcal{F}},\mathrm{P})$ is measurable if, for all $A \in \mathcal{B}\left(\mathbf{R}^{N}\right)$
+We always assume that $T$ is a linearly ordered index set such as $\mathbb{Z}_{\ge 0}$ or $\mathbb{R}_{\ge 0}$.
+\begin{definition}[filtration]
+	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
 	\[
-	\left\{(t, \omega): X_{t}(\omega) \in A\right\} \in \mathcal{B}([0, \infty)) \otimes \mathcal{F}
+	\mathbb{F} =(\mathcal{F}_{t})_{t\in T}
+	\]
+	is called a \emph{filtration} on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
+\end{definition}
+\begin{definition}[filtered probability space]
+	If $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration on the probability space $(\Omega,\mathcal{F},\mathrm{P})$, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}.
+\end{definition}
+
+\begin{definition}[adapted process]
+	A stochastic process $X=(X_{t})_{t \in T}$ is called \emph{adapted} (to the filtration $(\mathcal{F}_{t})_{t\in T}$ ) if for any $t \in T, X_{t}$ is $\mathcal{F}_{t}$ -measurable, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
+\end{definition}
+
+A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$. 
+
+The definition of $\mathcal{F}_{\infty}$ is usually specified as
+\[
+\mathcal{F}_{\infty}:=\sigma\left(\bigcup_{t\in T} \mathcal{F}_t\right)
+\]
+
+\begin{definition}[natural filtration]
+	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on the probability space $(\Omega,\mathcal{F},\mathrm{P})$. Then 
+	\[
+	{\mathcal {F}}_{t}^X:=\sigma (\{X_{s}:0\le s\le t\})
+	\]
+	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. We call $(\mathcal {F}_{t}^X)_{t\ge0} $ the \emph{natural filtration} induced by the stochastic process $X$. $(\mathcal {F}_{t}^X)_{t\ge0} $ is the minimum filtration which $X$ is adapted to.
+\end{definition}
+
+
+\begin{definition}[right-continuous filtration]
+	Given a filtration $\mathbb{F}=(\mathcal{F}_{t})_{t\in T}$, define
+	\[
+	\mathcal{F}_{t+}:=\bigcap_{s>t}\mathcal{F}_{s}\quad,\forall t\in T.
+	\]
+	Then $\mathbb{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. The filtration $\mathbb {F}$ is called \emph{right-continuous} if and only if $\mathbb{F}^{+}=\mathbb {F}$.
+\end{definition}
+
+\begin{definition}[complete filtration]
+	Let
+	\[\mathcal{N}^{\mathrm{P}}:=\{A\subset 2^\Omega | A\subset B\text{ for a }B\text{ with }\mathrm{P}(B)=0\}
+	\]
+	be the set of all sets that are contained within a $\mathrm{P}$-null set. A filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T}$ is called a \emph{complete filtration}, if every $\mathcal{F}_{t}$ contains $\mathcal{N}^{\mathrm{P}}$. This is equivalent to $(\Omega,\mathcal{F}_{t},\mathrm{P})$ being a complete measure space for every $t\in T$. Let $\mathcal{F}_{t}^{\mathrm{P}}=\sigma\left(\mathcal{F}_{t} \cup \mathcal{N}^{\mathrm{P}}\right)$. Then $\mathbb{F}^{\mathrm{P}} =(\mathcal{F}_{t}^{\mathrm{P}})_{t\in T}$ is a complete filtration.
+\end{definition}
+
+
+\begin{definition}[usual conditions and stochastic basis]
+	A filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{stochastic basis} if the filtration $(\mathcal{F}_{t})_{t\in T }$ satisfies the following \emph{usual conditions}:
+	\begin{enumerate}
+		\item $(\mathcal{F}_{t})_{t\in T }$ is right-continuous;
+		\item $(\mathcal{F}_{t})_{t\in T }$ is complete.
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[measurable stochastic process]
+	A stochastic process $X=(X_t)_{t\in T}$ defined on probability space $(\Omega,\mathcal{F},\mathrm{P})$ is \emph{measurable} if, for all $A \in \mathcal{B}\left(T\right)$,
+	\[
+	\left\{( \omega,t): X_{t}(\omega) \in A\right\} \in \mathcal{F}\otimes \mathcal{B}(T) .
 	\]
 \end{definition}
-\begin{definition}[the distribution of a process]
-	The distribution of a process $X: \Omega \rightarrow S^T$ is the pushforward measure $P\circ X^{-1}$.
+
+\begin{definition}[progressively measurable stochastic process]
+	Let $X=(X_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If for all $M\ge0$, the mapping
+	\begin{align*}
+	X^{(M)}: \Omega \times [0, M]&\longrightarrow S\\
+	(\omega,t)&\longmapsto X_t(\omega)
+	\end{align*}
+	is $\mathcal{F}_M\otimes \mathcal{B}([0,M])$ -measurable, we say $X$ is \emph{progressively measurable}.
 \end{definition}
-We use the notation $X \stackrel{d}{=} Y$ to represent that $X$ and $Y$ have the same distribution.
+
+
+
+\begin{definition}[continuous (RCLL/right-continuous) stochastic process]
+	A stochastic process $(X_t)_{t\ge0}$ defined on $(\Omega,\mathcal{F},\mathrm{P})$ with the state space $(\mathbb{R}^n,\mathcal{B}(\mathbb{R}^n))$ is continuous (RCLL\footnote{A RCLL ("right continuous with left limits"), càdlàg (French: "continue à droite, limite à gauche"), or corlol ("continuous on (the) right, limit on (the) left") function is a function defined on the real numbers (or a subset of them) that is everywhere right-continuous and has left limits everywhere.}/right-continuous) if there	is $\Omega_0\in\mathcal{F}$  with $P(\Omega_0) = 1$ such that the path $t\mapsto X_t(\omega)$ is continuous (RCLL/right-continuous) for every $\omega\in\Omega_0$.
+\end{definition}
+
+
+
+
+\begin{definition}[predictable process]
+	Given a filtered probability space $\left(\Omega, \mathcal{F},(\mathcal{F}_{t})_{t \ge 0}, \mathrm{P}\right)$ with the state space $(\mathbb{R}^n,\mathcal{B}(\mathbb{R}^n))$, define the \emph{$(\mathcal{F}_{t})_{t \ge 0}$-predictable $\sigma$-algebra} as follows
+	\[
+	\sigma\left(\{X^{-1}(B)|X:\Omega\times[0,\infty)\longrightarrow \mathbb{R}^n\text{ is left-continuous adapted processes and } B\in\mathbb{R}^n\}\right).
+	\]
+	then the stochastic process $X=\left(X_{t}\right)_{t \ge 0}$ is \emph{predictable} if $X:\Omega\times[0,\infty)\longrightarrow \mathbb{R}^n$ is measurable with respect to the $(\mathcal{F}_{t})_{t \ge 0}$-predictable $\sigma$-algebra.
+\end{definition}
+
+\begin{proposition}
+	Let $X=(X_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$ with the state space $(\mathbb{R}^n,\mathcal{B}(\mathbb{R}^n))$. Then the implication relations of some properties of $X$ are shown as follows
+	\begin{center}
+	\begin{tikzcd}[arrows=Rightarrow]
+		&\text{RCLL}\arrow{r}{}&\text{right-continuous}\arrow{rd}{}&&\\
+		\text{continuous}\arrow{rd}{}\arrow{ru}{}&&&\text{progressively measurable}\arrow{r}{}&\text{measurable}\\
+		&\text{left-continuous}\arrow{r}{}&\text{predictable}\arrow{ru}{}&&
+	\end{tikzcd}
+	\end{center}
+\end{proposition}
+
+\begin{definition}[modification and indistinguishability]
+	Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
+	$X$ is a \emph{modification} of $Y$ iff
+	\[
+	\forall t \in T,\; \mathrm{P}(X_t=Y_t)=1
+	\]
+	and $X$ is \emph{indistinguishable} from $Y$ iff
+	\[
+	\mathrm{P}(X=Y)=\mathrm{P}(\forall t \in T,\; X_t=Y_t)=1.
+	\]
+\end{definition}
+If $X$ and $Y$ are indistinguishable, they are modifications of each other.
+\begin{proposition}
+	Let $X,Y$ be a process defined on the stochastic basis $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$. Then $X$ and $Y$ are indistinguishable iff
+	they are modifications of each other.
+\end{proposition}
+
+\begin{proposition}
+	Given any measurable process $X=(X_t)_{t\ge0}$ defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$, $X$ has a progressively measurable modification.
+\end{proposition}
+
+
+
+\begin{definition}[the distribution of a process]
+	The distribution of a process $X: \Omega \rightarrow S^T$ is the pushforward measure $P\circ X^{-1}$ on $(S^T,\mathcal{S}^T)$.
+\end{definition}
+We use the notation $X \stackrel{d}{=} Y$ to represent that $X$ and $Y$ have the same distribution. If $X$ and $Y$ are modifications of each other, then $X \stackrel{d}{=} Y$.
 
 \begin{definition}[family of finite dimensional distributions]
 	The family 
@@ -95,32 +218,18 @@ We use the notation $X \stackrel{d}{=} Y$ to represent that $X$ and $Y$ have the
 	\]
 \end{proposition}
 
-\begin{definition}
-	Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
-	$X$ is a \emph{modification} of $Y$ iff
-	\[
-	\forall t \in T,\; \mathrm{P}(X_t=Y_t)=1
-	\]
-	and $X$ is \emph{indistinguishable} from $Y$ iff
-	\[
-	\mathrm{P}(X=Y)=\mathrm{P}(\forall t \in T,\; X_t=Y_t)=1.
-	\]
-\end{definition}
-If $X$ and $Y$ are indistinguishable, they are modifications of each other.
+
 
 \begin{proposition}[transfer of regularity]
 		Let $S$ be a a separable metric space and $X, Y$ be processes on $(\Omega ,{\mathcal{F}},\mathrm{P})$ with paths in $U \subset S^T$ such that $X \stackrel{d}{=} Y$. Assume that $Y$ has paths in some set $U \subset S^{T}$ that is Borel for the $\sigma$-algebra $\mathcal{U}=(\mathcal{B}(S))^{T}\cap U$. Then even $X$ has a modification with paths in $U \subset S^{T}$.
 \end{proposition}
 
-\begin{definition}[Independence of stochastic processes]
+\begin{definition}[independence of stochastic processes]
 	$N$ stochastic processes $X^{(1)},X^{(2)},\cdots,X^{(N)}$ defined on the same probability space $(\Omega, \mathcal{F}, P)$ are said to be independent if for all $n\ge1$ and for all $t_{1}, \cdots, t_{n} \in T,$ the $N$ random vectors $\left(X^{(1)}_{t_{1}}, \cdots, X^{(1)}_{t_{n}}\right), \left(X^{(2)}_{t_{1}}, \cdots, X^{(2)}_{t_{n}}\right),\cdots,\left(X^{(N)}_{t_{1}}, \cdots, X^{(N)}_{t_{n}}\right)$ are independent, i.e. if
 	\[
 	F_{X^{(1)}_{t_{1}}, \cdots, X^{(1)}_{t_{n}}, \cdots, X^{(N)}_{t_{1}}, \cdots, X^{(N)}_{t_{n}}}\left(x^{(1)}_{1}, \cdots, x^{(1)}_{n}, \cdots, x^{(N)}_{1}, \cdots, x^{(N)}_{n}\right)=\prod_{i=1}^N F_{X^{(i)}_{t_1}, \cdots, X^{(i)}_{t_{n}}}\left(x^{(i)}_{1}, \cdots, x^{(i)}_{n}\right) .
 	\]
 \end{definition}
-
-
-\section{Stochastic process valued in $\mathbb{R}$}
 
 For simplicity, we always assume that $T=\mathbb{R}_{\ge 0}$ or $T=\mathbb{Z}_{\ge 0}$ and that $(S,\mathcal{S})=(\mathbb{R},\mathcal{B}(\mathbb{R}))$.
 
@@ -666,50 +775,7 @@ which follows by
 \chapter{Martingale}
 \section{Basic Notion}
 
-\begin{definition}[filtration]
-Suppose $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space and let $T$ be a linearly ordered index set such as $\mathbb{N}$ or $\mathbb{R}_{\ge 0}$. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
-\[
-\mathbb{F} =(\mathcal{F}_{t})_{t\in T}
-\]
-is called a \emph{filtration} on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
-\end{definition}
-\begin{definition}[filtered probability space]
-	If $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration on the probability space $(\Omega,\mathcal{F},\mathrm{P})$, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}.
-\end{definition}
 
-\begin{definition}[adapted process]
-	A stochastic process $X=(X_{t})_{t \in T}$ is called \emph{adapted} (to the filtration $(\mathcal{F}_{t})_{t\in T}$ ) if for any $t \in T, X_{t}$ is $\mathcal{F}_{t}$ -measurable, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
-\end{definition}
-
-A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$. 
-
-The definition of $\mathcal{F}_{\infty}$ is usually specified as
-\[
-\mathcal{F}_{\infty}=\sigma\left(\bigcup_{t\in T} \mathcal{F}_t\right)
-\]
-
-\begin{definition}[right-continuous filtration]
-Given a filtration $\mathbb{F}=(\mathcal{F}_{t})_{t\in T}$, define
-\[
-\mathcal{F}_{t+}:=\bigcap_{s>t}\mathcal{F}_{s}\quad,\forall t\in T.
-\]
-Then $\mathbb{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. The filtration $\mathbb {F}$ is called \emph{right-continuous} if and only if $\mathbb{F}^{+}=\mathbb {F}$.
-\end{definition}
-
-\begin{definition}[complete filtration]
-Let
-\[\mathcal{N}_{P}:=\{A\subset 2^\Omega | A\subset B\text{ for a }B\text{ with }\mathrm{P}(B)=0\}
-\]
-be the set of all sets that are contained within a $\mathrm{P}$-null set. A filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T}$ is called a \emph{complete filtration}, if every $\mathcal{F}_{t}$ contains $\mathcal{N}_{P}$. This is equivalent to $(\Omega,\mathcal{F}_{t},\mathrm{P})$ being a complete measure space for every $t\in T$.
-\end{definition}
-
-\begin{definition}[natural filtration]
-	Let $X=(X_{t})_{t\ge 0}$ be a stochastic process on the probability space $(\Omega,\mathcal{F},\mathrm{P})$. Then 
-	\[
-	{\mathcal {F}}_{t}^X=\sigma (\{X_{s}:0\le s\le t\})
-	\]
-	is a $\sigma$-algebra and $(\mathcal {F}_{t}^X)_{t\ge0} $ is a filtration that $X$ is adapted to. We call $(\mathcal {F}_{t}^X)_{t\ge0} $ the \emph{natural filtration} induced by the stochastic process $X$. $(\mathcal {F}_{t}^X)_{t\ge0} $ is the minimum filtration which $X$ is adapted to.
-\end{definition}
 
 \begin{definition}[stopping time]
 Let $\tau$  be a random variable defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ with values in $T$. Then $\tau$  is called a \emph{stopping time} (with respect to the filtration $(\mathcal{F}_{t})_{t\in T}$), if the following condition holds:
@@ -761,16 +827,19 @@ It is useful to observe that, if $\mu$ is another stopping time, then
 	\end{enumerate}
 \end{definition}
 \begin{definition}[discrete-time submartingale]
-A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
-\[
-\mathrm{E}[M_{n+1}|\mathcal{F}_n]\ge M_n.
-\]
+A discrete-time \emph{submartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying 
+\begin{enumerate}
+	\item For $n\ge0$, $\mathrm{E}[|M_n|]<+\infty$;
+	\item For $n\ge0$, $\mathrm{E}[M_{n+1}|\mathcal{F}_n]\ge M_n$.
+\end{enumerate}
+
 \end{definition}
 \begin{definition}[discrete-time supermartingale]
 	A discrete-time \emph{supermartingale} is a stochastic process $M=(M_n)_{n\ge 0}$ consisting of integrable random variables satisfying for $n\ge0$
-	\[
-	\mathrm{E}[M_{n+1}|\mathcal{F}_n]\le M_n.
-	\]
+	\begin{enumerate}
+		\item For $n\ge0$, $\mathrm{E}[|M_n|]<+\infty$;
+		\item For $n\ge0$, $\mathrm{E}[M_{n+1}|\mathcal{F}_n]\le M_n$.
+	\end{enumerate}
 \end{definition}
 
 \begin{example}
@@ -805,7 +874,7 @@ for $n \geq 1$ is called the martingale transform of $M$ by $A$.
 \end{definition}
 
 \begin{theorem}[martingale transform theorem]
-If $M=(M_{n})_{n\ge0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and if $A=(A_{n})_{n\ge0}$ is predicted process with respect to $(\mathcal{F}_{n})_{n\ge0}$, then the martingale transform $\widetilde{M}$ of $M$ by $A$ is itself a martingale with respect to $(\mathcal{F}_{n})_{n\ge0}$.
+If $M=(M_{n})_{n\ge0}$ is a martingale defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{n})_{n\ge0},\mathrm{P})$ and if $A=(A_{n})_{n\ge0}$ is predictable process with respect to $(\mathcal{F}_{n})_{n\ge0}$, then the martingale transform $\widetilde{M}$ of $M$ by $A$ is itself a martingale with respect to $(\mathcal{F}_{n})_{n\ge0}$.
 \end{theorem}
 
 \begin{theorem}[stopping time theorem]
@@ -834,6 +903,13 @@ Since $\mathrm{P}(\tau<\infty)=1$, $X_{\tau \wedge n} \stackrel{a.s.}{\longright
 	t&\longmapsto X_{t}(\omega)
 	\end{align*}
 	is continuous.
+\end{definition}
+
+\begin{definition}[$L^p$ martingale]
+	A martingale $M=(M_t)_{t\ge0}$ is said to be a $L^p$ \emph{martingale} if for all $t\ge0$, $M_t\in L^p(\Omega,\mathcal{F},\mathrm{P})$ or equivalently
+	$$
+	\mathrm{E}\left[|M_{t}|^{p}\right]<\infty.
+	$$
 \end{definition}
 
 \begin{definition}[$L^p$-bounded martingale]
@@ -865,15 +941,27 @@ and, if $M_{T} \in L^{p}(\Omega,\mathcal{F},\mathrm{P})$ for some $p>1,$ then we
 
 
 \begin{theorem}[martingale convergence theorems in continuous time]\label{martingale convergence}
-Let $M=(M_{t})_{t\ge0}$ be a continuous martingale on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|^{p}\right] \leq B<\infty$ for some $p>1$ and all $t \geq 0,$ then there exists a random variable $M_{\infty}\in L^p(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|^p\right] \leq B$ such that
-\[
-\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1 \text { and } \lim _{t \rightarrow \infty}\left\|M_{t}-M_{\infty}\right\|_{p}=0.
-\]
-Also, if $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|\right]\le B<\infty$ for all $t \ge 0,$ then there exists a random variable $M_{\infty}\in L^1(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|\right] \leq B$ such that
-\[
-\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1.
-\]
+Let $M=(M_{t})_{t\ge0}$ be a continuous martingale on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$.
+\begin{enumerate}
+	\item If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|^{p}\right] \leq B<\infty$ for some $p>1$ and all $t \geq 0,$ then there exists a random variable denoted by $M_{\infty}\in L^p(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|^p\right] \leq B$ such that
+	\[
+	M_t\stackrel{\ a.s.\ }{\longrightarrow}M_{\infty}\text { and }M_t\stackrel{\ L^p\ }{\longrightarrow}M_{\infty},\qquad t\longrightarrow\infty
+	\]
+	or alternatively
+	\[
+	\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1 \text { and } \lim _{t \rightarrow \infty}\left\|M_{t}-M_{\infty}\right\|_{p}=0.
+	\]
+	\item If $M$ satisfies $\mathrm{E}\left[\left|M_{t}\right|\right]\le B<\infty$ for all $t \ge 0,$ then there exists a random variable $M_{\infty}\in L^1(\Omega,\mathcal{F},\mathrm{P})$ with $\mathrm{E}\left[\left|M_{\infty}\right|\right] \leq B$ such that
+	\[
+	M_t\stackrel{\ a.s.\ }{\longrightarrow}M_{\infty},\qquad t\longrightarrow\infty
+	\]
+	or alternatively
+	\[
+	\mathrm{P}\left(\lim _{t \rightarrow \infty} M_{t}=M_{\infty}\right)=1.
+	\]
+\end{enumerate} 
 \end{theorem}
+
 According to the theorem \ref{martingale convergence}, $M_{\infty}$ is well defined for any $L^p$-bounded martingale $M$. 
 
 \begin{proposition}[Hilbert spaces $\mathscr{M}^2_0$ and $\mathscr{M}^2_{0,c}$]
@@ -895,36 +983,45 @@ All the $L^2$-bounded continuous martingales $M\in\mathscr{M}_0$ constitute a Hi
 	\]
 \end{definition}
 
-A càdlàg (French: "continue à droite, limite à gauche"), RCLL ("right continuous with left limits"), or corlol ("continuous on (the) right, limit on (the) left") function is a function defined on the real numbers (or a subset of them) that is everywhere right-continuous and has left limits everywhere.
+\begin{definition}[class D process]
+	A process $Z$ is of \emph{class D} if 
+	\begin{enumerate}
+		\item $Z_0=0$ a.s;
+		\item The collection $\left\{Z_{\tau}| \tau \text { is a finite-valued stopping time}\right\}$ is uniformly integrable.
+	\end{enumerate}
+\end{definition}
 
-\begin{theorem}[Doob–Meyer decomposition theorem]
-Let $Z$ be a càdlàg supermartingale satisfying
-\begin{enumerate}
-	\item $Z_0=0$ a.s;
-	\item The collection $\left\{Z_{\tau}| \tau \text { is a finite-valued stopping time}\right\}$ is uniformly integrable.
-\end{enumerate}
-Then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale.
+\begin{theorem}[Doob–Meyer decomposition theorem]\label{DM}
+Let $Z$ be an RCLL submartingale of class D, then there exists a unique, increasing, predictable process $A$ with $A_{0}=0$ such that $M=Z-A$ is a uniformly integrable martingale. $Z=M+A$ is called the Doob–Meyer decomposition of $Z$.
 \end{theorem}
 
-\begin{definition}[finite variation]	
+\begin{proposition}
+	A RCLL nonnegative submartingale $Z$ with $Z_0=0$ is of class D.
+\end{proposition}
+
+\begin{definition}[finite variation process]	
 	A process $X$ is said to have \emph{finite variation} if it has bounded variation over every finite time interval with probability 1.	
 \end{definition}	
 
-The quadratic variation exists for all continuous finite variation processes, and is zero.
+The quadratic variation exists for all continuous finite variation processes, and is zero. Let $\mathscr{M}_c^2$ denote the space consisting of all the $L^2$-bounded continuous martingales. The following proposition indicates that the quadratic variation also exists for all martingales in $\mathscr{M}_c^2$.
  
-\begin{proposition}
-	If $M\in \mathscr{M}^2_{0,c}$, then its quadratic variation $\langle M\rangle$ exists and has finite variation. The almost sure limit of $\langle M\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
+\begin{proposition}[existence of quadratic variation in $\mathscr{M}^2_{c}$]
+	If $M\in \mathscr{M}^2_{c}$, then its quadratic variation $\langle M\rangle$ exists and has finite variation. The almost sure limit of $\langle M\rangle_{t}$ as $t \rightarrow \infty$ exists and is denoted by
 	\[
 	\langle M\rangle_{\infty}=\lim_{t\to\infty}\langle M\rangle_{t}\quad\text{ a.s.}
 	\]
 	Moreover, $\langle M\rangle_{\infty}$ is integrable, and satisfies
 	\[
-	\mathrm{E}\left[\langle M\rangle_{\infty}\right]=\mathrm{E}\left[M_{\infty}^2\right].
+	\mathrm{E}\left[M_{\infty}^2\right]=\mathrm{E}\left[M_{0}^{2}\right]+\mathrm{E}\left[\langle M\rangle_{\infty}\right].
 	\]
 \end{proposition}
+\begin{proof}
+	Let $\widetilde{M}=M-M_0\in\mathscr{M}^2_{0,c}$. Since $\varphi:t\mapsto t^2$ is convex and $\mathrm{E}\left[\widetilde{M}^2_t\right]<+\infty$ for $t\ge0$, we see $\widetilde{M}^2$ is an RCLL submartingale. Since $\widetilde{M}^2$ is nonnegative, proposition \ref{DM} tells that $\widetilde{M}^2$ is of class D. Thus we have the unique Doob-Meyer $\widetilde{M}^2=X+A$, where $X$ is a uniformly integrable martingale and $A$ is an increasing, predictable process. We can show that $A$ is exactly the quadratic variation $\langle M\rangle$.
+\end{proof}
+
 
 \begin{definition}[bracket process]	
-	The bracket process of two processes $X$ and $Y$ is
+	The \emph{bracket process} of two processes $X$ and $Y$ is defined as
 	\[
 	\langle X, Y\rangle:=\frac{1}{4}\left(\langle X+Y\rangle-\langle X-Y\rangle\right)
 	\] 
@@ -1040,14 +1137,7 @@ In particular, we have $\langle X\rangle_{t}=\langle M\rangle_{t}$.
 \chapter{Stochastic Integration}
 If not specified explicitly, the stochastic processes and random variables are always assumed to be defined on the filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$.
 \section{Stochastic Integrals for $L^2$-Bounded Martingales}
-\begin{definition}[progressively measurable]
-	Let $\Phi=(\Phi_t)_{t\ge0}$ be a stochastic process defined on filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\ge0},\mathrm{P})$. If for all $T\ge0$, the mapping
-	\begin{align*}
-	\Phi^{(T)}: \Omega \times [0, T]&\longrightarrow S\\
-	(\omega,t)&\longmapsto \Phi_t(\omega)
-	\end{align*}
-	is $\mathcal{F}_T\otimes \mathcal{B}([0,T])$ -measurable, we say $\Phi$ is \emph{progressively measurable}.
-\end{definition}
+
 
 \begin{proposition}[Hilbert space $\mathscr{L}^2(M)$]
 	Suppose $M\in \mathscr{M}^2_{0,c}$. Define
@@ -1233,6 +1323,7 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 	\end{aligned}
 	\]
 \end{theorem}
+Thus we see that if we apply a twice continuously differentiable function $F$ to a $p$-tuple of continuous semimartingales $(X^{1}, \cdots, X^{p})$, the resulting process $F(X^{1}, \cdots, X^{p})$ is still a continuous semimartingale.
 
 \begin{corollary}[formula of integration by parts]
 	Take $p=2$ and $F(x, y)=x y$ in the theorem. If $X$ and $Y$ are two continuous semimartingales, we have
@@ -1258,6 +1349,19 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 	
 \end{corollary}
 
+A random process with values in the complex plane $\mathbb{C}$ is called a \emph{complex continuous local martingale} if both its real part and its imaginary part are continuous local martingales.
+
+\begin{proposition}
+	Let M be a continuous local martingale and, for every $\lambda \in \mathbb{C},$ let
+	\[
+	\mathcal{E}(\lambda M)_{t}=\exp \left(\lambda M_{t}-\frac{\lambda^{2}}{2}\langle M\rangle_{t}\right)
+	\]
+	The process $\mathcal{E}(\lambda M)$ is a complex continuous local martingale, which can be written
+	in the form
+	\[
+	\mathcal{E}(\lambda M)_{t}=\mathrm{e}^{\lambda M_{0}}+\lambda \int_{0}^{t} \mathcal{E}(\lambda M)_{s} \mathrm{d} M_{s}
+	\]
+\end{proposition}
 
 \newpage
 
