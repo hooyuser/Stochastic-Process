@@ -15,6 +15,8 @@
 \usepackage{array,makecell}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{amsmath,amsfonts,amssymb,mathrsfs}
+\usepackage{mathcommand}
+
 \usepackage{tikz,tikz-cd}
 \usetikzlibrary{arrows.meta,arrows,graphs,graphs.standard,calc,decorations.markings}
 
@@ -32,6 +34,11 @@
 \theorembodyfont{\normalfont}
 \theoremsymbol{\\ \rightline{$\square$}}
 \newtheorem{proof}{Proof.}
+
+
+% define macro
+\renewmathcommand{\d}{{\mathrm{d}}}
+
 
 % Start the document
 \begin{document}
@@ -55,7 +62,7 @@
 \tableofcontents
 % Create a new 1st level heading
 \chapter{Preliminaries}
-
+\section{Basic Concepts}
 $n \ge k$ is used as an alternative for the
 statement $n\in\mathbb{Z}_{\ge k}=\mathbb{Z}\cap[k,\infty)$. $t \ge s$ is used as an alternative for the statement $t\in\mathbb{R}_{\ge s}=\mathbb{R}\cap[s,\infty)$.
 \begin{definition}[stochastic process]
@@ -79,22 +86,23 @@ The following proposition actually gives an equivalent definition of stochastic 
 \end{proposition}
 
 We always assume that $T$ is a linearly ordered index set such as $\mathbb{Z}_{\ge 0}$ or $\mathbb{R}_{\ge 0}$.
+\section{Filtration}
 \begin{definition}[filtration]
 	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ be a probability space. For every $t\in T$ let $\mathcal{F}_{t}$ be a sub-$\sigma$-algebra of $\mathcal{F}$. Then
 	\[
-	\mathbb{F} =(\mathcal{F}_{t})_{t\in T}
+	\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}
 	\]
 	is called a \emph{filtration} on the probability space $(\Omega,\mathcal{F},\mathrm{P})$ if $\mathcal {F}_{k}\subset \mathcal{F}_{\ell}$ for all $k\leq \ell$. 
 \end{definition}
 \begin{definition}[filtered probability space]
-	If $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $ \mathbb {F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration on the probability space $(\Omega,\mathcal{F},\mathrm{P})$, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}.
+	If $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space and $ \mathfrak{F}=(\mathcal{F}_{t})_{t\in T }$ is a filtration on the probability space $(\Omega,\mathcal{F},\mathrm{P})$, then $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{filtered probability space}.
 \end{definition}
 
 \begin{definition}[adapted process]
 	A stochastic process $X=(X_{t})_{t \in T}$ is called \emph{adapted} (to the filtration $(\mathcal{F}_{t})_{t\in T}$ ) if for any $t \in T, X_{t}$ is $\mathcal{F}_{t}$ -measurable, that is, $\sigma(X_t)\subset \mathcal{F}_t$ for all $t\in T$.
 \end{definition}
 
-A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T }$. 
+A stochastic process $(X_{t})_{t\in T }$ is said to be defined on a filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ if $(X_{n})_{t\in T }$ is defined on $(\Omega,\mathcal{F},\mathrm{P})$ and adapted to the filtration $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T }$. 
 
 The definition of $\mathcal{F}_{\infty}$ is usually specified as
 \[
@@ -117,40 +125,42 @@ The definition of $\mathcal{F}_{\infty}$ is usually specified as
 \end{definition}
 
 \begin{definition}[left-continuous filtration]
-	Given a filtration $\mathbb{F}=(\mathcal{F}_{t})_{t\in T}$, for every $t\in T$, we define
+	Given a filtration $\mathfrak{F}=(\mathcal{F}_{t})_{t\in T}$, for every $t\in T$, we define
 	\[
 	\mathcal{F}_{t-}:=\sigma\left(\bigcup_{s<t}\mathcal{F}_{s}\right).
 	\]
-	Then $\mathbb{F}^-:=({\mathcal{F}}_{t-})_{t\in T}$ is a filtration. A filtration $\mathbb {F}$ is said to be \emph{left-continuous} if and only if $\mathbb{F}^{-}=\mathbb {F}$.
+	Then $\mathfrak{F}^-:=({\mathcal{F}}_{t-})_{t\in T}$ is a filtration. A filtration $\mathfrak{F}$ is said to be \emph{left-continuous} if and only if $\mathfrak{F}^{-}=\mathfrak{F}$.
 \end{definition}
 \begin{definition}[right-continuous filtration]
-	Given a filtration $\mathbb{F}=(\mathcal{F}_{t})_{t\in T}$, for every $t\in T$, we define
+	Given a filtration $\mathfrak{F}=(\mathcal{F}_{t})_{t\in T}$, for every $t\in T$, we define
 	\[
 	\mathcal{F}_{t+}:=\bigcap_{s>t}\mathcal{F}_{s}.
 	\]
-	Then $\mathbb{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. A filtration $\mathbb {F}$ is said to be \emph{right-continuous} if and only if $\mathbb{F}^{+}=\mathbb {F}$.
+	Then $\mathfrak{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. A filtration $\mathfrak{F}$ is said to be \emph{right-continuous} if and only if $\mathfrak{F}^{+}=\mathfrak{F}$.
 \end{definition}
 
 \begin{definition}[complete filtration]
-	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space. A filtration $\mathbb{F} =(\mathcal{F}_{t})_{t\in T}$ on $(\Omega,\mathcal{F},\mathrm{P})$ is said to be \emph{complete}, if $(\Omega,\mathcal{F}_{t},\mathrm{P})$ is a complete measure space for every $t\in T$. 
+	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space. A filtration $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}$ on $(\Omega,\mathcal{F},\mathrm{P})$ is said to be \emph{complete}, if $(\Omega,\mathcal{F}_{t},\mathrm{P})$ is a complete measure space for every $t\in T$. 
 	Specifically, let
 	\[
 		\mathcal{N}^{\mathrm{P}}:=\{B\in 2^\Omega \mid \exists A\in\mathcal{F},\mathrm{P}(A)=0\text{ and }B\subset A\}
 	\]
-	be the collection of all sets that are contained by a $\mathrm{P}$-null set. Then $\mathbb{F}$ is complete if $\mathcal{N}^{\mathrm{P}}\subset \mathcal{F}_{0}$. 
+	be the collection of all sets that are contained by a $\mathrm{P}$-null set. Then $\mathfrak{F}$ is complete if $\mathcal{N}^{\mathrm{P}}\subset \mathcal{F}_{0}$. 
 \end{definition}
 
 \begin{definition}[completion of filtered measure space]
-	Suppose $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T }, \mathrm{P})$ is a filtered probability space. Let $\mathcal{F}_{t}^{\mathrm{P}}=\sigma\left(\mathcal{F}_{t} \cup \mathcal{N}^{\mathrm{P}}\right)$. Then $\mathbb{F}^{\mathrm{P}} =(\mathcal{F}_{t}^{\mathrm{P}})_{t\in T}$ is a complete filtration .
+	Suppose $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T }, \mathrm{P})$ is a filtered probability space. Let $\mathcal{F}_{t}^{\mathrm{P}}=\sigma\left(\mathcal{F}_{t} \cup \mathcal{N}^{\mathrm{P}}\right)$. Then $\mathfrak{F}^{\mathrm{P}} =(\mathcal{F}_{t}^{\mathrm{P}})_{t\in T}$ is a complete filtration .
 \end{definition}
 
 \begin{definition}[usual conditions and stochastic basis]
 	A filtered probability space $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T },\mathrm{P})$ is called a \emph{stochastic basis} if the filtration $(\mathcal{F}_{t})_{t\in T }$ satisfies the following \emph{usual conditions}:
-	\begin{enumerate}
+	\begin{enumerate}[(i)]
 		\item $(\mathcal{F}_{t})_{t\in T }$ is right-continuous;
 		\item $(\mathcal{F}_{t})_{t\in T }$ is complete.
 	\end{enumerate}
 \end{definition}
+
+\section{Some Types of Stochastic Processes}
 
 \begin{definition}[measurable stochastic process]
 	A stochastic process $X=(X_t)_{t\in T}$ defined on probability space $(\Omega,\mathcal{F},\mathrm{P})$ is \emph{measurable} if, for all $A \in \mathcal{B}\left(T\right)$,
@@ -195,7 +205,7 @@ The definition of $\mathcal{F}_{\infty}$ is usually specified as
 	\end{tikzcd}
 	\end{center}
 \end{proposition}
-
+\section{Relationships between Stochastic Processes}
 \begin{definition}[modification and indistinguishability]
 	Let $X, Y$ be stochastic processes from $\Omega\times T$ to $S$.
 	$X$ is a \emph{modification} of $Y$ iff
@@ -300,17 +310,102 @@ For simplicity, we always assume that $T=\mathbb{R}_{\ge 0}$ or $T=\mathbb{Z}_{\
 
 \chapter{Markov Process}
 \section{Markov Process}
-\begin{definition}[Markov Process]
-Let $(E, \mathscr{E})$ be a measurable space. A Markovian transition kernel from $E$ into $E$ is a mapping $Q: E \times \mathscr{E} \longrightarrow[0,1]$ satisfying the following two properties:
-(i) For every $x \in E$, the mapping $\mathscr{E} \ni A \mapsto Q(x, A)$ is a probability measure on $(E, \mathscr{E})$
-(ii) For every $A \in \mathscr{E}$, the mapping $E \ni x \mapsto Q(x, A)$ is $\mathscr{E}$-measurable.
+\begin{definition}[Markovian transition kernel]
+Let $(S, \mathcal{S})$ be a measurable space. A \emph{Markovian transition kernel} from $S$ into $S$ is a mapping $Q: S \times \mathcal{S} \longrightarrow[0,1]$ satisfying the following two properties:
+\begin{enumerate}[(i)]
+	\item For every $x \in S$, the mapping
+	\begin{align*}
+		Q(x, \cdot):\mathcal{S}&\longrightarrow [0,1]\\
+		 A &\longmapsto Q(x, A)
+	\end{align*}
+	is a probability measure on $(S, \mathcal{S})$, representing the probability of going from $x$ to $A$.
+	\item For every $A \in \mathcal{S}$, the mapping
+	\begin{align*}
+		Q(\cdot, A):E&\longrightarrow [0,1]\\
+		x &\longmapsto Q(x, A)
+	\end{align*}
+	is $\mathcal{S}$-measurable.
+\end{enumerate}
 \end{definition}	
 
+Let $\mathrm{BM}(S,\mathcal{S})$ be the Banach space of all bounded measurable real functions on $S$, which is equipped with the norm $\|f\|=\sup \{|f(x)|: x \in S\}$. Then $Q$ induces a bounded linear operator defined by
+\begin{align*}
+	\mathbf{Q}:\mathrm{BM}(S,\mathcal{S}) &\longrightarrow\mathrm{BM}(S,\mathcal{S}) \\
+	f(x) &\longmapsto \mathbf{Q}f(x)=\int_S f(y)\,Q(x,\d y)
+\end{align*}
 
-\begin{definition}[Markov Process]
-A stochastic process $(X_t)_{t\in T}$ is said to be a \emph{Markov process} if for all $t\in T$ and all $A\in \mathcal{B}(\mathbb{R})$, 	
-
+\begin{definition}[Markovian transition
+	semigroup]
+	A collection $\left(Q_t\right)_{t \geq 0}$ of Markovian transition kernels on $S$ is called a \emph{Markovian transition semigroup} if the following three properties hold.
+	\begin{enumerate}[(i)]
+	\item For every $x \in S$, $Q_0(x, \cdot)=\delta_x(\cdot)$.
+	\item For every $s, t \in [0, \infty)$ and $A \in \mathcal{S}$,
+	$$
+	Q_{t+s}(x, A)=\int_S Q_s(y, A)\,Q_t(x,\d y) 
+	$$
+	(Chapman-Kolmogorov identity).
+	\item For every $A \in \mathcal{S}$, the function $(t, x) \mapsto Q_t(x, A)$ is measurable with respect to the $\sigma$-algebra  $\mathcal{B}\left(\mathbb{R}_{+}\right) \otimes \mathcal{S}$.
+\end{enumerate}
+	Then the linear mapping $\mathbf{Q}_t: f \mapsto Q_t f$ is a contraction of $\mathrm{BM}(S,\mathcal{S})$. From this point of view, the Chapman-Kolmogorov identity is equivalent to the relation
+	$$
+	\mathbf{Q}_{t+s}=\mathbf{Q}_t\mathbf{Q}_s
+	$$
+	for every $s, t \geq 0$. This allows one to view $\left(Q_t\right)_{t \geq 0}$ as a semigroup of contractions of $\mathrm{BM}(S,\mathcal{S})$.
 \end{definition}	
+We now consider a filtered probability space $\left(\Omega, \mathcal{F},\mathfrak{F}=\left(\mathcal{F}_t\right)_{t \ge 0}, \mathrm{P}\right)$.
+\begin{definition}[Markov process]
+Let $\left(Q_t\right)_{t \geq 0}$ be a transition semigroup on $E$. A Markov process (with respect to the filtration $\mathfrak{F}$) with transition semigroup $\left(Q_t\right)_{t \geq 0}$ is an $\mathfrak{F}$-adapted process $\left(X_t\right)_{t \geq 0}$ with values in $E$ such that, for every $s, t \geq 0$ and $f \in \mathrm{BM}(S,\mathcal{S})$,
+$$
+\mathrm{E}\left[f\left(X_{s+t}\right) \mid \mathcal{F}_s\right]=\mathbf{Q}_t f\left(X_s\right)
+$$
+\end{definition}
+When we speak about a Markov process $X$ without specifying the filtration, we implicitly mean that the property of
+ the definition holds with the natural filtration $\mathcal{F}_t^X=\sigma \left(\{X_{s}:0\le s\le t\}\right)$. We may also notice that, if $X$ is a Markov process with respect to a filtration $\mathfrak{F}$, it is automatically also a Markov
+ process (with the same semigroup) with respect to $\mathfrak{F}^X$.
+
+\section{Feller Process}
+
+ From now on, we assume that $S$ is a metrizable locally compact topological space. We also assume that $S$ is countable at infinity, meaning that $S$ is a countable union of compact sets. The space $S$ is equipped with its Borel $\sigma$-algebra $\mathcal{B}(S)$, which is generated by the open sets of $S$.
+
+Under the previous assumptions, it is well known that the space $S$ is Polish. Moreover, one can find an increasing sequence $\left(K_n\right)_{n \geq 1}$ of compact subsets of $S$, such that any compact set of $S$ is contained in $K_n$ for some $n$. A function $f: S \to \mathbb{R}$ tends to 0 at infinity if, for every $\varepsilon>0$, there exists a compact subset $K$ of $S$ such that $|f(x)| \leq \varepsilon$ for every $x \in S - K$. This is equivalent to requiring that
+$$
+\sup _{x \in S - K_n}|f(x)| \underset{n \rightarrow \infty}{\longrightarrow} 0
+$$
+We let $C_0(S)$ stand for the set of all continuous real functions on $S$ that tend to 0 at infinity. The space $C_0(S)$ is a Banach space for the supremum norm
+$$
+\|f\|=\sup _{x \in S}|f(x)|
+$$
+\begin{definition}[Feller process]
+Let $\left(Q_t\right)_{t \geq 0}$ be a transition semigroup on $S$. We say that $\left(Q_t\right)_{t \geq 0}$ is a \emph{Feller semigroup} if:
+\begin{enumerate}[(i)]
+\item $\forall f \in C_0(S), \mathbf{Q}_t f \in C_0(S)$.
+\item $\forall f \in C_0(S),\left\|\mathbf{Q}_t f-f\right\| \longrightarrow 0$ as $t \rightarrow 0$.
+\end{enumerate}
+A Markov process with values in $S$ is a \emph{Feller process} if its semigroup if Feller.
+\end{definition}
+\begin{definition}[infinitesimal generator]
+We set
+$$
+D(\mathcal{A})=\left\{f \in C_0(S): \frac{ \mathbf{Q}_t f-f}{t} \text { converges in } C_0(S) \text { when } t \downarrow 0\right\}
+$$
+and, for every $f \in D(\mathcal{A})$,
+$$
+\mathcal{A}f=\lim _{t \downarrow 0} \frac{ \mathbf{Q}_t f-f}{t}
+$$
+Then $D(\mathcal{A})$ is a linear subspace of $C_0(S)$ and $\mathcal{A}: D(\mathcal{A}) \longrightarrow C_0(S)$ is a linear operator called the generator of the semigroup $\left( Q_t\right)_{t \geq 0}$. The subspace $D(\mathcal{A})$ is called the domain of $\mathcal{A}$.
+\end{definition}
+\begin
+{proposition}[properties of infinitesimal generator]
+Let $f \in D(\mathcal{A})$ and $s>0$. Then $Q_s f \in D(\mathcal{A})$ and $\mathcal{A}\left(Q_s f\right)=Q_s(\mathcal{A} f)$.
+\end{proposition}
+
+
+
+
+
+
+
+
 
 \chapter{Markov Chain}
 A Markov process with discrete state space is referred to as a Markov chain.
@@ -837,19 +932,19 @@ It is useful to observe that, if $\mu$ is another stopping time, then
 (X^\tau)^\mu=(X^\mu)^\tau=X^{\mu\wedge\tau}.
 \]
 \begin{proposition}
-	Let $\left(X_{t}\right)_{t \geq 0}$ be an adapted process defined on the filtered probability space $(\Omega,\mathcal{F},\mathbb{F},\mathrm{P})$ with values in a metric space $(E, d)$.
+	Let $\left(X_{t}\right)_{t \geq 0}$ be an adapted process defined on the filtered probability space $(\Omega,\mathcal{F},\mathfrak{F},\mathrm{P})$ with values in a metric space $(E, d)$.
 	\begin{enumerate}  
 		\item Assume that the sample paths of $X$ are right-continuous, and let $O$ be an open subset of $E$. Then
 		\[
 		\tau_{O}=\inf \left\{t \geq 0: X_{t} \in O\right\}
 		\]
-		is a stopping time of the filtration $\mathbb{F}^+$.
+		is a stopping time of the filtration $\mathfrak{F}^+$.
 		\item Assume that the sample paths of $X$ are continuous, and let $F$ be a closed subset
 		of $E$. Then
 		\[
 		\tau_{F}=\inf \left\{t \geq 0: X_{t} \in F\right\}
 		\]
-		is a stopping time of the filtration $\mathbb{F}$.
+		is a stopping time of the filtration $\mathfrak{F}$.
 	\end{enumerate}
 \end{proposition}
 
@@ -1206,7 +1301,7 @@ An elementary process is a progressive process of the form
 \Phi_{t}(\omega)=\sum_{i=0}^{p-1} \Phi_{(i)}(\omega) \mathbf{1}_{\left(t_{i}, t_{i+1}\right]}(t)
 \]
 where $0=t_{0}<t_{1}<t_{2}<\cdots<t_{p}$ and for every $i \in\{0,1, \cdots, p-1\}, \Phi_{(i)}$ is a
-bounded $\mathscr{F}_{t_{i}}$ -measurable random variable.
+bounded $\mathcal{F}_{t_{i}}$ -measurable random variable.
 \end{definition}
 
 The set $\mathscr{E}$ of all elementary processes forms a linear subspace of $L^{2}(M) .$ To be precise, we should here say "equivalence classes of elementary processes" "(recall that $\Phi$ and $\Phi^{\prime}$ are identified in $\mathscr{L}^{2}(M)$ if $\left\|\Phi-\Phi^{\prime}\right\|_{\mathscr{L}^{2}(M)}=0$ ).
@@ -1224,7 +1319,12 @@ the formula
 \[
 (\Phi \cdot M)_{t}=\int_{0}^{t}\Phi_sdM_s:=\sum_{i=0}^{p-1} \Phi_{(i)}\left(M_{t_{i+1} \wedge t}-M_{t_{i} \wedge t}\right)
 \]
-defines a process $\Phi \cdot M \in \mathscr{M}^2_{0,c}.$ The mapping $I_M^*:\mathscr{E}\to\mathscr{M}^2_{0,c},\;\Phi \mapsto \Phi \cdot M$ can extend to a linear isometry
+defines a process $\Phi \cdot M \in \mathscr{M}^2_{0,c}.$ The mapping
+\begin{align*}
+	I_M^*:\mathscr{E}&\longrightarrow\mathscr{M}^2_{0,c}\\
+\Phi &\longmapsto \Phi \cdot M,
+\end{align*}
+can extend to a linear isometry
 \begin{align*}
 I_M:\mathscr{L}^{2}(M)&\longrightarrow\mathscr{M}^2_{0,c}\\
 \Phi &\longmapsto \Phi \cdot M,
@@ -1404,7 +1504,7 @@ A random process with values in the complex plane $\mathbb{C}$ is called a \emph
 	The process $\mathcal{E}(\lambda M)$ is a complex continuous local martingale, which can be written
 	in the form
 	\[
-	\mathcal{E}(\lambda M)_{t}=\mathrm{e}^{\lambda M_{0}}+\lambda \int_{0}^{t} \mathcal{E}(\lambda M)_{s} \mathrm{d} M_{s}
+	\mathcal{E}(\lambda M)_{t}=\mathrm{e}^{\lambda M_{0}}+\lambda \int_{0}^{t} \mathcal{E}(\lambda M)_{s} \d M_{s}
 	\]
 \end{proposition}
 
