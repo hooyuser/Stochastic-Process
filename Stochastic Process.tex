@@ -138,18 +138,17 @@ The definition of $\mathcal{F}_{\infty}$ is usually specified as
 	\]
 	Then $\mathfrak{F}^+:=({\mathcal{F}}_{t+})_{t\in T}$ is a filtration. A filtration $\mathfrak{F}$ is said to be \emph{right-continuous} if and only if $\mathfrak{F}^{+}=\mathfrak{F}$.
 \end{definition}
-
+If $X=(X_t)_{t\in T}$ is left-continuous, then the filtration $\mathfrak{F}=\left(\mathcal{F}_t^X\right)_{t\in T}$ is left-continuous. However, even if $X$ is continuous, $\mathfrak{F}$ can fail to be right-continuous.
 \begin{definition}[complete filtration]
-	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space. A filtration $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}$ on $(\Omega,\mathcal{F},\mathrm{P})$ is said to be \emph{complete}, if $(\Omega,\mathcal{F}_{t},\mathrm{P})$ is a complete measure space for every $t\in T$. 
-	Specifically, let
+	Suppose $(\Omega,\mathcal{F},\mathrm{P})$ is a probability space. Let
 	\[
-		\mathcal{N}^{\mathrm{P}}:=\{B\in 2^\Omega \mid \exists A\in\mathcal{F},\mathrm{P}(A)=0\text{ and }B\subset A\}
+		\mathcal{N}^{\mathrm{P}}:=\{B\in 2^\Omega \mid \exists A\in\mathcal{F},\mathrm{P}(A)=0\text{ and }B\subseteq A\}
 	\]
-	be the collection of all sets that are contained by a $\mathrm{P}$-null set. Then $\mathfrak{F}$ is complete if $\mathcal{N}^{\mathrm{P}}\subset \mathcal{F}_{0}$. 
+	be the collection of all sets that are contained by a $\mathrm{P}$-null set. A filtration $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}$ on $(\Omega,\mathcal{F},\mathrm{P})$ is said to be \emph{complete}, if $\mathcal{N}^{\mathrm{P}}\subseteq\mathcal{F}_t$ for all $t\in T$. 
 \end{definition}
-
-\begin{definition}[completion of filtered measure space]
-	Suppose $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T }, \mathrm{P})$ is a filtered probability space. Let $\mathcal{F}_{t}^{\mathrm{P}}=\sigma\left(\mathcal{F}_{t} \cup \mathcal{N}^{\mathrm{P}}\right)$. Then $\mathfrak{F}^{\mathrm{P}} =(\mathcal{F}_{t}^{\mathrm{P}})_{t\in T}$ is a complete filtration .
+If $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}$ is a complete filtration on $(\Omega,\mathcal{F},\mathrm{P})$, then for every $t\in T$, $(\Omega,\mathcal{F}_t,\mathrm{P})$ is a complete probability space. However, the converse is not necessarily true.
+\begin{definition}[completion of filtration]
+	Suppose $(\Omega,\mathcal{F},(\mathcal{F}_{t})_{t\in T }, \mathrm{P})$ is a filtered probability space. Let $\mathcal{F}_{t}^{\mathrm{P}}=\sigma\left(\mathcal{F}_{t} \cup \mathcal{N}^{\mathrm{P}}\right)$. Then $\mathfrak{F}^{\mathrm{P}} =(\mathcal{F}_{t}^{\mathrm{P}})_{t\in T}$ is a complete filtration, called the \emph{completion} of $\mathfrak{F} =(\mathcal{F}_{t})_{t\in T}$. And $(\Omega,\mathcal{F},\mathfrak{F}^{\mathrm{P}}, \mathrm{P})$ is called the \emph{completion} of $(\Omega,\mathcal{F},\mathfrak{F}, \mathrm{P})$.
 \end{definition}
 
 \begin{definition}[usual conditions and stochastic basis]
@@ -394,18 +393,34 @@ $$
 $$
 Then $D(\mathcal{A})$ is a linear subspace of $C_0(S)$ and $\mathcal{A}: D(\mathcal{A}) \longrightarrow C_0(S)$ is a linear operator called the generator of the semigroup $\left( Q_t\right)_{t \geq 0}$. The subspace $D(\mathcal{A})$ is called the domain of $\mathcal{A}$.
 \end{definition}
-\begin
-{proposition}[properties of infinitesimal generator]
-Let $f \in D(\mathcal{A})$ and $s>0$. Then $Q_s f \in D(\mathcal{A})$ and $\mathcal{A}\left(Q_s f\right)=Q_s(\mathcal{A} f)$.
+\begin{proposition}
+	Let $f \in D(\mathcal{A})$ and $s>0$. Then $\mathbf{Q}_s f \in D(\mathcal{A})$ and $\mathcal{A}\left(\mathbf{Q}_s f\right)=\mathbf{Q}_s(\mathcal{A} f)$.
 \end{proposition}
 
+\begin{proposition}
+	If $f\in D(\mathcal{A})$, we have, for every $t \ge 0$,
+	\[
+		\mathbf{Q}_t f=f+\int_0^t Q_s(\mathcal{A} f) \mathrm{d} s=f+\int_0^t \mathcal{A}\left(Q_s f\right) \mathrm{d} s.
+	\] 
+	And $\forall x \in S, \forall t \ge 0$, we have
+	\[
+		\frac{\partial}{\partial t} \mathbf{Q}_t f(x) = \mathbf{Q}_t\left( \mathcal{A}f \right)(x).
+	\]
+\end{proposition}
+The semigroup $\left(\mathbf{Q}_t\right)_{t \ge 0}$ is determined by the generator $\mathcal{A}$ (including also the domain $D(\mathcal{A})$ ).
 
-
-
-
-
-
-
+We consider again a general Feller semigroup $\left(Q_t\right)_{t \geq 0}$. We assume that on some probability space, we are given, for every $x \in E$, a process $\left(X_t^x\right)_{t \geq 0}$ which is Markov with semigroup $\left(Q_t\right)_{t \geq 0}$, with respect to a filtration $\left(\mathcal{F}_t\right)_{t \geq 0}$, and such that $P\left(X_0^x=\right.$ $x)=1$. To make sense of the integrals that will appear below, we also assume that the sample paths of $\left(X_t^x\right)_{t \geq 0}$ are càdlàg (we will see in the next section that this assumption is not restrictive).
+\begin{theorem}
+	Let $h, g \in C_0(S)$. The following two conditions are equivalent:
+	\begin{enumerate}
+		\item $h \in D(\mathcal{A})$ and $\mathcal{A} h=g$.
+		\item For every $x \in S$, the process
+		$$
+		h\left(X_t^x\right)-\int_0^t g\left(X_s^x\right) \mathrm{d} s
+		$$
+	\end{enumerate}
+	is a martingale, with respect to the filtration $\left(\mathcal{F}_t\right)_{t \geq 0}$.
+\end{theorem}
 
 \chapter{Markov Chain}
 A Markov process with discrete state space is referred to as a Markov chain.
@@ -1455,8 +1470,8 @@ and similarly $\Phi \in \mathscr{L}_{1 \mathrm{oc}}^{2}(M)$ for every continuous
 \begin{theorem}[Itô's formula]
 	Let $X^{1}, \cdots, X^{p}$ be $p$ continuous semimartingales, and let $F\in C^2(\mathbb{R}^{p})$ be a twice continuously differentiable real function. Then, for every $t \geq 0$,
 	\begin{align}
-		F\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=F\left(X_{0}^{1}, \cdots, X_{0}^{p}\right) &+\sum_{i=1}^{p} \int_{0}^{t} \frac{\partial F}{\partial x^{i}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) d X_{s}^{i} \nonumber\\
-		&+\frac{1}{2} \sum_{i, j=1}^{p} \int_{0}^{t} \frac{\partial^{2} F}{\partial x^{i} \partial x^{j}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) d\left\langle X^{i}, X^{j}\right\rangle_{s}.\label{ito}
+		F\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=F\left(X_{0}^{1}, \cdots, X_{0}^{p}\right) &+\sum_{i=1}^{p} \int_{0}^{t} \frac{\partial F}{\partial x^{i}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) \d X_{s}^{i} \nonumber\\
+		&+\frac{1}{2} \sum_{i, j=1}^{p} \int_{0}^{t} \frac{\partial^{2} F}{\partial x^{i} \partial x^{j}}\left(X_{s}^{1}, \cdots, X_{s}^{p}\right) \d\left\langle X^{i}, X^{j}\right\rangle_{s}.\label{ito}
 	\end{align}
 \end{theorem}
 Thus we see that if we apply a twice continuously differentiable function $F$ to a $p$-tuple of continuous semimartingales $(X^{1}, \cdots, X^{p})$, the resulting process $F(X^{1}, \cdots, X^{p})$ is still a continuous semimartingale.
@@ -1464,7 +1479,7 @@ Thus we see that if we apply a twice continuously differentiable function $F$ to
 We can write the fomula \ref{ito} in differential notation as
 \[
 dF\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=\sum_{i=1}^{p}  \frac{\partial F}{\partial x^{i}}\left(X_{t}^{1}, \cdots, X_{t}^{p}\right) d X_{t}^{i} 
-+\frac{1}{2} \sum_{i, j=1}^{p}  \frac{\partial^{2} F}{\partial x^{i} \partial x^{j}}\left(X_{t}^{1}, \cdots, X_{t}^{p}\right) d\left\langle X^{i}, X^{j}\right\rangle_{t}.
++\frac{1}{2} \sum_{i, j=1}^{p}  \frac{\partial^{2} F}{\partial x^{i} \partial x^{j}}\left(X_{t}^{1}, \cdots, X_{t}^{p}\right) \d\left\langle X^{i}, X^{j}\right\rangle_{t}.
 \]
 
 \begin{corollary}[formula of integration by parts]
@@ -1481,17 +1496,15 @@ dF\left(X_{t}^{1}, \cdots, X_{t}^{p}\right)=\sum_{i=1}^{p}  \frac{\partial F}{\p
 \begin{corollary}
 	\begin{enumerate}
 		\item Let $F\in C^2(\mathbb{R})$.
-		$$F\left(B_{t}\right)=F\left(B_{0}\right)+\int_{0}^{t} F^{\prime}\left(B_{s}\right) d B_{s}+\frac{1}{2} \int_{0}^{t} F^{\prime \prime}\left(B_{s}\right) d s.$$
+		$$F\left(B_{t}\right)=F\left(B_{0}\right)+\int_{0}^{t} F^{\prime}\left(B_{s}\right) \d B_{s}+\frac{1}{2} \int_{0}^{t} F^{\prime \prime}\left(B_{s}\right) \d s.$$
 		\item Let $F(t,x)\in C^2(\mathbb{R}^2)$, $M$ be a continuous local martingale.
 		\[
-		F\left(\langle M\rangle_{t}, M_{t}\right)=F\left(0, M_{0}\right)+\int_{0}^{t} \frac{\partial F}{\partial x}\left(\langle M\rangle_{s}, M_{s}\right) d M_{s}+\int_{0}^{t}\left(\frac{\partial F}{\partial t}+\frac{1}{2} \frac{\partial^{2} F}{\partial x^{2}}\right)\left(\langle M\rangle_{s}, M_{s}\right) d \langle M\rangle_{s},
+		F\left(\langle M\rangle_{t}, M_{t}\right)=F\left(0, M_{0}\right)+\int_{0}^{t} \frac{\partial F}{\partial x}\left(\langle M\rangle_{s}, M_{s}\right) \d M_{s}+\int_{0}^{t}\left(\frac{\partial F}{\partial t}+\frac{1}{2} \frac{\partial^{2} F}{\partial x^{2}}\right)\left(\langle M\rangle_{s}, M_{s}\right) \d \langle M\rangle_{s},
 		\]
 		\[
-		F\left(t, B_{t}\right)=F\left(0, B_{0}\right)+\int_{0}^{t} \frac{\partial F}{\partial x}\left(s, B_{s}\right) d B_{s}+\int_{0}^{t}\left(\frac{\partial F}{\partial t}+\frac{1}{2} \frac{\partial^{2} F}{\partial x^{2}}\right)\left(s, B_{s}\right) d s.
+		F\left(t, B_{t}\right)=F\left(0, B_{0}\right)+\int_{0}^{t} \frac{\partial F}{\partial x}\left(s, B_{s}\right) \d B_{s}+\int_{0}^{t}\left(\frac{\partial F}{\partial t}+\frac{1}{2} \frac{\partial^{2} F}{\partial x^{2}}\right)\left(s, B_{s}\right) \d s.
 		\]
-	\end{enumerate}
-	
-	
+	\end{enumerate}	
 \end{corollary}
 
 A random process with values in the complex plane $\mathbb{C}$ is called a \emph{complex continuous local martingale} if both its real part and its imaginary part are continuous local martingales.
@@ -1508,22 +1521,80 @@ A random process with values in the complex plane $\mathbb{C}$ is called a \emph
 	\]
 \end{proposition}
 
+\section{Ito Process}
+\begin{definition}
+	Let $(\Omega, \mathcal{F}, \mathfrak{F}, \mathrm{P})$ be a probability space with a complete filtration $\mathfrak{F}=\left(\mathcal{F}_t\right)_{t \geq 0}$. Let $B=\left(B_t^1, \ldots, B_t^d\right)_{t \geq 0}$ a $d$-dimensional $\mathfrak{F}$-standard Brownian motion. Then Ito process is a process $\left(X_t\right)_{t \geq 0}$ that can be written in the form
+$$
+X_t=X_0+\int_0^t K_s \mathrm{ds}+\sum_{j=1}^d \int_0^t H_s^j \mathrm{~dB}_s^j
+$$
+where
+\begin{enumerate}
+	\item $X_0$ is $\mathcal{F}_0$-measurable,
+	\item $\left(K_t\right)_{t \geq 0}$ is a progressively measurable process such that $\forall t \geq 0, \int_0^t\left|K_s\right| \mathrm{ds}<+\infty$ almost surely.
+	\item $\left(H_t^i\right)_{t \geq 0, i \in[1 \ldots d]}$ is progressively measurable such that $\forall i \in[1 \ldots d], \forall t \geq 0, \int_0^t\left(H_s^i\right)^2 \mathrm{ds}<+\infty$ almost surely.
+\end{enumerate}
+
+We denote by $\mathcal{I}$ the set of all Ito processes. All Ito processes are continuous and adapted to the filtration $\mathfrak{F}$. We can also write the Ito process in the ``differential form":
+$$
+d X_t=K_t \d t+\sum_{j=1}^d H_t^j \d B_t^j
+$$
+Using the fact that the Brownian part is a local martingal, and that all continuous local martingale with finite variations equal to zero in zero is indistinguishible from the null process, we can show that this decomposition is unique (up to indistinguishability) for each Ito process.
+\end{definition}
+
+
 \chapter{Stochastic Differential Equations}
 Stochastic differential equation with respect to Brownian motion has the form
 $$
 \begin{aligned}
-d X_t &=\mu\left(t, X_t\right) d t+\sigma\left(t, X_t\right) d W_t, \\
-X_0 &=x_0,
+\d X_t &=\mu\left(t, X_t\right) \d t+\sigma\left(t, X_t\right) \d W_t
 \end{aligned}
 $$
 where
 \begin{itemize}
-	\item $W=\left(W_t\right)_{t\ge 0}$ is a Brownian motion,
+	\item $W=\left(W_t\right)_{t\ge 0}$ is a $d$-dimensional Brownian motion,
 	\item $\mu: [0,\infty) \times \mathbb{R}^n \rightarrow \mathbb{R}^n$ is a Borel measurable function,
 	\item $\sigma: [0,\infty) \times \mathbb{R}^n \rightarrow \mathbb{R}^{n\times d}$ is a Borel measurable function.
-	\item $x_0$ is a vector in $\mathbb{R}^n$.
 \end{itemize}
 \section{Strong Solutions of SDEs}
+In order to develop the concept of strong solution, we choose a probability space $(\Omega, \mathcal{F}, \mathrm{P})$ as well as an $r$-dimensional Brownian motion $W=(W_t)_{t\ge 0}$ on it. We assume also that this space is rich enough to accommodate a random vector $\xi$ taking values in $\mathbb{R}^d$, independent of $\mathcal{F}_{\infty}^W$.
+We consider the left-continuous filtration
+$$
+\mathcal{G}_t = \sigma(\xi) \vee \mathcal{F}_t^W=\sigma\left(\xi, W_s ; 0 \leq s \leq t\right) ; \quad 0 \leq t<\infty,
+$$
+and create the augmented filtration
+$$
+\mathcal{F}_t = \mathcal{G}_t^\mathrm{P}=\sigma\left(\mathcal{G}_t \cup \mathcal{N}\right), \quad 0 \leq t<\infty ; \quad \mathscr{F}_{\infty} \triangleq \sigma\left(\bigcup_{t \geq 0} \mathcal{F}_t\right),
+$$
+by analogy with the construction of Definition 2.7.2. Obviously, $\left\{W_t, \mathcal{G}_t\right.$; $0 \leq t<\infty\}$ is an $r$-dimensional Brownian motion, and then so is $\left\{W_t, \mathscr{F}_t\right.$; $0 \leq t<\infty\}$ (cf. Theorem 2.7.9). It follows also, just as in the proof of Proposition 2.7.7, that the filtration $\left\{\mathscr{F}_t\right\}$ satisfies the usual conditions.
+\begin{definition}[Strong Solution]
+A strong solution of the stochastic differential equation
+$$
+\begin{aligned}
+\d X_t &=\mu\left(t, X_t\right) \d t+\sigma\left(t, X_t\right) \d W_t
+\end{aligned}
+$$
+on the given probability space $(\Omega, \mathscr{F}, P)$ and with respect to the fixed Brownian motion $W$ and initial condition $\xi$, is a process $X=\left(X_t\right)_{t\ge 0}$ with continuous sample paths and with the following properties:
+\begin{enumerate}[(i)]
+	\item $X$ is adapted to the filtration $\left\{\mathscr{F}_t\right\}$ of $(2.3)$,
+	\item  $P\left[X_0=\xi\right]=1$
+	\item  $P\left[\int_0^t\left\{\left|b_i\left(s, X_s\right)\right|+\sigma_{i j}^2\left(s, X_s\right)\right\} d s<\infty\right]=1$ holds for every $1 \leq i \leq d$, $1 \leq j \leq r$ and $0 \leq t<\infty$, and
+	\item  the integral version of (2.1)
+	$$
+	X_t=X_0+\int_0^t b\left(s, X_s\right) d s+\int_0 \int_d \sigma\left(s, X_s\right) d W_s ; \quad 0 \leq t<\infty,
+	$$
+	or equivalently,
+	$$
+	\begin{aligned}
+	& X_t^{(i)}=X_0^{(i)}+\int_0^t b_i\left(s, X_s\right) d s+\sum_{j=1}^r \int_0^t \sigma_{i j}\left(s, X_s\right) d W_s^{(j)} ; \\
+	& 0 \leq t<\infty, 1 \leq i \leq d, \\
+	&
+	\end{aligned}
+	$$
+	holds almost surely.
+\end{enumerate}
+\end{definition}
+
+
 \newpage
 
 \chapter*{Appendix}
@@ -1612,6 +1683,7 @@ where
 	\bibitem{ref2}Morimoto H. Stochastic control and mathematical modeling[M]. Cambridge University Press, 2010.
 	\bibitem{ref3}Athreya K B, Lahiri S N. Measure theory and probability theory[M]. Springer Science \& Business Media, 2006.  
 	\bibitem{ref4}Pivato M. Stoshastic processes and stochastic integration[J]. 1999.
+	\bibitem{ref5}Karatzas, Ioannis, and Steven Shreve. Brownian Motion and Stochastic Calculus. Vol. 113. Springer Science \& Business Media, 2012.
 \end{thebibliography}
 
 \end{document}
